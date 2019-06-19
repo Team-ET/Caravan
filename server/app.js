@@ -1,3 +1,4 @@
+require('dotenv').config();
 const db = require('../database/index.js');
 const express = require('express');
 

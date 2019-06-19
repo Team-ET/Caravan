@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.0.1",
     "@angular/platform-browser-dynamic": "~8.0.1",
     "@angular/router": "~8.0.1",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "mysql2": "^1.6.5",
     "rxjs": "~6.4.0",

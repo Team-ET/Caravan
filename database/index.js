@@ -2,8 +2,8 @@ const Sequelize = require('sequelize');
 // making connection to db
 // const bcrypt = require('bcrypt');
 
-const sequelize = new Sequelize('CaravanAppDB', 'TeamET', 'Halleb0t748!', {
-  host: 'caravandbserver.database.windows.net',
+const sequelize = new Sequelize(process.env.DATABASE_NAME, process.env.USERNAME, process.env.PASSWORD, {
+  host: process.env.HOST,
   dialect: 'mssql',
   dialectOptions: {
     options: {
