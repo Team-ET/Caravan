@@ -7,8 +7,13 @@
 # Only exists if Bazel was run
 /bazel-out
 
+# auth
+.src/app/auth/auth0-variables.ts
+
 # dependencies
 /node_modules
+/yarn.lock
+/package-lock.json
 
 # profiling files
 chrome-profiler-events.json
