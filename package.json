@@ -19,13 +19,10 @@
     "@angular/platform-browser": "~8.0.1",
     "@angular/platform-browser-dynamic": "~8.0.1",
     "@angular/router": "~8.0.1",
-<<<<<<< HEAD
     "auth0-js": "^9.10.4",
-=======
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "mysql2": "^1.6.5",
->>>>>>> 7eca31822cbf963f79e65c362ca8435dbdc37654
     "rxjs": "~6.4.0",
     "sequelize": "^5.8.10",
     "tedious": "^6.2.0",
