@@ -25,7 +25,13 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+<<<<<<< HEAD
+    "express-jwt": "^5.3.1",
+    "express-jwt-authz": "^2.3.1",
+    "jwks-rsa": "^1.5.1",
+=======
     "ibm-watson": "^4.2.1",
+>>>>>>> f9825b3b96ade8f03e19a53cf99181881b42a02f
     "mysql2": "^1.6.5",
     "rxjs": "~6.4.0",
     "sequelize": "^5.8.10",
