@@ -12,9 +12,10 @@ import { ROUTES } from "./app.routes";
 import { AuthService } from "./auth/auth.service";
 import { CallbackComponent } from "./callback/callback.component";
 import { PingComponent } from './ping/ping.component';
+import { GroupsComponent } from './groups/groups.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CallbackComponent, PingComponent],
+  declarations: [AppComponent, HomeComponent, CallbackComponent, PingComponent, GroupsComponent],
   imports: [
     BrowserModule,
     FormsModule,
