@@ -13,9 +13,10 @@ import { AuthService } from "./auth/auth.service";
 import { CallbackComponent } from "./callback/callback.component";
 import { PingComponent } from './ping/ping.component';
 import { GroupsComponent } from './groups/groups.component';
+import { ApiClient } from './api-client';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CallbackComponent, PingComponent, GroupsComponent],
+  declarations: [AppComponent, HomeComponent, CallbackComponent, PingComponent, GroupsComponent, ApiClient],
   imports: [
     BrowserModule,
     FormsModule,
