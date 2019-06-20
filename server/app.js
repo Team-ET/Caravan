@@ -17,13 +17,15 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+const { storeUser, storeGroup } = require('../server/helpers.js');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(express.static(path.join(__dirname, '../src')));
 //get request to watson using getInsights function
-app.get('/watson', (req, res) => {
+app.get('/', (req, res) => {
   getInsights(req.body.text, res);
 });
 //function to send to text to watson to retreive the value percentages that we need in order to compare the users
