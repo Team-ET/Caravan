@@ -7,8 +7,9 @@
 # Only exists if Bazel was run
 /bazel-out
 
-# auth
+# config files
 .src/app/auth/auth0-variables.ts
+.env
 
 # dependencies
 /node_modules
