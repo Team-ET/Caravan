@@ -1,12 +1,12 @@
 require('dotenv').config();
 // requiring watson personality-insights
-const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3');
+// const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3');
 
-const personalityInsights = new PersonalityInsightsV3({
-  iam_apikey: `${process.env.PERSONALITY_INSIGHTS_IAM_APIKEY}`,
-  version: '2016-10-19',
-  url: `${process.env.PERSONALITY_INSIGHTS_URL}`
-});
+// const personalityInsights = new PersonalityInsightsV3({
+//   iam_apikey: `${process.env.PERSONALITY_INSIGHTS_IAM_APIKEY}`,
+//   version: '2016-10-19',
+//   url: `${process.env.PERSONALITY_INSIGHTS_URL}`
+// });
 const db = require('../database/index.js');
 const express = require('express');
 const jwt = require('express-jwt');
@@ -31,28 +31,42 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static(path.join(__dirname, '../src')));
 //get request to watson using getInsights function
-app.get('/watson', (req, res) => {
-  getInsights(req.body.text, res);
+// app.get('/watson', (req, res) => {
+//   getInsights(req.body.text, res);
+// });
+// //function to send to text to watson to retreive the value percentages that we need in order to compare the users
+// function getInsights(text, res) {
+//   personalityInsights.profile({
+//     content: 'The video game industry is constantly evolving I just needed to add a couple words to make the 100 count just like technology, and I have always been an avid gamer, which is what drew me to the software field.  Being able to work with multiple new technologies on a constant basis keeps the workflow from becoming stagnant.  I have always loved building computers and being able to design and create the software makes the whole experience more complete and rewarding. I feel a great sense of accomplishment in using new tech to solve old problems, and make ideas become even more viable in today’s ever-changing tech world.',
+//     content_type: 'text/plain',
+//     consumption_preferences: false
+//   })
+//   .then(result => {
+//     res.send(JSON.stringify(result.values.map((value) => {
+//       return {
+//         name: value.name,
+//         percentile: Math.trunc(value.percentile * 100)
+//       }
+//     }), null, 2));
+//   })
+//   .catch(err => {
+//     console.log('error:', err);
+//   })
+// }
+
+app.get('/api/groups', (req, res) => {
+  const mockData = [
+    { id: 11, name: 'Travelers', location: 'Barcelona, Spain', picUrl: 'hhttps://avisassets.abgemea.com/dam/jcr:dc1e4f6f-b548-4a8d-a913-c84947e394e1/Barcelona_at_golden_hour_Credit_iStock_Eloi_Omella.jpg' },
+    { id: 12, name: 'Voyagers', location: 'New York, New York', picUrl: 'https://amp.businessinsider.com/images/5ad8ae04cd862425008b4898-750-563.jpg' },
+    { id: 13, name: 'Sparkers', location: 'Osaka, Japan', picUrl: 'https://photos.smugmug.com/Osaka/Osaka-Categories/i-J9MFjBv/0/XL/Osaka_Districts-XL.jpg' },
+    { id: 14, name: 'Language Lovers', location: 'San Francisco, California', picUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/San_Francisco_from_the_Marin_Headlands_in_March_2019.jpg' },
+    { id: 15, name: 'Not a travel tinder app', location: 'Vancouver, Canada', picUrl: 'https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_463,q_50,w_800/v1/clients/vancouverbc/01014_201809_AlbertNormandin_False_CreekVancouverDowntownCityAerial_23dd1724-bfd7-4cc9-9d93-60faac3cb2fa.jpg' },
+    { id: 16, name: 'Ya Mama', location: 'Edinburgh, Scotland', picUrl: 'http://www.visitscotland.com/cms-images/attractions/edinburgh-skyline-calton-hill?view=Standard' }
+  ];
+
+  console.log(mockData);
+  res.send(mockData);
 });
-//function to send to text to watson to retreive the value percentages that we need in order to compare the users
-function getInsights(text, res) {
-  personalityInsights.profile({
-    content: 'The video game industry is constantly evolving I just needed to add a couple words to make the 100 count just like technology, and I have always been an avid gamer, which is what drew me to the software field.  Being able to work with multiple new technologies on a constant basis keeps the workflow from becoming stagnant.  I have always loved building computers and being able to design and create the software makes the whole experience more complete and rewarding. I feel a great sense of accomplishment in using new tech to solve old problems, and make ideas become even more viable in today’s ever-changing tech world.',
-    content_type: 'text/plain',
-    consumption_preferences: false
-  })
-  .then(result => {
-    res.send(JSON.stringify(result.values.map((value) => {
-      return {
-        name: value.name,
-        percentile: Math.trunc(value.percentile * 100)
-      }
-    }), null, 2));
-  })
-  .catch(err => {
-    console.log('error:', err);
-  })
-}
 
 
 // const checkJwt = jwt({

@@ -11,9 +11,11 @@ import {
   InputUtilitiesModule } from 'angular-bootstrap-md';
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule } from '@angular/router';
+import { PingComponent } from './components/ping/ping.component';
 
 @NgModule({
   imports: [
+    PingComponent,
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
