@@ -9,12 +9,13 @@
 
 # auth
 .src/app/auth/services/auth0.variables.ts
+.env
 
 # dependencies
 /node_modules
 /yarn.lock
 /package-lock.json
-.env
+
 
 # profiling files
 chrome-profiler-events.json
