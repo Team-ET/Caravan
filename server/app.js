@@ -25,8 +25,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static(path.join(__dirname, '../src')));
 //get request to watson using getInsights function
-app.get('/', (req, res) => {
-  getInsights(req.body.text, res);
+app.get('/watson', (req, res) => {
+  getInsights(req.body.text, res);//maybe change this to query, so that we can input the queried text we are gathering from Facebook and Twitter
 });
 //function to send to text to watson to retreive the value percentages that we need in order to compare the users
 function getInsights(text, res) {
@@ -36,18 +36,28 @@ function getInsights(text, res) {
     consumption_preferences: false
   })
   .then(result => {
-    res.send(JSON.stringify(result.values.map((value) => {
-      return {
-        name: value.name,
-        percentile: Math.trunc(value.percentile * 100)
-      }
-    }), null, 2));
+    const values = {
+      tradition: Math.trunc(result.values[0].percentile * 100),
+      achievement: Math.trunc(result.values[1].percentile * 100),
+      pleasure:  Math.trunc(result.values[2].percentile * 100),
+      stimulation:  Math.trunc(result.values[3].percentile * 100),
+      helpfulness:  Math.trunc(result.values[4].percentile * 100),
+    }
+    res.send(JSON.stringify(values, null, 2));
   })
   .catch(err => {
     console.log('error:', err);
   })
 }
 
+app.post('/users', (req, res) => {
+  const { name, email, picture, pers_test, pers_percent } = req.body
+  storeUser(name, email, picture, pers_test, pers_percent)
+  .then(() =>{
+    res.send(201)
+  })
+  .catch((err) => console.error(err));
+})
 
 
 app.listen(3000, () => {

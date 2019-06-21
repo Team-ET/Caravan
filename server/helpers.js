@@ -1,4 +1,4 @@
-xwconst axios = require('axios');
+const axios = require('axios');
 
 const { User, Group, User_Group, Interest, Int_User } = require('../database/index.js');
 
