@@ -8,7 +8,7 @@
 /bazel-out
 
 # auth
-.src/app/auth/services/auth0-variables.ts
+.src/app/auth/services/auth0.variables.ts
 
 # dependencies
 /node_modules
