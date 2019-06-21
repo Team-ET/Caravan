@@ -1,29 +1,27 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";
 import { RouterModule } from "@angular/router";
-
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
-
 import { ROUTES } from "./app.routes";
-
 import { AuthService } from "./auth/auth.service";
 import { CallbackComponent } from "./callback/callback.component";
 import { PingComponent } from './ping/ping.component';
 import { GroupsComponent } from './groups/groups.component';
-import { ApiClient } from './api-client';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpErrorHandler } from './http-error-handler.service';
+import { MessageService } from './message.service';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CallbackComponent, PingComponent, GroupsComponent, ApiClient],
+  declarations: [AppComponent, HomeComponent, CallbackComponent, PingComponent, GroupsComponent],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [AuthService],
+  providers: [AuthService, HttpErrorHandler, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
