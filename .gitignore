@@ -14,6 +14,7 @@
 /node_modules
 /yarn.lock
 /package-lock.json
+.env
 
 # profiling files
 chrome-profiler-events.json
