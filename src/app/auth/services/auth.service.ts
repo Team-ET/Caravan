@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AUTH_CONFIG } from './auth0-variables';
+import { AUTH_CONFIG } from './auth0.variables';
 import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
 
@@ -31,6 +31,10 @@ export class AuthService {
     return this._idToken;
   }
 
+  public getAuthState() {
+    return this.auth0.isAuthenticated();
+  }
+
   public login(): void {
     this.auth0.authorize();
   }
@@ -39,9 +43,9 @@ export class AuthService {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.localLogin(authResult);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/main']);
       } else if (err) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
@@ -58,12 +62,12 @@ export class AuthService {
 
   public renewTokens(): void {
     this.auth0.checkSession({}, (err, authResult) => {
-       if (authResult && authResult.accessToken && authResult.idToken) {
-         this.localLogin(authResult);
-       } else if (err) {
-         alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
-         this.logout();
-       }
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        this.localLogin(authResult);
+      } else if (err) {
+        alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
+        this.logout();
+      }
     });
   }
 

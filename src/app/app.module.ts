@@ -5,23 +5,22 @@ import { HttpModule } from "@angular/http";
 import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
-import { HomeComponent } from "./home/home.component";
+
+import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth.module';
 
 import { ROUTES } from "./app.routes";
 
-import { AuthService } from "./auth/auth.service";
-import { CallbackComponent } from "./callback/callback.component";
-import { PingComponent } from './ping/ping.component';
-
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CallbackComponent, PingComponent],
+  declarations: [AppComponent],
   imports: [
+    AuthModule,
+    CoreModule,
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
