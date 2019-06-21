@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 
@@ -14,6 +15,7 @@ import { ROUTES } from "./app.routes";
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    MDBBootstrapModule.forRoot(),
     AuthModule,
     CoreModule,
     BrowserModule,
