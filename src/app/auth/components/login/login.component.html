@@ -1,8 +1,6 @@
-<section class="login-form">
-  <!--Form with header-->
-  <mdb-card>
 
-    <!--Header-->
+<mdb-card cascade="true" wider="true" reverse="true" class="my-4">
+    <!--Login-->
     <div class="header pt-3 peach-gradient">
 
       <div class="row d-flex justify-content-center">
@@ -25,55 +23,12 @@
       </div>
 
     </div>
-    <!--Header-->
+    <!--Login-->
+    <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+      <mdb-card-img src="https://source.unsplash.com/1600x900/?nature,water"></mdb-card-img>
+      <a>
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+</mdb-card>
 
-    <mdb-card-body class="mx-4 mt-4">
-
-      <!--Body-->
-      <form [formGroup]="loginForm">
-
-
-        <div class="md-form">
-          <input type="text" id="loginFormEmailEx" formControlName="loginFormEmailEx" class="form-control"
-            mdbInput>
-          <label for="loginFormEmailEx">Your email</label>
-        </div>
-
-        <div class="md-form pb-1 pb-md-3">
-          <input type="password" id="loginFormPasswordEx" formControlName="loginFormPasswordEx"
-            class="form-control" mdbInput>
-          <label for="loginFormPasswordEx">Your password</label>
-          <p class="font-small grey-text d-flex justify-content-end">Forgot
-            <a href="#" class="dark-grey-text ml-1 font-weight-bold"> Password?</a>
-          </p>
-        </div>
-      </form>
-
-      <!--Grid row-->
-      <div class="row d-flex align-items-center mb-4">
-
-        <!--Grid column-->
-        <div class="col-md-1 col-md-5 d-flex align-items-start">
-          <div class="text-center">
-            <button type="button" mdbBtn color="grey" rounded="true" class="z-depth-1a waves-light" mdbWavesEffect>Log
-              in</button>
-          </div>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-7">
-          <p class="font-small grey-text d-flex justify-content-end mt-3">Don't have an account?
-            <a href="#" class="dark-grey-text ml-1 font-weight-bold"> Sign up</a>
-          </p>
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-    </mdb-card-body>
-
-  </mdb-card>
-  <!--/Form with header-->
-
-</section>
