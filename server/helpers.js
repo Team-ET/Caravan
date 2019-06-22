@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const { User, Group, User_group, Interest, Int_User } = require('../database/index.js');
+const { User, Group, User_group, Interest, Int_User, Values } = require('../database/index.js');
 
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op; 
@@ -25,6 +25,10 @@ const findAllUsers = (users) =>
 // function for getting all User's Groups from the db
 const findUserGroups = userGroups => User_group.findAll({});
 
+const getUserValues = userId =>
+  Values.findOne({ where: { userId }})
+  .then(user => user.id)
+
 // function for getting the avg of a group, for using when comparing the matching alogrithim
 const groupAvg = (array) => {
   return array.reduce((total, curr) => {
@@ -44,5 +48,6 @@ module.exports = {
   findAllGroups,
   findAllUsers,
   findUserGroups,
-  groupAvg
+  groupAvg,
+  getUserValues,
 };
