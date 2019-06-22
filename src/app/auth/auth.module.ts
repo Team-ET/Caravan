@@ -15,7 +15,6 @@ import { PingComponent } from './components/ping/ping.component';
 
 @NgModule({
   imports: [
-    PingComponent,
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
@@ -27,7 +26,7 @@ import { PingComponent } from './components/ping/ping.component';
     RouterModule,
     IconsModule,
   ],
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, PingComponent,],
   providers: [AuthService]
 })
 export class AuthModule { }

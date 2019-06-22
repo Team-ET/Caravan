@@ -4,6 +4,7 @@ import { AUTH_CONFIG } from '../../services/auth0.variables';
 import { AuthService } from '../../services/auth.service';
 import { map } from 'rxjs/operators';
 
+
 interface IApiResponse {
   message: string;
 }
@@ -11,7 +12,7 @@ interface IApiResponse {
 @Component({
   selector: 'app-ping',
   templateUrl: './ping.component.html',
-  styleUrls: ['./ping.component.css']
+  styleUrls: ['./ping.component.scss']
 })
 
 export class PingComponent {

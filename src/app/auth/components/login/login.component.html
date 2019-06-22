@@ -10,15 +10,17 @@
       <div class="row mt-2 mb-3 d-flex justify-content-center">
         <!--Facebook-->
         <a class="fa-lg p-2 m-2 fb-ic">
-          <mdb-icon fab icon="facebook" class="white-text" size="lg"></mdb-icon>
+          <mdb-icon fab icon="facebook" class="white-text" size="lg" *ngIf="!auth.isAuthenticated()" type="button"
+            (click)="auth.login()" >
+          </mdb-icon>
         </a>
         <!--Twitter-->
         <a class="fa-lg p-2 m-2 tw-ic">
-          <mdb-icon fab icon="twitter" class="white-text" size="lg"></mdb-icon>
+          <mdb-icon fab icon="twitter" class="white-text" size="lg" (click)="auth.login()" type="button" *ngIf="!auth.isAuthenticated()"></mdb-icon>
         </a>
         <!--Google +-->
         <a class="fa-lg p-2 m-2 gplus-ic">
-          <mdb-icon fab fab icon="google-plus" class="white-text" size="lg"></mdb-icon>
+          <mdb-icon fab fab icon="google-plus" class="white-text" size="lg" (click)="auth.login()" type="button" *ngIf="!auth.isAuthenticated()">></mdb-icon>
         </a>
       </div>
 

@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "nodemon server/app.js"
+    "nodemon": "nodemon server/app.js"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +37,7 @@
     "ibm-watson": "^4.2.1",
     "jwks-rsa": "^1.5.1",
     "mysql2": "^1.6.5",
+    "nodemon": "^1.19.1",
     "rxjs": "~6.4.0",
     "sequelize": "^5.8.10",
     "tedious": "^6.2.0",
