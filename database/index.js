@@ -37,8 +37,8 @@ const User = sequelize.define('user', {
 const Group = sequelize.define('group', {
   name: Sequelize.STRING,
   destination: Sequelize.STRING,
-  date_start: Sequelize.DATEONLY,
-  date_end: Sequelize.DATEONLY,
+  date_start: Sequelize.STRING,
+  date_end: Sequelize.STRING,
 });
 
 //joined table for users in groups many to many
