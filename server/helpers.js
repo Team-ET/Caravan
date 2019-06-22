@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const { User, Group, User_Group, Interest, Int_User } = require('../database/index.js');
+const { User, Group, User_group, Interest, Int_User } = require('../database/index.js');
 
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op; 
@@ -17,25 +17,18 @@ const storeGroup = (name, destination, date_start, date_end) => Group.findOrCrea
 
 const findAllGroups = groups =>
  Group.findAll({
-  //  where: {
-  //    id: {
-  //      [Op]: groups
-  //    }
-  //  }
  });
 
 const findAllUsers = (users) =>
  User.findAll(
-  //  where: {
-  //    id: {
-  //      [Op]: users
-  //    }
-  //  }
  );
+
+const findUserGroups = userGroups => User_group.findAll({});
 
 module.exports = {
   storeUser,
   storeGroup,
   findAllGroups,
   findAllUsers,
+  findUserGroups,
 };

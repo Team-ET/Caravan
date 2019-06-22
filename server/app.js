@@ -24,7 +24,7 @@ const bodyParser = require('body-parser');
 //   throw 'Make sure you have AUTH0_DOMAIN, and AUTH0_AUDIENCE in your .env file'
 // }
 
-const { storeUser, storeGroup, findAllGroups, findAllUsers } = require('../server/helpers.js');
+const { storeUser, storeGroup, findAllGroups, findAllUsers, findUserGroups } = require('../server/helpers.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -79,6 +79,14 @@ app.get('/users', (req, res) => {
   findAllUsers()
   .then((user) => {
     res.send(user);
+  })
+  .catch(err => console.error(err));
+})
+
+app.get('/users:groups', (req, res) => {
+  findUserGroups()
+  .then((userGroups) => {
+    res.send(userGroups);
   })
   .catch(err => console.error(err));
 })
