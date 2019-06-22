@@ -3,25 +3,31 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
-import { HomeComponent } from "./home/home.component";
-import { ROUTES } from "./app.routes";
-import { AuthService } from "./auth/auth.service";
-import { CallbackComponent } from "./callback/callback.component";
-import { PingComponent } from './ping/ping.component';
-import { GroupsComponent } from './groups/groups.component';
 import { HttpClientModule } from '@angular/common/http';
+
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth.module';
+import { GroupsModule } from './groups/groups.module'
+
+import { ROUTES } from "./app.routes";
+
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CallbackComponent, PingComponent, GroupsComponent],
+  declarations: [AppComponent ],
   imports: [
+    GroupsModule,
+    MDBBootstrapModule.forRoot(),
+    AuthModule,
+    CoreModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [AuthService, HttpErrorHandler, MessageService],
+  providers: [HttpErrorHandler, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

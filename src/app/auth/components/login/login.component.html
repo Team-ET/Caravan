@@ -1,0 +1,36 @@
+
+<mdb-card cascade="true" wider="true" reverse="true" class="my-4">
+    <!--Login-->
+    <div class="header pt-3 peach-gradient">
+
+      <div class="row d-flex justify-content-center">
+        <h3 class="white-text mb-3 pt-3 font-weight-bold">Log in</h3>
+      </div>
+
+      <div class="row mt-2 mb-3 d-flex justify-content-center">
+        <!--Facebook-->
+        <a class="fa-lg p-2 m-2 fb-ic">
+          <mdb-icon fab icon="facebook" class="white-text" size="lg" *ngIf="!auth.isAuthenticated()" type="button"
+            (click)="auth.login()" >
+          </mdb-icon>
+        </a>
+        <!--Twitter-->
+        <a class="fa-lg p-2 m-2 tw-ic">
+          <mdb-icon fab icon="twitter" class="white-text" size="lg" (click)="auth.login()" type="button" *ngIf="!auth.isAuthenticated()"></mdb-icon>
+        </a>
+        <!--Google +-->
+        <a class="fa-lg p-2 m-2 gplus-ic">
+          <mdb-icon fab fab icon="google-plus" class="white-text" size="lg" (click)="auth.login()" type="button" *ngIf="!auth.isAuthenticated()">></mdb-icon>
+        </a>
+      </div>
+
+    </div>
+    <!--Login-->
+    <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+      <mdb-card-img src="https://source.unsplash.com/1600x900/?nature,travel,adventure"></mdb-card-img>
+      <a>
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+</mdb-card>
+
