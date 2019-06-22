@@ -15,8 +15,17 @@ const storeGroup = (name, destination, date_start, date_end) => Group.findOrCrea
   defaults: { name, destination, date_start, date_end }
 });
 
+const findAllGroups = groups =>
+ Group.findAll({
+   where: {
+     id: {
+       [Op.or]: groups
+     }
+   }
+ });
 
 module.exports = {
   storeUser,
-  storeGroup
+  storeGroup,
+  findAllGroups,
 };
