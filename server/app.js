@@ -75,6 +75,14 @@ app.get('/groups', (req, res) => {
   .catch((err) => console.error(err));
 })
 
+app.get('/users', (req, res) => {
+  findAllUsers()
+  .then((user) => {
+    res.send(user);
+  })
+  .catch(err => console.error(err));
+})
+
 app.listen(3000, () => {
   console.log('listening on http://localhost:3000! The Angular app will be built and served at http://localhost:4200.');
 });
