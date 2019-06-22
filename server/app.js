@@ -33,6 +33,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, '../src')));
 //get request to watson using getInsights function
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.get('/api/watson', (req, res) => {
   getInsights(req.body.text, res);
 });
@@ -71,6 +72,10 @@ app.get('/api/groups', (req, res) => {
 app.get('/watson', (req, res) => {
   getInsights(req.body.text, res);//maybe change this to query, so that we can input the queried text we are gathering from Facebook and Twitter
 >>>>>>> b667013e6c7a9363d83b4f84bb2c4cbfc0317c11
+=======
+app.get('/watson', (req, res) => {
+  getInsights(req.body.text, res);//maybe change this to query, so that we can input the queried text we are gathering from Facebook and Twitter
+>>>>>>> b667013e6c7a9363d83b4f84bb2c4cbfc0317c11
 });
 //function to send to text to watson to retreive the value percentages that we need in order to compare the users
 function getInsights(text, res) {
@@ -93,6 +98,7 @@ function getInsights(text, res) {
     console.log('error:', err);
   })
 }
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 app.get('/api/trips', (req, res) => {
@@ -116,6 +122,18 @@ app.post('/users', (req, res) => {
 })
 >>>>>>> b667013e6c7a9363d83b4f84bb2c4cbfc0317c11
 
+=======
+
+app.post('/users', (req, res) => {
+  const { name, email, picture, pers_test, pers_percent } = req.body
+  storeUser(name, email, picture, pers_test, pers_percent)
+  .then(() =>{
+    res.send(201)
+  })
+  .catch((err) => console.error(err));
+})
+
+>>>>>>> b667013e6c7a9363d83b4f84bb2c4cbfc0317c11
 app.get('/groups', (req, res) => {
   findAllGroups()
   .then((group) => {

@@ -19,7 +19,11 @@ import { GroupDetailComponent } from './group-detail/group-detail.component';
 
 @NgModule({
 <<<<<<< HEAD
+<<<<<<< HEAD
   declarations: [AppComponent, HomeComponent, CallbackComponent, PingComponent, GroupsComponent, ButtonComponent, GroupDetailComponent],
+=======
+  declarations: [AppComponent ],
+>>>>>>> b667013e6c7a9363d83b4f84bb2c4cbfc0317c11
 =======
   declarations: [AppComponent ],
 >>>>>>> b667013e6c7a9363d83b4f84bb2c4cbfc0317c11
