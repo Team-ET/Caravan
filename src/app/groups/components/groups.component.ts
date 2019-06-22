@@ -6,7 +6,7 @@ import { GroupsService } from '../services/groups.service';
   selector: 'app-groups',
   templateUrl: './groups.component.html',
   providers: [ GroupsService ],
-  styleUrls: ['./groups.component.css']
+  styleUrls: ['./groups.component.scss']
 })
 export class GroupsComponent implements OnInit {
   groups: Group[];

@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { ProfileComponent } from './components/profile/profile.component'
+import { GroupsModule } from '../groups/groups.module'
 
 import {
   NavbarModule,
@@ -16,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { DashComponent } from './components/dash/dash.component'
 import { NotFoundComponent } from './not-found/not-found.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     RouterModule,
     DropdownModule.forRoot(),
     CardsFreeModule,
-    ButtonsModule
+    ButtonsModule,
+    GroupsModule,
   ],
   declarations: [
     ProfileComponent,
