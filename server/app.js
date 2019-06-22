@@ -24,7 +24,7 @@ const bodyParser = require('body-parser');
 //   throw 'Make sure you have AUTH0_DOMAIN, and AUTH0_AUDIENCE in your .env file'
 // }
 
-const { storeUser, storeGroup, findAllGroups, findAllUsers, findUserGroups } = require('../server/helpers.js');
+const { storeUser, storeGroup, findAllGroups, findAllUsers, findUserGroups, getUserValues } = require('../server/helpers.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -91,6 +91,13 @@ app.get('/users:groups', (req, res) => {
   .catch(err => console.error(err));
 })
 
+app.get('users:values', (req, res) => {
+  getUserValues()
+  .then((value) => {
+    res.send(value);
+  })
+  .catch(err => console.error(err));
+})
 app.listen(3000, () => {
   console.log('listening on http://localhost:3000! The Angular app will be built and served at http://localhost:4200.');
 });
