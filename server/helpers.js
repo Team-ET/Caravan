@@ -3,6 +3,7 @@ const axios = require('axios');
 const { User, Group, User_Group, Interest, Int_User } = require('../database/index.js');
 
 const Sequelize = require('sequelize');
+const Op = Sequelize.Op; 
 
 const storeUser = (name, email, picture, pers_test, pers_percent) => User.findOrCreate({
   where: { email },
