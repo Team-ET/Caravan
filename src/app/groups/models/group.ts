@@ -4,4 +4,3 @@ export class Group {
   location: string;
   picUrl: string;
 }
-
