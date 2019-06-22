@@ -1,9 +1,22 @@
-<div class="heroes">
+<div class="groups">
+  <h3>Recommended Groups</h3>
   <div *ngFor="let group of groups"
     [class.selected]="group === selectedGroup"
     (click)="onSelect(group)">
+    <a routerLink="/detail/{{group.name}}">
       <h3>{{ group.name }}</h3>
-      <img [src]='group.picUrl' alt="">
-      <h4>{{ group.location }}</h4>
+    </a>
+    <img [src]='group.picUrl' alt="">
+    <h4>{{ group.location }}</h4>
+  </div>
+</div>
+<div class="trips">
+  <h3>My Trips</h3>
+  <div *ngFor="let trip of trips"
+    [class.selected]="trip === selectedTrip"
+    (click)="onSelect(trip)">
+      <h3>{{ trip.name }}</h3>
+      <img [src]='trip.picUrl' alt="">
+      <h4>{{ trip.location }}</h4>
   </div>
 </div>

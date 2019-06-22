@@ -12,9 +12,11 @@ import { GroupsComponent } from './groups/groups.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
+import { ButtonComponent } from './button/button.component';
+import { GroupDetailComponent } from './group-detail/group-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CallbackComponent, PingComponent, GroupsComponent],
+  declarations: [AppComponent, HomeComponent, CallbackComponent, PingComponent, GroupsComponent, ButtonComponent, GroupDetailComponent],
   imports: [
     BrowserModule,
     FormsModule,

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Group } from './group';
-import { GROUPS } from '../mock-groups';
+import { Group } from '../group';
+// import { GROUPS } from '../mock-groups';
 import { GroupsService } from './groups.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-groups',
@@ -11,20 +12,34 @@ import { GroupsService } from './groups.service';
 })
 export class GroupsComponent implements OnInit {
   groups: Group[];
+  trips: Group[];
   // editGroup: Group; // the hero currently being edited
 
   constructor(private groupsService: GroupsService) { }
 
   ngOnInit() {
     console.log('initializing groups');
-    this.getGroups();
+    this.getGroupMatches();
+    this.getUserTrips();
   }
 
-  getGroups(): void {
-    this.groupsService.getGroups()
+  // functioncall(e: MouseEvent) {
+  //   this.router.navigate()
+  // }
+
+  getGroupMatches(): void {
+    this.groupsService.getGroupMatches()
       .subscribe(groups => {
         console.log('getting groups', groups);
         this.groups = groups;
+      });
+  }
+
+  getUserTrips(): void {
+    this.groupsService.getUserTrips()
+      .subscribe(trips => {
+        console.log('getting trips', trips);
+        this.trips = trips;
       });
   }
 

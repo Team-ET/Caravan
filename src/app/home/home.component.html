@@ -1,5 +1,8 @@
 <h4 *ngIf="auth.isAuthenticated()">
   You are logged in!
+  <div>
+    <app-groups></app-groups>
+  </div>
 </h4>
 <h4 *ngIf="!auth.isAuthenticated()">
   You are not logged in! Please <a (click)="auth.login()">Log In</a> to continue.
