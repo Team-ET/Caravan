@@ -1,12 +1,12 @@
 require('dotenv').config();
 // requiring watson personality-insights
-// const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3');
+const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3');
 
-// const personalityInsights = new PersonalityInsightsV3({
-//   iam_apikey: `${process.env.PERSONALITY_INSIGHTS_IAM_APIKEY}`,
-//   version: '2016-10-19',
-//   url: `${process.env.PERSONALITY_INSIGHTS_URL}`
-// });
+const personalityInsights = new PersonalityInsightsV3({
+  iam_apikey: `${process.env.PERSONALITY_INSIGHTS_IAM_APIKEY}`,
+  version: '2016-10-19',
+  url: `${process.env.PERSONALITY_INSIGHTS_URL}`
+});
 const db = require('../database/index.js');
 const express = require('express');
 const jwt = require('express-jwt');
@@ -24,13 +24,15 @@ const bodyParser = require('body-parser');
 //   throw 'Make sure you have AUTH0_DOMAIN, and AUTH0_AUDIENCE in your .env file'
 // }
 
-// app.use(cors());
+const { storeUser, storeGroup, findAllGroups, findAllUsers, findUserGroups, getUserValues } = require('../server/helpers.js');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(express.static(path.join(__dirname, '../src')));
 //get request to watson using getInsights function
+<<<<<<< HEAD
 app.get('/api/watson', (req, res) => {
   getInsights(req.body.text, res);
 });
@@ -65,8 +67,34 @@ app.get('/api/groups', (req, res) => {
 
   console.log(mockData);
   res.send(mockData);
+=======
+app.get('/watson', (req, res) => {
+  getInsights(req.body.text, res);//maybe change this to query, so that we can input the queried text we are gathering from Facebook and Twitter
+>>>>>>> b667013e6c7a9363d83b4f84bb2c4cbfc0317c11
 });
+//function to send to text to watson to retreive the value percentages that we need in order to compare the users
+function getInsights(text, res) {
+  personalityInsights.profile({
+    content: 'The video game industry is constantly evolving I just needed to add a couple words to make the 100 count just like technology, and I have always been an avid gamer, which is what drew me to the software field.  Being able to work with multiple new technologies on a constant basis keeps the workflow from becoming stagnant.  I have always loved building computers and being able to design and create the software makes the whole experience more complete and rewarding. I feel a great sense of accomplishment in using new tech to solve old problems, and make ideas become even more viable in today’s ever-changing tech world.',
+    content_type: 'text/plain',
+    consumption_preferences: false
+  })
+  .then(result => {
+    const values = {
+      tradition: Math.trunc(result.values[0].percentile * 100),
+      achievement: Math.trunc(result.values[1].percentile * 100),
+      pleasure:  Math.trunc(result.values[2].percentile * 100),
+      stimulation:  Math.trunc(result.values[3].percentile * 100),
+      helpfulness:  Math.trunc(result.values[4].percentile * 100),
+    }
+    res.send(JSON.stringify(values, null, 2));
+  })
+  .catch(err => {
+    console.log('error:', err);
+  })
+}
 
+<<<<<<< HEAD
 app.get('/api/trips', (req, res) => {
   const mockTrips = [
     { id: 20, name: 'The Hobbits', location: 'Queenstown, New Zealand', picUrl: 'https://www.noted.co.nz/media/13444/ls4611237_28_aspen_gi_84184157.jpg?width=501&height=374'},
@@ -77,28 +105,48 @@ app.get('/api/trips', (req, res) => {
   res.send(mockTrips);
 })
 
+=======
+app.post('/users', (req, res) => {
+  const { name, email, picture, pers_test, pers_percent } = req.body
+  storeUser(name, email, picture, pers_test, pers_percent)
+  .then(() =>{
+    res.send(201)
+  })
+  .catch((err) => console.error(err));
+})
+>>>>>>> b667013e6c7a9363d83b4f84bb2c4cbfc0317c11
 
-// const checkJwt = jwt({
-//   // Dynamically provide a signing key based on the kid in the header and the signing keys provided by the JWKS endpoint.
-//   secret: jwksRsa.expressJwtSecret({
-//     cache: true,
-//     rateLimit: true,
-//     jwksRequestsPerMinute: 5,
-//     jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
-//   }),
+app.get('/groups', (req, res) => {
+  findAllGroups()
+  .then((group) => {
+    res.send(group)
+  })
+  .catch((err) => console.error(err));
+})
 
-//   // Validate the audience and the issuer.
-//   audience: process.env.AUTH0_AUDIENCE,
-//   issuer: `https://${process.env.AUTH0_DOMAIN}/`,
-//   algorithms: ['RS256']
-// });
+app.get('/users', (req, res) => {
+  findAllUsers()
+  .then((user) => {
+    res.send(user);
+  })
+  .catch(err => console.error(err));
+})
 
-// const checkScopes = jwtAuthz(['read:messages']);
+app.get('/users:groups', (req, res) => {
+  findUserGroups()
+  .then((userGroups) => {
+    res.send(userGroups);
+  })
+  .catch(err => console.error(err));
+})
 
-// app.get('/api/private', checkJwt, checkScopes, function (req, res) {
-//   res.json({ message: "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this." });
-// });
-
+app.get('users:values', (req, res) => {
+  getUserValues()
+  .then((value) => {
+    res.send(value);
+  })
+  .catch(err => console.error(err));
+})
 app.listen(3000, () => {
   console.log('listening on http://localhost:3000! The Angular app will be built and served at http://localhost:4200.');
 });

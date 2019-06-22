@@ -31,16 +31,14 @@ const User = sequelize.define('user', {
   name: Sequelize.STRING,
   email: Sequelize.STRING,
   picture: Sequelize.STRING,
-  pers_test: Sequelize.STRING,
-  pers_percent: Sequelize.INTEGER
 });
 
 // table for group
 const Group = sequelize.define('group', {
   name: Sequelize.STRING,
   destination: Sequelize.STRING,
-  date_start: Sequelize.INTEGER,
-  date_end: Sequelize.INTEGER
+  date_start: Sequelize.STRING,
+  date_end: Sequelize.STRING,
 });
 
 //joined table for users in groups many to many
@@ -53,9 +51,17 @@ const Interest = sequelize.define('interest', {
   name: Sequelize.STRING
 });
 
+const Values = sequelize.define('values', {
+  tradition: Sequelize.INTEGER,
+  achievement: Sequelize.INTEGER,
+  pleasure: Sequelize.INTEGER,
+  stimulation: Sequelize.INTEGER,
+  helpfulness: Sequelize.INTEGER,
+})
+
 // interst for user, many to many
 const Int_user = sequelize.define('int_group', {});
 Int_user.belongsTo(User);
 Int_user.belongsTo(Interest);
 
-module.exports = { User, Group, User_group, Interest, Int_user }; 
+module.exports = { User, Group, User_group, Interest, Int_user, Values }; 
