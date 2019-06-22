@@ -69,7 +69,6 @@ app.post('/users', (req, res) => {
 app.get('/groups', (req, res) => {
   findAllGroups()
   .then((group) => {
-    console.log(group);
     res.send(group)
   })
   .catch((err) => console.error(err));
