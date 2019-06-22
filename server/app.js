@@ -24,7 +24,7 @@ const bodyParser = require('body-parser');
 //   throw 'Make sure you have AUTH0_DOMAIN, and AUTH0_AUDIENCE in your .env file'
 // }
 
-const { storeUser, storeGroup } = require('../server/helpers.js');
+const { storeUser, storeGroup, findAllGroups, findAllUsers } = require('../server/helpers.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -66,26 +66,14 @@ app.post('/users', (req, res) => {
   .catch((err) => console.error(err));
 })
 
-// const checkJwt = jwt({
-//   // Dynamically provide a signing key based on the kid in the header and the signing keys provided by the JWKS endpoint.
-//   secret: jwksRsa.expressJwtSecret({
-//     cache: true,
-//     rateLimit: true,
-//     jwksRequestsPerMinute: 5,
-//     jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
-//   }),
-
-//   // Validate the audience and the issuer.
-//   audience: process.env.AUTH0_AUDIENCE,
-//   issuer: `https://${process.env.AUTH0_DOMAIN}/`,
-//   algorithms: ['RS256']
-// });
-
-// const checkScopes = jwtAuthz(['read:messages']);
-
-// app.get('/api/private', checkJwt, checkScopes, function (req, res) {
-//   res.json({ message: "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this." });
-// });
+app.get('/groups', (req, res) => {
+  findAllGroups()
+  .then((group) => {
+    console.log(group);
+    res.send(group)
+  })
+  .catch((err) => console.error(err));
+})
 
 app.listen(3000, () => {
   console.log('listening on http://localhost:3000! The Angular app will be built and served at http://localhost:4200.');
