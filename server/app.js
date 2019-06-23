@@ -89,7 +89,7 @@ app.get('/users:groups', (req, res) => {
   })
   .catch(err => console.error(err));
 })
-
+// need to change this helper function to get a specific users values
 app.get('users:values', (req, res) => {
   getUserValues()
   .then((value) => {

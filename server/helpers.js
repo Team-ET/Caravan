@@ -24,7 +24,7 @@ const findAllUsers = (users) =>
  );
 // function for getting all User's Groups from the db
 const findUserGroups = userGroups => User_group.findAll({});
-
+//need to change this function to get a specifi users values/personality traits
 const getUserValues = userId =>
   Values.findOne({ where: { userId }})
   .then(user => user.id)
