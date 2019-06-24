@@ -1,7 +1,9 @@
 <div class="groups">
   <h3>Recommended Groups</h3>
-  <div *ngFor="let group of groups">
-    <a routerLink="/detail/{{group.id}}">
+  <div *ngFor="let group of groups"
+    [class.selected]="group === selectedGroup"
+    (click)="onSelect(group)">
+    <a routerLink="/detail/{{group.name}}">
       <h3>{{ group.name }}</h3>
     </a>
     <img [src]='group.picUrl' alt="">
@@ -18,3 +20,6 @@
       <h4>{{ trip.location }}</h4>
   </div>
 </div>
+erica smells bad
+kyle smells good
+erica's pokemon also suck
