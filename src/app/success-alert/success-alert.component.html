@@ -1,22 +1,3 @@
-<h1>Create Group Form</h1>
-<form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
-  
-  <label>
-    Name:
-    <input type="text" formControlName="name">
-  </label>
-
-  <label>
-    Location:
-    <input type="text" formControlName="location">
-  </label>
-
-  <button type="submit" [disabled]="!groupForm.valid" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
-  (click)="frame.show()" mdbWavesEffect>Submit</button>
-  <!-- <button type="submit" [disabled]="!groupForm.valid">Submit</button> -->
-
-</form>
-
 <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
   aria-labelledby="myModalLabel" aria-hidden="true" (open)="onOpen($event)">
   <div class="modal-dialog modal-notify modal-success" role="document">
@@ -24,6 +5,8 @@
     <div class="modal-content">
       <!--Header-->
       <div class="modal-header">
+        <p class="heading lead">Modal Success</p>
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
           <span aria-hidden="true" class="white-text">&times;</span>
         </button>
@@ -33,14 +16,20 @@
       <div class="modal-body">
         <div class="text-center">
           <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
-          <p>Your travel group has been created!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit iusto nulla aperiam blanditiis
+            ad consequatur
+            in dolores culpa, dignissimos, eius non possimus fugiat. Esse ratione fuga, enim, ab officiis
+            totam.</p>
         </div>
       </div>
 
       <!--Footer-->
       <div class="modal-footer justify-content-center">
-        <a routerLink="/main" type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()"
-          data-dismiss="modal">Continue to Home Page</a>
+        <a type="button" mdbBtn color="primary" class="waves-light" mdbWavesEffect>Get it now
+          <i class="far fa-gem ml-1"></i>
+        </a>
+        <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()"
+          data-dismiss="modal">No, thanks</a>
       </div>
     </div>
     <!--/.Content-->
