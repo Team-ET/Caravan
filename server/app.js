@@ -20,7 +20,11 @@ const path = require('path');
 
 const bodyParser = require('body-parser');
 
-const { storeUser, storeGroup, findAllGroups, findAllUsers, findUserGroups, getUserValues } = require('../server/helpers.js');
+// if (!process.env.AUTH0_DOMAIN || !process.env.AUTH0_AUDIENCE) {
+//   throw 'Make sure you have AUTH0_DOMAIN, and AUTH0_AUDIENCE in your .env file'
+// }
+
+const { storeUser, storeGroup, findAllGroups, findAllUsers, findUserGroups, getUserValues, userMatch } = require('../server/helpers.js');
 
 const mockData = [
   { id: 12, name: 'Voyagers', location: 'New York, New York', picUrl: 'https://amp.businessinsider.com/images/5ad8ae04cd862425008b4898-750-563.jpg' },
@@ -106,7 +110,7 @@ function getInsights(text, res) {
       helpfulness:  Math.trunc(result.values[4].percentile * 100),
     }
     res.send(JSON.stringify(values, null, 2));
-  })
+  })//thinking about adding the Values.create here *******************************************************************************
   .catch(err => {
     console.log('error:', err);
   })
@@ -144,8 +148,8 @@ app.get('/users:groups', (req, res) => {
   })
   .catch(err => console.error(err));
 })
-
-app.get('users:values', (req, res) => {
+// need to change this helper function to get a specific users values
+app.get('/values', (req, res) => {
   getUserValues()
   .then((value) => {
     res.send(value);
