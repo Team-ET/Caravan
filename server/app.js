@@ -37,7 +37,7 @@ const mockTrips = [
 
 const mockUsers = [
   { id: 1, name: 'Harry Potter', email: 'look-at-my-cool-scar@wizards.com', picture: 'https://images.ctfassets.net/bxd3o8b291gf/3SQ3X2km8wkQIsQWa02yOY/25f258f21bdbe5f552a4419bb775f4f0/HarryPotter_WB_F4_HarryPotterMidshot_Promo_080615_Port.jpg?w=1200', groupIds: [12, 14]},
-  { id: 2, name: 'Voldemort', email: 'noseless@wizards.com', picture: 'https://images.ctfassets.net/bxd3o8b291gf/3SQ3X2km8wkQIsQWa02yOY/25f258f21bdbe5f552a4419bb775f4f0/HarryPotter_WB_F4_HarryPotterMidshot_Promo_080615_Port.jpg?w=1200', groupIds: [12, 14, 15]},
+  { id: 2, name: 'Voldemort', email: 'noseless@wizards.com', picture: 'https://www.gannett-cdn.com/-mm-/1d10b02c47124839540f95461e99b239519c4db7/c=364-0-2508-1206/local/-/media/2017/02/09/USATODAY/usatsports/vol4.jpg?width=3200&height=1680&fit=crop', groupIds: [12, 14, 15]},
   { id: 3, name: 'Ron Weasley', email: 'whiney@wizards.com', picture: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Ron_Weasley_poster.jpg/220px-Ron_Weasley_poster.jpg', groupIds: [13, 14, 16]},
   { id: 4, name: 'Hermione Granger', email: 'smarter-than-you@wizards.com', picture: 'https://images-na.ssl-images-amazon.com/images/I/81Z9f1Kos%2BL._SY679_.jpg', groupIds: [13, 14]},
 ];
