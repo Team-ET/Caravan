@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from '@angular/common/http';
@@ -17,9 +17,10 @@ import { MessageService } from './message.service';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
 import { GroupUsersModule } from './group-users/group-users.module';
 import { Group } from './models';
+import { GroupFormComponent } from './group-form/group-form.component';
 
 @NgModule({
-  declarations: [AppComponent, GroupDetailComponent ],
+  declarations: [AppComponent, GroupDetailComponent, GroupFormComponent ],
   imports: [
     GroupsModule,
     MDBBootstrapModule.forRoot(),
@@ -27,9 +28,10 @@ import { Group } from './models';
     CoreModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
-    GroupUsersModule
+    GroupUsersModule,
   ],
   providers: [HttpErrorHandler, MessageService],
   bootstrap: [AppComponent]

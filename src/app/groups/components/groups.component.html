@@ -7,6 +7,7 @@
     <img [src]='group.picUrl' alt="">
     <h4>{{ group.location }}</h4>
   </div>
+  <a href="#" mdbBtn color="primary" mdbWavesEffect>View More Groups</a>
 </div>
 <div class="trips">
   <h3>My Trips</h3>
@@ -17,4 +18,5 @@
       <img [src]='trip.picUrl' alt="">
       <h4>{{ trip.location }}</h4>
   </div>
+  <a href="#" mdbBtn color="primary" mdbWavesEffect routerLink='/group/signup'>Create a Group</a>
 </div>

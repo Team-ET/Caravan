@@ -1,0 +1,16 @@
+<h1>Create Group Form</h1>
+<form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
+  
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+  </label>
+
+  <label>
+    Location:
+    <input type="text" formControlName="location">
+  </label>
+
+  <button type="submit" [disabled]="!groupForm.valid">Submit</button>
+
+</form>
