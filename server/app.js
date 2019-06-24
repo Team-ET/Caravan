@@ -42,11 +42,20 @@ const mockUsers = [
   { id: 4, name: 'Hermione Granger', email: 'smarter-than-you@wizards.com', picture: 'https://images-na.ssl-images-amazon.com/images/I/81Z9f1Kos%2BL._SY679_.jpg', groupIds: [13, 14]},
 ];
 
+function clientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' })
+  } else {
+    next(err)
+  }
+}
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(express.static(path.join(__dirname, '../src')));
+app.use(clientErrorHandler)
 
 app.get('/api/groups', (req, res) => {
   res.send(mockData);
@@ -54,6 +63,7 @@ app.get('/api/groups', (req, res) => {
 
 app.post('/api/groups/signup', (req, res) => {
   console.log(req.body);
+  res.sendStatus(200);
 });
 
 app.get('/api/groups/:id', (req, res) => {

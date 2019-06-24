@@ -60,8 +60,14 @@ export class GroupsService {
   }
 
   async createGroup(group: Group): Promise<void> {
-    await this.http.post<void>(this.groupsUrl + '/signup', group)
-      .toPromise();
+    await this.http.post<void>(this.groupsUrl + '/signup', group, {responseType: 'text' as 'json'})
+      .toPromise()
+        .then(result => {
+          console.log('Form Promise:', result);
+        })
+        .catch(err => {
+          console.error(err);
+        });
       // .pipe(
       //   catchError(this.handleError('createGroup', null))
       // );
