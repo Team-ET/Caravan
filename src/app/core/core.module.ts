@@ -3,18 +3,19 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
-import { ProfileComponent } from './components/profile/profile.component'
-import { GroupsModule } from '../groups/groups.module'
+import { ProfileComponent } from './components/profile/profile.component';
+import { GroupsModule } from '../groups/groups.module';
 
 import {
   NavbarModule,
   DropdownModule,
   CardsFreeModule,
   ButtonsModule,
-  IconsModule
+  IconsModule,
+  ModalModule
 } from 'angular-bootstrap-md';
 import { RouterModule } from '@angular/router';
-import { DashComponent } from './components/dash/dash.component'
+import { DashComponent } from './components/dash/dash.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 
@@ -36,7 +37,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FooterComponent,
     MainComponent,
     DashComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   exports: [
     HeaderComponent,

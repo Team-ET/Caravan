@@ -1,6 +1,6 @@
 export class Group {
-  id: number;
+  id?: number|null;
   name: string;
   location: string;
-  picUrl: string;
+  picUrl?: string|null;
 }

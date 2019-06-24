@@ -7,6 +7,7 @@ import { catchError } from 'rxjs/operators';
 
 import { Group, User } from '../../models';
 import { HttpErrorHandler, HandleError } from '../../http-error-handler.service';
+import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.component';
 
 // const httpOptions = {
 //   headers: new HttpHeaders({
@@ -56,6 +57,17 @@ export class GroupsService {
       .pipe(
         catchError(this.handleError('getGroupUsers', null))
       );
+  }
+
+  async createGroup(group: Group): Promise<void> {
+    await this.http.post<void>(this.groupsUrl + '/signup', group, {responseType: 'text' as 'json'})
+      .toPromise()
+        .then(result => {
+          console.log('Form Promise:', result);
+        })
+        .catch(err => {
+          console.error(err);
+        });
   }
 
 }

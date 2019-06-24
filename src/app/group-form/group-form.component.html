@@ -1,9 +1,21 @@
-<ng-template [ngIf]="group">
-  <h2>{{group.name}} Details</h2>
-  <app-group-users [groupId]='groupId'></app-group-users>
-  <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
-  (click)="frame.show()" mdbWavesEffect>Request to Join</button>
-</ng-template>
+<h1>Create Group Form</h1>
+<form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
+  
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+  </label>
+
+  <label>
+    Location:
+    <input type="text" formControlName="location">
+  </label>
+
+  <button type="submit" [disabled]="!groupForm.valid" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
+  (click)="frame.show()" mdbWavesEffect>Submit</button>
+  <!-- <button type="submit" [disabled]="!groupForm.valid">Submit</button> -->
+
+</form>
 
 <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
   aria-labelledby="myModalLabel" aria-hidden="true" (open)="onOpen($event)">
@@ -21,14 +33,14 @@
       <div class="modal-body">
         <div class="text-center">
           <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
-          <p>Your request to join {{ group.name }} has been sent!</p>
+          <p>Your travel group has been created!</p>
         </div>
       </div>
 
       <!--Footer-->
       <div class="modal-footer justify-content-center">
         <a routerLink="/main" type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()"
-          data-dismiss="modal">Take Me Back to My Dashboard</a>
+          data-dismiss="modal">Continue to Home Page</a>
       </div>
     </div>
     <!--/.Content-->
