@@ -35,11 +35,11 @@ const getUserValues = userId =>
 const groupAvg = (array) => {
   return array.reduce((total, curr) => {
     return {
-      tradition: Math.trunc((total.tradition + curr.tradition) / person1.length), 
-      achievement: Math.trunc((total.achievement + curr.achievement) / person1.length),
-      pleasure: Math.trunc((total.pleasure + curr.pleasure) / person1.length),
-      stimulation: Math.trunc((total.stimulation + curr.stimulation) / person1.length),
-      helpfulness: Math.trunc((total.helpfulness + curr.helpfulness) / person1.length),
+      tradition: Math.trunc((total.tradition + curr.tradition) / array.length), 
+      achievement: Math.trunc((total.achievement + curr.achievement) / array.length),
+      pleasure: Math.trunc((total.pleasure + curr.pleasure) / array.length),
+      stimulation: Math.trunc((total.stimulation + curr.stimulation) / array.length),
+      helpfulness: Math.trunc((total.helpfulness + curr.helpfulness) / array.length),
     }
   })
 }
