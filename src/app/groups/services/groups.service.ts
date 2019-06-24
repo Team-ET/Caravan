@@ -59,4 +59,12 @@ export class GroupsService {
       );
   }
 
+  async createGroup(group: Group): Promise<void> {
+    await this.http.post<void>(this.groupsUrl + '/signup', group)
+      .toPromise();
+      // .pipe(
+      //   catchError(this.handleError('createGroup', null))
+      // );
+  }
+
 }

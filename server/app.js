@@ -52,6 +52,10 @@ app.get('/api/groups', (req, res) => {
   res.send(mockData);
 });
 
+app.post('/api/groups/signup', (req, res) => {
+  console.log(req.body);
+});
+
 app.get('/api/groups/:id', (req, res) => {
   console.log(req);
   // const item = mockData.find(f => f.id === req.params.id);
