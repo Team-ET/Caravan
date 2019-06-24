@@ -20,10 +20,12 @@ import { Group } from './models';
 import { GroupNewComponent } from './group-new/group-new.component';
 import { GroupFormComponent } from './group-form/group-form.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
+import { CardsFreeModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [AppComponent, GroupDetailComponent, GroupFormComponent, SuccessAlertComponent, GroupNewComponent],
   imports: [
+    CardsFreeModule.forRoot(),
     GroupsModule,
     MDBBootstrapModule.forRoot(),
     AuthModule,

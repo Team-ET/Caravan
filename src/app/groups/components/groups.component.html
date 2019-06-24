@@ -1,14 +1,9 @@
 <!-- Start of Group Card -->
 <mdb-card class="groups">
-      <h3>Matched Groups</h3>
+      <h3>Highest Matched Groups</h3>
       <div class="row justify-content-md-center">
-  <mdb-card *ngFor="let group of groups" class="col-3">
-        <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+  <mdb-card *ngFor="let group of groups" class="col-sm">
           <mdb-card-img [src]='group.picUrl'></mdb-card-img>
-          <a>
-            <div class="mask"></div>
-          </a>
-        </div>
         <mdb-card-body>
           <mdb-card-title routerLink="/detail/{{group.id}}">
             <h3>{{ group.name }}</h3>
@@ -29,7 +24,7 @@
         </mdb-card-body>
     </mdb-card>
     </div>
-    <a href="#" mdbBtn color="primary" mdbWavesEffect>View More Groups</a>
+    <a href="#" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
   </mdb-card>
 <!-- End of Group Card -->
 
@@ -52,5 +47,5 @@
       </mdb-card>
       <!-- End of Trip Card -->
 </div>
-<a href="#" mdbBtn color="primary" mdbWavesEffect routerLink='/group/signup'>Create a Group</a>
+<a href="/group/signup" mdbBtn color="primary">Create a Group</a>
   </mdb-card>

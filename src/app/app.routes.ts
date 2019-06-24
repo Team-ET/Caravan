@@ -17,5 +17,5 @@ export const ROUTES: Routes = [
   // { path: "insight", component: InsightComponent, canActivate: [AuthGuard] },
   { path: 'detail/:groupId', component: GroupDetailComponent },
   { path: 'group/signup', component: GroupFormComponent },
-  { path: "**", component: NotFoundComponent },
+  // { path: "**", component: NotFoundComponent },
 ];
