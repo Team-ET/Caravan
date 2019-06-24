@@ -4,6 +4,9 @@ const { User, Group, User_group, Interest, Int_User, Values } = require('../data
 
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op; 
+
+
+
 // function for storing user in db
 const storeUser = (name, email, picture, pers_test, pers_percent) => User.findOrCreate({
   where: { email },
@@ -26,8 +29,7 @@ const findAllUsers = (users) =>
 const findUserGroups = userGroups => User_group.findAll({});
 //need to change this function to get a specifi users values/personality traits
 const getUserValues = userId =>
-  Values.findOne({ where: { userId }})
-  .then(user => user.id)
+  Values.findAll({});
 
 // function for getting the avg of a group, for using when comparing the matching alogrithim
 const groupAvg = (array) => {
@@ -42,6 +44,30 @@ const groupAvg = (array) => {
   })
 }
 
+function userMatch(group, user) {
+  let counter = 0;
+  if (user.tradition === group.tradition) {
+    counter++;
+  } if (user.achievement === group.achievement) {
+    counter++;
+  }
+  if (user.pleasure === group.pleasure) {
+    counter++;
+  }
+  if (user.stimulation === group.stimulation) {
+    counter++;
+  }
+  if (user.helpfulness === group.stimulation) {
+    counter++;
+  } 
+
+  if (counter >= 3) {
+    return console.log('Matched!');
+  } else {
+    return console.log('Not Matched!');
+  }
+}
+
 module.exports = {
   storeUser,
   storeGroup,
@@ -50,4 +76,5 @@ module.exports = {
   findUserGroups,
   groupAvg,
   getUserValues,
+  userMatch,
 };

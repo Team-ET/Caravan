@@ -24,7 +24,7 @@ const bodyParser = require('body-parser');
 //   throw 'Make sure you have AUTH0_DOMAIN, and AUTH0_AUDIENCE in your .env file'
 // }
 
-const { storeUser, storeGroup, findAllGroups, findAllUsers, findUserGroups, getUserValues } = require('../server/helpers.js');
+const { storeUser, storeGroup, findAllGroups, findAllUsers, findUserGroups, getUserValues, userMatch } = require('../server/helpers.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -51,7 +51,7 @@ function getInsights(text, res) {
       helpfulness:  Math.trunc(result.values[4].percentile * 100),
     }
     res.send(JSON.stringify(values, null, 2));
-  })
+  })//thinking about adding the Values.create here *******************************************************************************
   .catch(err => {
     console.log('error:', err);
   })
@@ -90,7 +90,7 @@ app.get('/users:groups', (req, res) => {
   .catch(err => console.error(err));
 })
 // need to change this helper function to get a specific users values
-app.get('users:values', (req, res) => {
+app.get('/values', (req, res) => {
   getUserValues()
   .then((value) => {
     res.send(value);
