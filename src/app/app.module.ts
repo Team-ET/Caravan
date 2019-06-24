@@ -5,7 +5,7 @@ import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from '@angular/common/http';
 
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { GroupsModule } from './groups/groups.module';
@@ -18,9 +18,10 @@ import { GroupDetailComponent } from './group-detail/group-detail.component';
 import { GroupUsersModule } from './group-users/group-users.module';
 import { Group } from './models';
 import { GroupFormComponent } from './group-form/group-form.component';
+import { SuccessAlertComponent } from './success-alert/success-alert.component';
 
 @NgModule({
-  declarations: [AppComponent, GroupDetailComponent, GroupFormComponent ],
+  declarations: [AppComponent, GroupDetailComponent, GroupFormComponent, SuccessAlertComponent],
   imports: [
     GroupsModule,
     MDBBootstrapModule.forRoot(),
@@ -32,6 +33,7 @@ import { GroupFormComponent } from './group-form/group-form.component';
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
     GroupUsersModule,
+    ModalModule
   ],
   providers: [HttpErrorHandler, MessageService],
   bootstrap: [AppComponent]

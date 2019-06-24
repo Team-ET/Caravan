@@ -8,6 +8,7 @@ import { catchError } from 'rxjs/operators';
 
 import { Group, User } from '../../models';
 import { HttpErrorHandler, HandleError } from '../../http-error-handler.service';
+import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.component';
 
 // const httpOptions = {
 //   headers: new HttpHeaders({
@@ -68,9 +69,6 @@ export class GroupsService {
         .catch(err => {
           console.error(err);
         });
-      // .pipe(
-      //   catchError(this.handleError('createGroup', null))
-      // );
   }
 
 }

@@ -24,5 +24,7 @@ export class GroupFormComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     this.groupService.createGroup(this.groupForm.value);
     }
-
+  onOpen(event: any) {
+    console.log(event);
+  }
 }
