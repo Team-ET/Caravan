@@ -17,9 +17,10 @@ import { MessageService } from './message.service';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
 import { GroupUsersModule } from './group-users/group-users.module';
 import { Group } from './models';
+import { GroupNewComponent } from './group-new/group-new.component';
 
 @NgModule({
-  declarations: [AppComponent, GroupDetailComponent ],
+  declarations: [AppComponent, GroupDetailComponent, GroupNewComponent ],
   imports: [
     GroupsModule,
     MDBBootstrapModule.forRoot(),
