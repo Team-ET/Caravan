@@ -8,15 +8,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
-import { GroupsModule } from './groups/groups.module'
+import { GroupsModule } from './groups/groups.module';
 
 import { ROUTES } from "./app.routes";
 
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
+import { GroupDetailComponent } from './group-detail/group-detail.component';
+import { GroupUsersModule } from './group-users/group-users.module';
+import { Group } from './models';
 
 @NgModule({
-  declarations: [AppComponent ],
+  declarations: [AppComponent, GroupDetailComponent ],
   imports: [
     GroupsModule,
     MDBBootstrapModule.forRoot(),
@@ -25,7 +28,8 @@ import { MessageService } from './message.service';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    GroupUsersModule
   ],
   providers: [HttpErrorHandler, MessageService],
   bootstrap: [AppComponent]

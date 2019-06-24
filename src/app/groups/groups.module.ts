@@ -10,6 +10,8 @@ import {
   IconsModule
 } from 'angular-bootstrap-md';
 
+import { RouterModule} from '@angular/router';
+
 
 @NgModule({
   imports: [CommonModule,
@@ -17,6 +19,7 @@ import {
     DropdownModule,
     CardsFreeModule,
     ButtonsModule,
+    RouterModule,
     IconsModule],
   declarations: [GroupsComponent],
   exports: [GroupsComponent],
