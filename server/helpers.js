@@ -45,19 +45,21 @@ const groupAvg = (array) => {
 }
 
 function userMatch(group, user) {
+  // need to account for 0, need to account for no matches at all
+  
   let counter = 0;
-  if (user.tradition === group.tradition) {
+  if (user.tradition - 10 >= group.tradition) {
     counter++;
-  } if (user.achievement === group.achievement) {
-    counter++;
-  }
-  if (user.pleasure === group.pleasure) {
+  } if (user.achievement - 10 >= group.achievement) {
     counter++;
   }
-  if (user.stimulation === group.stimulation) {
+  if (user.pleasure - 10 >= group.pleasure) {
     counter++;
   }
-  if (user.helpfulness === group.stimulation) {
+  if (user.stimulation - 10 >= group.stimulation) {
+    counter++;
+  }
+  if (user.helpfulness - 10 >= group.stimulation) {
     counter++;
   } 
 
