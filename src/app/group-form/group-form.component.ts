@@ -12,7 +12,9 @@ import { GroupsService } from '../groups/services/groups.service';
 export class GroupFormComponent implements OnInit {
   groupForm = new FormGroup({
     name: new FormControl('', Validators.required),
-    location: new FormControl('', Validators.required),
+    destination: new FormControl('', Validators.required),
+    date_start: new FormControl('', Validators.required),
+    date_end: new FormControl('', Validators.required),
   });
 
   constructor(private groupService: GroupsService) { }

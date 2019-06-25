@@ -22,24 +22,38 @@ const findAllGroups = groups =>
 const findAllUsers = (users) =>
  User.findAll(
  );
-// function for getting all User's Groups from the db
-const findUserGroups = userGroups => User_group.findAll({});
+// function for getting all User's Groups by email
+// const findUserGroups = email => User.findOne({
+//   where: { 
+//     email : email
+//   }
+// })
+//   .then(user => User_group.findAll({
+//     attributes: ['groupId'],
+//     where: {
+//       userId: user.userId
+//   }
+// }));
+
+// // get users by group id
+// const findGroupUsers = groupId => Group.findAll({
+//     attributes: ['userId'],
+//     where: {
+//       id: groupId
+//     }
+//   });
 
 const getUserValues = userId =>
   Values.findOne({ where: { userId }})
-  .then(user => user.id)
+  .then(user => user.id);
 
-// function for getting the avg of a group, for using when comparing the matching alogrithim
-const groupAvg = (array) => {
-  return array.reduce((total, curr) => {
-    return {
-      tradition: Math.trunc((total.tradition + curr.tradition) / person1.length), 
-      achievement: Math.trunc((total.achievement + curr.achievement) / person1.length),
-      pleasure: Math.trunc((total.pleasure + curr.pleasure) / person1.length),
-      stimulation: Math.trunc((total.stimulation + curr.stimulation) / person1.length),
-      helpfulness: Math.trunc((total.helpfulness + curr.helpfulness) / person1.length),
-    }
-  })
+// handle angular client errors
+function clientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' })
+  } else {
+    next(err)
+  }
 }
 
 module.exports = {
@@ -48,6 +62,6 @@ module.exports = {
   findAllGroups,
   findAllUsers,
   findUserGroups,
-  groupAvg,
   getUserValues,
+  clientErrorHandler
 };
