@@ -55,7 +55,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(express.static(path.join(__dirname, './src')));
-app.use(clientErrorHandler)
+app.use(clientErrorHandler) // handles error for Angular client
 
 app.get('/api/groups', (req, res) => {
   res.send(mockData);

@@ -29,7 +29,7 @@ export class GroupsService {
     this.handleError = httpErrorHandler.createHandleError('GroupsService');
   }
 
-  /** GET group matches from the server */
+  // GET group matches from server
   getGroupMatches(): Observable<Group[]> {
     return this.http.get<Group[]>(this.groupsUrl)
       .pipe(
@@ -37,6 +37,7 @@ export class GroupsService {
       );
   }
 
+  // GET group details from server
    getGroup(id: number): Observable<Group> {
     return this.http.get<Group>(this.groupsUrl + `/${id}`)
       .pipe(
@@ -44,7 +45,7 @@ export class GroupsService {
       );
   }
 
-  /* GET user's trips */
+  // GET a user's trips
   getUserTrips(): Observable<Group[]> {
     return this.http.get<Group[]>(this.tripsUrl)
       .pipe(
@@ -52,7 +53,7 @@ export class GroupsService {
       );
   }
 
-  // get a group's users
+  // GET a group's users
   getGroupUsers(id: number): Observable<User[]> {
     return this.http.get<User[]>(this.groupsUrl + `/${id}/users`)
       .pipe(
@@ -60,8 +61,9 @@ export class GroupsService {
       );
   }
 
+  // POST info from create group form to server
   async createGroup(group: Group): Promise<void> {
-    await this.http.post<void>(this.groupsUrl + '/signup', group, {responseType: 'text' as 'json'})
+    await this.http.post<void>(this.groupsUrl + '/signup', group, {responseType: 'text' as 'json'})// specifying response type to avoid error
       .toPromise()
         .then(result => {
           console.log('Form Promise:', result);

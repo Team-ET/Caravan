@@ -21,8 +21,7 @@ export class GroupFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    this.groupService.createGroup(this.groupForm.value);
+    this.groupService.createGroup(this.groupForm.value); // call create group method passing in the form values
     }
   onOpen(event: any) {
     console.log(event);
