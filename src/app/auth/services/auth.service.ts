@@ -70,7 +70,7 @@ export class AuthService {
       }
     });
   }
-
+//
   public logout(): void {
     // Remove tokens and expiry time
     this._accessToken = '';
