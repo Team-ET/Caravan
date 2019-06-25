@@ -42,9 +42,9 @@ const Group = sequelize.define('group', {
 });
 
 // //joined table for users in groups many to many
-// const User_group = sequelize.define('user_group', {});
-// User_group.belongsTo(User);
-// User_group.belongsTo(Group);
+const User_group = sequelize.define('user_group', {});
+User_group.belongsTo(User);
+User_group.belongsTo(Group);
 
 //interest for user
 // const Interest = sequelize.define('interest', {
