@@ -114,6 +114,14 @@ app.get('/users:groups', (req, res) => {
   })
   .catch(err => console.error(err));
 })
+// need to change this helper function to get a specific users values
+app.get('/values', (req, res) => {
+  getUserValues()
+  .then((value) => {
+    res.send(value);
+  })
+  .catch(err => console.error(err));
+})
 
 app.listen(3000, () => {
   console.log('listening on http://localhost:3000! The Angular app will be built and served at http://localhost:4200.');

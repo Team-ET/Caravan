@@ -4,6 +4,9 @@ const { User, Group, User_group, Interest, Int_User, Values } = require('../data
 
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op; 
+
+
+
 // function for storing user in db
 const storeUser = (name, email, picture, pers_test, pers_percent) => User.findOrCreate({
   where: { email },
@@ -56,6 +59,30 @@ function clientErrorHandler(err, req, res, next) {
   }
 }
 
+function userMatch(group, user) {
+  let counter = 0;
+  if (user.tradition === group.tradition) {
+    counter++;
+  } if (user.achievement === group.achievement) {
+    counter++;
+  }
+  if (user.pleasure === group.pleasure) {
+    counter++;
+  }
+  if (user.stimulation === group.stimulation) {
+    counter++;
+  }
+  if (user.helpfulness === group.stimulation) {
+    counter++;
+  } 
+
+  if (counter >= 3) {
+    return console.log('Matched!');
+  } else {
+    return console.log('Not Matched!');
+  }
+}
+
 module.exports = {
   storeUser,
   storeGroup,
@@ -63,5 +90,9 @@ module.exports = {
   findAllUsers,
   findUserGroups,
   getUserValues,
+<<<<<<< HEAD
   clientErrorHandler
+=======
+  userMatch,
+>>>>>>> f7776e8cef7ed6c4aafcb93c9101816396091614
 };

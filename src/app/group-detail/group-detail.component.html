@@ -1,10 +1,16 @@
+<mdb-card>
 <ng-template [ngIf]="group">
   <h2>{{group.name}} Details</h2>
+  <div class="row justify-content-md-center">
   <app-group-users [groupId]='groupId'></app-group-users>
+  </div>
+  <p>Dates: July 4th-12th<br/>
+    Budget: $$$<br/>
+    Overall Compatibility: 90%<br/>
+  </p>
   <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
   (click)="frame.show()" mdbWavesEffect>Request to Join</button>
 </ng-template>
-
 <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
   aria-labelledby="myModalLabel" aria-hidden="true" (open)="onOpen($event)">
   <div class="modal-dialog modal-notify modal-success" role="document">
@@ -34,3 +40,4 @@
     <!--/.Content-->
   </div>
 </div>
+</mdb-card>

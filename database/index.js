@@ -50,7 +50,7 @@ User_group.belongsTo(Group);
 const Interest = sequelize.define('interest', {
   name: Sequelize.STRING
 });
-
+//  gonna move these values into the User
 const Values = sequelize.define('values', {
   tradition: Sequelize.INTEGER,
   achievement: Sequelize.INTEGER,
