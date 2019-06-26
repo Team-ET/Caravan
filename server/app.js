@@ -11,7 +11,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const { mockData, mockTrips, mockUsers } = require('./data');
 const { getInsights, groupAvg } = require('./watson');
-const { storeUser, storeGroup, findAllGroups, findAllUsers, findUser, findGroup, findUserGroups, findGroupUsers, findGroups, findUsers, getUserValues, clientErrorHandler } = require('../server/helpers.js');
+const { storeUser, storeGroup, findAllGroups, findAllUsers, findUser, findGroup, findUserGroups, findGroupUsers, findGroups, findUsers, getUserValues, clientErrorHandler, findGroupPhoto, findUserPhoto, findAllPhotos } = require('../server/helpers.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

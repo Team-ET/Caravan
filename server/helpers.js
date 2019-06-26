@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const { User, Group, User_group, Interest, Int_User, Values } = require('../database/index.js');
+const { User, Group, User_group, Values, Message, Photo } = require('../database/index.js');
 
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
@@ -51,7 +51,7 @@ const findGroupUsers = groupId => User_group.findAll({
   });
 
 const findGroups = groupIds => {
-  return Group.findAll({ // find all movies that match the given id's in the movieDbArr
+  return Group.findAll({ // find all 
     where: {
       id: {
         [Op.or]: groupIds
@@ -61,7 +61,7 @@ const findGroups = groupIds => {
 }
 
 const findUsers = userIds => {
-  return User.findAll({ // find all movies that match the given id's in the movieDbArr
+  return User.findAll({ // find all users
     where: {
       id: {
         [Op.or]: userIds
@@ -108,6 +108,31 @@ function userMatch(group, user) {
     return console.log('Not Matched!');
   }
 }
+//lets make some helper functions for find these photos BOIIIIIIIIII******************************************************************************
+//user this function for testing, once it works, then test with findUserPhoto
+const findAllPhotos = (photo) => {
+  Photo.findAll({});
+}
+//this should be your MAIN function for finding all the users Photos, export once you start testing
+const findUserPhoto = (photo) => {
+  Photo.findAll({
+    where: {
+      id: {
+        [Op.or]: userId
+      }
+    }
+  })
+}
+//once finding the user's photos by Id, this should work for the group Id's, will need to check, but make sure the user's phots are working first
+const findGroupPhoto = (photo) => {
+  Photo.findAll({
+    where: {
+      id: {
+        [Op.or]: groupId
+      }
+    }
+  })
+}
 
 module.exports = {
   storeUser,
@@ -123,4 +148,7 @@ module.exports = {
   getUserValues,
   clientErrorHandler,
   userMatch,
+  findAllPhotos,
+  findUserPhoto,
+  findGroupPhoto,
 };

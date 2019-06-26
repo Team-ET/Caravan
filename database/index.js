@@ -22,9 +22,9 @@ sequelize
 });
 
 // used for creating tables, make sure to turn off once tables are set, otherwise it will clear the whole table
-// sequelize.sync({
-//   force: true, // Drops info in database for testing
-// })
+sequelize.sync({
+  force: true, // Drops info in database for testing
+})
 
 //table for user
 const User = sequelize.define('user', {
@@ -46,10 +46,6 @@ const User_group = sequelize.define('user_group', {});
 User_group.belongsTo(User);
 User_group.belongsTo(Group);
 
-//interest for user
-// const Interest = sequelize.define('interest', {
-//   name: Sequelize.STRING
-// });
 //  gonna move these values into the User
 const Values = sequelize.define('values', {
   tradition: Sequelize.INTEGER,
@@ -59,11 +55,20 @@ const Values = sequelize.define('values', {
   helpfulness: Sequelize.INTEGER,
 })
 // adding a User to values
-User.hasOne(Values);
+Values.belongsTo(User);
 
-// interst for user, many to many
-// const Int_user = sequelize.define('int_group', {});
-// Int_user.belongsTo(User);
-// Int_user.belongsTo(Interest);
+const Photo = sequelize.define('photo', {
+  image: Sequelize.STRING,
+})
+Photo.belongsTo(User);
 
-module.exports = { User, Group, Values }; 
+const Message = sequelize.define('message', {
+  text: Sequelize.STRING,
+});
+ 
+Message.belongsTo(User);
+Message.belongsTo(Group);
+
+
+
+module.exports = { User, Group, Values, Photo, Message, User_group }; 
