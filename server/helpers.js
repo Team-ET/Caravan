@@ -3,7 +3,7 @@ const axios = require('axios');
 const { User, Group, User_group, Interest, Int_User, Values } = require('../database/index.js');
 
 const Sequelize = require('sequelize');
-const Op = Sequelize.Op; 
+const Op = Sequelize.Op;
 
 
 
@@ -25,26 +25,50 @@ const findAllGroups = groups =>
 const findAllUsers = (users) =>
  User.findAll(
  );
-// function for getting all User's Groups by email
-// const findUserGroups = email => User.findOne({
-//   where: { 
-//     email : email
-//   }
-// })
-//   .then(user => User_group.findAll({
-//     attributes: ['groupId'],
-//     where: {
-//       userId: user.userId
-//   }
-// }));
 
-// // get users by group id
-// const findGroupUsers = groupId => Group.findAll({
-//     attributes: ['userId'],
-//     where: {
-//       id: groupId
-//     }
-//   });
+// find user by email
+const findUser = email => User.findOne({
+  where: { email }
+});
+
+// find group by id
+const findGroup = id => Group.findOne({
+  where: { id }
+});
+
+// find group by groupId
+
+// get user groups by user id
+const findUserGroups = userId => User_group.findAll({
+    attributes: ['groupId'],
+    where: { userId }
+});
+
+// get users by group id
+const findGroupUsers = groupId => User_group.findAll({
+    attributes: ['userId'],
+    where: { groupId }
+  });
+
+const findGroups = groupIds => {
+  return Group.findAll({ // find all movies that match the given id's in the movieDbArr
+    where: {
+      id: {
+        [Op.or]: groupIds
+      }
+    }
+  })
+}
+
+const findUsers = userIds => {
+  return User.findAll({ // find all movies that match the given id's in the movieDbArr
+    where: {
+      id: {
+        [Op.or]: userIds
+      }
+    }
+  })
+};
 
 const getUserValues = userId =>
   Values.findOne({ where: { userId }})
@@ -88,11 +112,13 @@ module.exports = {
   storeGroup,
   findAllGroups,
   findAllUsers,
+  findUser,
+  findGroup,
   findUserGroups,
+  findGroupUsers,
+  findGroups,
+  findUsers,
   getUserValues,
-<<<<<<< HEAD
-  clientErrorHandler
-=======
+  clientErrorHandler,
   userMatch,
->>>>>>> f7776e8cef7ed6c4aafcb93c9101816396091614
 };

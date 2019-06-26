@@ -11,7 +11,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const { mockData, mockTrips, mockUsers } = require('./data');
 const { getInsights, groupAvg } = require('./watson');
-const { storeUser, storeGroup, findAllGroups, findAllUsers, findUserGroups, getUserValues, clientErrorHandler } = require('../server/helpers.js');
+const { storeUser, storeGroup, findAllGroups, findAllUsers, findUser, findGroup, findUserGroups, findGroupUsers, findGroups, findUsers, getUserValues, clientErrorHandler } = require('../server/helpers.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -26,7 +26,10 @@ app.get('/api/groups', (req, res) => {
     .then((group) => {
       res.send(group)
     })
-    .catch((err) => console.error(err));
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    })
 });
 
 // Create group
@@ -36,34 +39,55 @@ app.post('/api/groups/signup', (req, res) => {
     .then(result => res.sendStatus(201))
     .catch(err => {
       console.error(err);
-    });
+      res.sendStatus(500);
+    })
 });
 
 // GET group by group id
 app.get('/api/groups/:id', (req, res) => {
-  console.log(req);
-  // const item = mockData.find(f => f.id === req.params.id);
-  const item = { id: 12, name: 'Voyagers', location: 'New York, New York', picUrl: 'https://amp.businessinsider.com/images/5ad8ae04cd862425008b4898-750-563.jpg' };
-  console.log(item);
-  res.send(item);
+  findGroup(req.params.id)
+    .then(group => {
+      res.send(group)
+    })
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    })
 });
-
-// app.get('/group/test', (req, res) => {
-//   console.log(findUserGroups(req.body.email));
-// });
 
 // GET users by group id
 app.get('/api/groups/:id/users', (req, res) => {
-  console.log(req);
-  // const item = mockData.find(f => f.id === req.params.id);
-  const items = mockUsers.filter(user => user.groupIds.includes(+req.params.id));
-  console.log(items);
-  res.send(items);
+  findGroupUsers(req.params.id)
+    .then(data => {
+      const userArr = data.map(data => data.dataValues.userId);
+      return findUsers(userArr);
+    })
+    .then(users => {
+      console.log(users);
+      res.send(users)
+    })
+    .catch(err => {
+      console.error(err);
+      res.send(500);
+    });
 });
 
 // GET user groups by email
 app.get('/api/trips', (req, res) => {
-  res.send(mockTrips);
+  findUser(req.body.email)
+    .then(user => findUserGroups(user.id))
+    .then(data => {
+      const groupArr = data.map(data => data.dataValues.groupId);
+      return findGroups(groupArr);
+    })
+    .then(groups => {
+      console.log(groups);
+      res.send(groups);
+    })
+    .catch(err => {
+      console.error(err);
+      res.send(500);
+    })
 });
 
 // Get Personality insights from Watson API
@@ -79,7 +103,10 @@ app.post('/users', (req, res) => {
   .then(() =>{
     res.send(201)
   })
-  .catch((err) => console.error(err));
+  .catch(err => {
+    console.error(err);
+    res.sendStatus(500);
+  })
 })
 
 // GET a user's values by email
@@ -88,31 +115,39 @@ app.get('users:values', (req, res) => {
   .then((value) => {
     res.send(value);
   })
-  .catch(err => console.error(err));
-})
-
-app.get('/groups', (req, res) => {
-  findAllGroups()
-  .then((group) => {
-    res.send(group)
+  .catch(err => {
+    console.error(err);
+    res.sendStatus(500);
   })
-  .catch((err) => console.error(err));
 })
 
+// GET all users
 app.get('/users', (req, res) => {
   findAllUsers()
   .then((user) => {
     res.send(user);
   })
-  .catch(err => console.error(err));
+  .catch(err => {
+    console.error(err);
+    res.sendStatus(500);
+  })
 })
 
+// GET a user's groups
 app.get('/users:groups', (req, res) => {
-  findUserGroups()
-  .then((userGroups) => {
-    res.send(userGroups);
-  })
-  .catch(err => console.error(err));
+  findUser(req.body.email)
+    .then(user => findUserGroups(user.id))
+    .then(data => {
+      const groupArr = data.map(data => data.dataValues.groupId);
+      return findGroups(groupArr);
+    })
+    .then(groups => {
+      res.send(groups);
+    })
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    })
 })
 // need to change this helper function to get a specific users values
 app.get('/values', (req, res) => {
@@ -120,7 +155,10 @@ app.get('/values', (req, res) => {
   .then((value) => {
     res.send(value);
   })
-  .catch(err => console.error(err));
+  .catch(err => {
+    console.error(err);
+    res.sendStatus(500);
+  })
 })
 
 app.listen(3000, () => {
