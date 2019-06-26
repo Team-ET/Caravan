@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Cloudinary } from 'cloudinary-core';
 
+
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  selector: 'app-widget',
+  templateUrl: './widget.component.html',
+  styleUrls: ['./widget.component.scss']
 })
-export class MainComponent implements OnInit {
+export class WidgetComponent implements OnInit {
 
   constructor() { }
 

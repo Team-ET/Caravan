@@ -17,6 +17,7 @@ import {
 import { RouterModule } from '@angular/router';
 import { DashComponent } from './components/dash/dash.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { WidgetComponent } from './components/widget/widget.component';
 
 
 
@@ -38,11 +39,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MainComponent,
     DashComponent,
     NotFoundComponent,
+    WidgetComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     MainComponent,
+    WidgetComponent,
   ]
 })
 export class CoreModule { }

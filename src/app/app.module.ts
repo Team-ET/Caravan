@@ -21,10 +21,10 @@ import { GroupNewComponent } from './group-new/group-new.component';
 import { GroupFormComponent } from './group-form/group-form.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { CardsFreeModule } from 'angular-bootstrap-md';
-import { PhotosComponent } from './photos/photos.component';
+import { WidgetComponent } from './widget/widget.component';
 
 @NgModule({
-  declarations: [AppComponent, GroupDetailComponent, GroupFormComponent, SuccessAlertComponent, GroupNewComponent, PhotosComponent],
+  declarations: [AppComponent, GroupDetailComponent, GroupFormComponent, SuccessAlertComponent, GroupNewComponent, WidgetComponent],
   imports: [
     CardsFreeModule.forRoot(),
     GroupsModule,
