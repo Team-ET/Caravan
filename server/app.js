@@ -2,21 +2,24 @@ require('dotenv').config();
 const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3'); // watson personality-insights
 const db = require('../database/index.js');
 const express = require('express');
+const app = express();
+let http = require('http');
+let server = http.Server(app);
+let socketIO = require('socket.io');
+let io = socketIO(server);
 // const jwt = require('express-jwt');
 // const jwtAuthz = require('express-jwt-authz');
 // const jwksRsa = require('jwks-rsa');
 // const cors = require('cors');
-const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
+
 const { mockData, mockTrips, mockUsers } = require('./data');
 const { getInsights, groupAvg } = require('./watson');
-const { storeUser, storeGroup, findAllGroups, findAllUsers, findUser, findGroup, findUserGroups, findGroupUsers, findGroups, findUsers, getUserValues, clientErrorHandler } = require('../server/helpers.js');
+const { storeUser, storeGroup, storeMessage, getMessages, findAllGroups, findAllUsers, findUser, findGroup, findUserGroups, findGroupUsers, findGroups, findUsers, getUserValues, clientErrorHandler } = require('../server/helpers.js');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, './src')));
 app.use(clientErrorHandler) // handles error for Angular client
 
@@ -45,9 +48,10 @@ app.post('/api/groups/signup', (req, res) => {
 
 // GET group by group id
 app.get('/api/groups/:id', (req, res) => {
-  findGroup(req.params.id)
+  const { id } = req.params;
+  findGroup(id)
     .then(group => {
-      res.send(group)
+      res.send(group);
     })
     .catch(err => {
       console.error(err);
@@ -86,7 +90,7 @@ app.get('/api/trips', (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.send(500);
+      res.sendStatus(500);
     })
 });
 
@@ -149,7 +153,8 @@ app.get('/users:groups', (req, res) => {
       res.sendStatus(500);
     })
 })
-// need to change this helper function to get a specific users values
+
+// get watson data stored in database by user email
 app.get('/values', (req, res) => {
   getUserValues()
   .then((value) => {
@@ -161,6 +166,20 @@ app.get('/values', (req, res) => {
   })
 })
 
-app.listen(3000, () => {
-  console.log('listening on http://localhost:3000! The Angular app will be built and served at http://localhost:4200.');
+// app.listen(3000, () => {
+//   console.log('listening on http://localhost:3000! The Angular app will be built and served at http://localhost:4200.');
+// });
+
+io.on('connection', (socket) => {
+  console.log('user connected');
+  socket.on('new-message', (message) => {
+    console.log(message);
+    storeMessage(message);
+    io.emit('new-message', message);
+  });
+});
+
+
+server.listen(3000, () => {
+  console.log(`started on port:. The Angular app will be built and served at http://localhost:4200.`);
 });
