@@ -59,7 +59,7 @@ const Values = sequelize.define('values', {
   helpfulness: Sequelize.INTEGER,
 })
 // adding a User to values
-User.belongsTo(Values);
+User.hasOne(Values);
 
 // interst for user, many to many
 // const Int_user = sequelize.define('int_group', {});
