@@ -7,8 +7,18 @@
   </label>
 
   <label>
-    Location:
-    <input type="text" formControlName="location">
+    Destination:
+    <input type="text" formControlName="destination">
+  </label>
+
+  <label>
+    Start Date:
+    <input type="text" formControlName="date_start">
+  </label>
+
+  <label>
+    End Date:
+    <input type="text" formControlName="date_end">
   </label>
 
   <button type="submit" [disabled]="!groupForm.valid" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"

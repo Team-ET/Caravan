@@ -3,7 +3,7 @@ const axios = require('axios');
 const { User, Group, User_group, Interest, Int_User, Values } = require('../database/index.js');
 
 const Sequelize = require('sequelize');
-const Op = Sequelize.Op; 
+const Op = Sequelize.Op;
 
 
 
@@ -25,23 +25,62 @@ const findAllGroups = groups =>
 const findAllUsers = (users) =>
  User.findAll(
  );
-// function for getting all User's Groups from the db
-const findUserGroups = userGroups => User_group.findAll({});
-//need to change this function to get a specifi users values/personality traits
-const getUserValues = userId =>
-  Values.findAll({});
 
-// function for getting the avg of a group, for using when comparing the matching alogrithim
-const groupAvg = (array) => {
-  return array.reduce((total, curr) => {
-    return {
-      tradition: Math.trunc((total.tradition + curr.tradition) / array.length), 
-      achievement: Math.trunc((total.achievement + curr.achievement) / array.length),
-      pleasure: Math.trunc((total.pleasure + curr.pleasure) / array.length),
-      stimulation: Math.trunc((total.stimulation + curr.stimulation) / array.length),
-      helpfulness: Math.trunc((total.helpfulness + curr.helpfulness) / array.length),
+// find user by email
+const findUser = email => User.findOne({
+  where: { email }
+});
+
+// find group by id
+const findGroup = id => Group.findOne({
+  where: { id }
+});
+
+// find group by groupId
+
+// get user groups by user id
+const findUserGroups = userId => User_group.findAll({
+    attributes: ['groupId'],
+    where: { userId }
+});
+
+// get users by group id
+const findGroupUsers = groupId => User_group.findAll({
+    attributes: ['userId'],
+    where: { groupId }
+  });
+
+const findGroups = groupIds => {
+  return Group.findAll({ // find all movies that match the given id's in the movieDbArr
+    where: {
+      id: {
+        [Op.or]: groupIds
+      }
     }
   })
+}
+
+const findUsers = userIds => {
+  return User.findAll({ // find all movies that match the given id's in the movieDbArr
+    where: {
+      id: {
+        [Op.or]: userIds
+      }
+    }
+  })
+};
+
+const getUserValues = userId =>
+  Values.findOne({ where: { userId }})
+  .then(user => user.id);
+
+// handle angular client errors
+function clientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' })
+  } else {
+    next(err)
+  }
 }
 
 function userMatch(group, user) {
@@ -73,8 +112,13 @@ module.exports = {
   storeGroup,
   findAllGroups,
   findAllUsers,
+  findUser,
+  findGroup,
   findUserGroups,
-  groupAvg,
+  findGroupUsers,
+  findGroups,
+  findUsers,
   getUserValues,
+  clientErrorHandler,
   userMatch,
 };
