@@ -8,10 +8,37 @@
     Budget: $$$<br/>
     Overall Compatibility: 90%<br/>
   </p>
+  <div *ngIf="group.id !== 4">
+    <!--Request Button-->
+    <div>
+      <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
+      (click)="frame.show()" mdbWavesEffect>Request to Join</button>
+    </div>
+  </div>
+  <div *ngIf="group.id === 4">
+    <!--Chat-->
+    <div>
+      <app-chat></app-chat>
+    </div>
+  </div>
+  <!-- <div *ngIf="condition; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <app-chat></app-chat>
+    </ng-template>
+    <ng-template #elseBlock>
+      <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
+      (click)="frame.show()" mdbWavesEffect>Request to Join</button>
+    </ng-template>
+  </div> -->
   <!--Request Button-->
-  <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
-  (click)="frame.show()" mdbWavesEffect>Request to Join</button>
-  <!--Chat-->
+    <!-- <div>
+      <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
+      (click)="frame.show()" mdbWavesEffect>Request to Join</button>
+    </div> -->
+    <!--Chat-->
+    <!-- <div>
+      <app-chat></app-chat>
+    </div> -->
 </ng-template>
 <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
   aria-labelledby="myModalLabel" aria-hidden="true" (open)="onOpen($event)">

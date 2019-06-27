@@ -5,7 +5,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Group, User } from '../../models';
+import { Group, User, Message } from '../../models';
 import { HttpErrorHandler, HandleError } from '../../http-error-handler.service';
 import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.component';
 
@@ -18,7 +18,7 @@ import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.compo
 
 @Injectable()
 export class GroupsService {
-  message: string;
+  // message: string;
   groupsUrl = '/api/groups';  // URL to groups api
   tripsUrl = '/api/trips';  // URL to trips api
   private handleError: HandleError;
@@ -63,6 +63,14 @@ export class GroupsService {
 
   // GET a group's users
   getGroupUsers(id: number): Observable<User[]> {
+    return this.http.get<User[]>(this.groupsUrl + `/${id}/users`)
+      .pipe(
+        catchError(this.handleError('getGroupUsers', null))
+      );
+  }
+
+  // GET messages for a group if user is a member
+  getGroupMessages(id: number): Observable<Message[]> {
     return this.http.get<User[]>(this.groupsUrl + `/${id}/users`)
       .pipe(
         catchError(this.handleError('getGroupUsers', null))
