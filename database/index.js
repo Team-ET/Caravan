@@ -65,10 +65,8 @@ Photo.belongsTo(User);
 const Message = sequelize.define('message', {
   text: Sequelize.STRING,
 });
- 
 Message.belongsTo(User);
 Message.belongsTo(Group);
 
 
-
-module.exports = { User, Group, Values, Photo, Message, User_group }; 
+module.exports = { User, Group, User_group, Values, Message, Photo }; 

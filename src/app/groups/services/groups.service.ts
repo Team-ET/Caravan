@@ -5,7 +5,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Group, User } from '../../models';
+import { Group, User, Message } from '../../models';
 import { HttpErrorHandler, HandleError } from '../../http-error-handler.service';
 import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.component';
 
@@ -18,6 +18,7 @@ import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.compo
 
 @Injectable()
 export class GroupsService {
+  // message: string;
   groupsUrl = '/api/groups';  // URL to groups api
   tripsUrl = '/api/trips';  // URL to trips api
   private handleError: HandleError;
@@ -44,6 +45,14 @@ export class GroupsService {
       );
   }
 
+  // // GET a user's trips
+  //  getUserGroups(email: string): Observable<Group> {
+  //   return this.http.get<Group>(this.groupsUrl + `/trips${email}`)
+  //     .pipe(
+  //       catchError(this.handleError('getTrips', null))
+  //     );
+  // }
+
   // GET a user's trips
   getUserTrips(): Observable<Group[]> {
     return this.http.get<Group[]>(this.tripsUrl)
@@ -60,9 +69,17 @@ export class GroupsService {
       );
   }
 
+  // GET messages for a group if user is a member
+  getGroupMessages(id: number): Observable<Message[]> {
+    return this.http.get<User[]>(this.groupsUrl + `/${id}/users`)
+      .pipe(
+        catchError(this.handleError('getGroupUsers', null))
+      );
+  }
+
   // POST info from create group form to server
   async createGroup(group: Group): Promise<void> {
-    await this.http.post<void>(this.groupsUrl + '/signup', group, {responseType: 'text' as 'json'})// specifying response type to avoid error
+    await this.http.post<void>(this.groupsUrl + '/signup', group, {responseType: 'text' as 'json'}) // specifying response type to avoid error
       .toPromise()
         .then(result => {
           console.log('Form Promise:', result);

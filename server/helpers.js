@@ -1,6 +1,7 @@
 const axios = require('axios');
 
-const { User, Group, User_group, Values, Message, Photo } = require('../database/index.js');
+
+const { User, Group, Message, User_group, Values, Photo } = require('../database/index.js');
 
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
@@ -10,7 +11,7 @@ const Op = Sequelize.Op;
 // function for storing user in db
 const storeUser = (name, email, picture, pers_test, pers_percent) => User.findOrCreate({
   where: { email },
-  defaults: { name, email, picture, pers_test, pers_percent } 
+  defaults: { name, email, picture, pers_test, pers_percent }
 });
 //function for storing group in db
 const storeGroup = (name, destination, date_start, date_end) => Group.findOrCreate({
@@ -28,6 +29,17 @@ const storePhoto = async (photo) => {
 const findPhotos = (photo) => {
   return Photo.findAll({})
 };
+// store a message
+const storeMessage = text => {
+  console.log(text);
+  Message.create({ text });
+}
+// get all of a group's messages
+const getMessages = groupId => {
+  return Message.findAll({
+    where: { groupId }
+  })
+}
 //function for getting all Groups from the db
 const findAllGroups = groups =>
  Group.findAll({
@@ -149,6 +161,7 @@ const findGroupPhoto = (photo) => {
 module.exports = {
   storeUser,
   storeGroup,
+  getMessages,
   findAllGroups,
   findAllUsers,
   findUser,
@@ -165,4 +178,5 @@ module.exports = {
   findGroupPhoto,
   storePhoto,
   findPhotos,
+  storeMessage
 };

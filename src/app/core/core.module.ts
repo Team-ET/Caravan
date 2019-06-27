@@ -5,7 +5,10 @@ import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GroupsModule } from '../groups/groups.module';
-
+import { RouterModule } from '@angular/router';
+import { DashComponent } from './components/dash/dash.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { FormsModule } from '@angular/forms';
 import {
   NavbarModule,
   DropdownModule,
@@ -31,6 +34,7 @@ import { WidgetComponent } from './components/widget/widget.component';
     CardsFreeModule,
     ButtonsModule,
     GroupsModule,
+    FormsModule
   ],
   declarations: [
     ProfileComponent,
