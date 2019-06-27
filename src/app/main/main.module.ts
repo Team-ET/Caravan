@@ -16,7 +16,7 @@ import {
 import { RouterModule } from '@angular/router';
 import { DashComponent } from './components/dash/dash.component';
 import { WidgetComponent } from './components/widget/widget.component';
-
+//
 @NgModule({
   imports: [
     CommonModule,

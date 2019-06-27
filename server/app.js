@@ -33,9 +33,9 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log(`started on port:. The Angular app will be built and served at http://localhost:4200.`);
-});
+// server.listen(3000, () => {
+//   console.log(`started on port:. The Angular app will be built and served at http://localhost:4200.`);
+// });
 
 // Create user
 app.post('/users', (req, res) => {
