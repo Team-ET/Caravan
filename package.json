@@ -38,8 +38,10 @@
     "jwks-rsa": "^1.5.1",
     "mysql2": "^1.6.5",
     "nodemon": "^1.19.1",
-    "rxjs": "~6.4.0",
+    "rxjs": "^6.5.2",
     "sequelize": "^5.8.12",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
     "tedious": "^6.2.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

@@ -1,14 +1,14 @@
 const mockData = [
-  { id: 12, name: 'Voyagers', location: 'New York, New York', picUrl: 'https://amp.businessinsider.com/images/5ad8ae04cd862425008b4898-750-563.jpg' },
-  { id: 13, name: 'Sparkers', location: 'Osaka, Japan', picUrl: 'https://photos.smugmug.com/Osaka/Osaka-Categories/i-J9MFjBv/0/XL/Osaka_Districts-XL.jpg' },
-  { id: 14, name: 'Language Lovers', location: 'San Francisco, California', picUrl: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/San_Francisco_from_the_Marin_Headlands_in_March_2019.jpg' },
-  { id: 15, name: 'Not a travel tinder app', location: 'Vancouver, Canada', picUrl: 'https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_463,q_50,w_800/v1/clients/vancouverbc/01014_201809_AlbertNormandin_False_CreekVancouverDowntownCityAerial_23dd1724-bfd7-4cc9-9d93-60faac3cb2fa.jpg' },
-  { id: 16, name: 'Ya Mama', location: 'Edinburgh, Scotland', picUrl: 'http://www.visitscotland.com/cms-images/attractions/edinburgh-skyline-calton-hill?view=Standard' }
+  { id: 12, name: 'Voyagers', destination: 'New York, New York', picture: 'https://amp.businessinsider.com/images/5ad8ae04cd862425008b4898-750-563.jpg' },
+  { id: 13, name: 'Sparkers', destination: 'Osaka, Japan', picture: 'https://photos.smugmug.com/Osaka/Osaka-Categories/i-J9MFjBv/0/XL/Osaka_Districts-XL.jpg' },
+  { id: 14, name: 'Language Lovers', destination: 'San Francisco, California', picture: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/San_Francisco_from_the_Marin_Headlands_in_March_2019.jpg' },
+  { id: 15, name: 'Not a travel tinder app', destination: 'Vancouver, Canada', picture: 'https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_463,q_50,w_800/v1/clients/vancouverbc/01014_201809_AlbertNormandin_False_CreekVancouverDowntownCityAerial_23dd1724-bfd7-4cc9-9d93-60faac3cb2fa.jpg' },
+  { id: 16, name: 'Ya Mama', destination: 'Edinburgh, Scotland', picture: 'http://www.visitscotland.com/cms-images/attractions/edinburgh-skyline-calton-hill?view=Standard' }
 ];
 
 const mockTrips = [
-  { id: 20, name: 'The Hobbits', location: 'Queenstown, New Zealand', picUrl: 'https://www.noted.co.nz/media/13444/ls4611237_28_aspen_gi_84184157.jpg?width=501&height=374' },
-  { id: 21, name: 'Partiers', location: 'Las Vegas, Nevada', picUrl: 'http://res.cloudinary.com/simpleview/image/upload/v1497480003/clients/lasvegas/strip_b86ddbea-3add-4995-b449-ac85d700b027.jpg' },
+  { id: 20, name: 'The Hobbits', destination: 'Queenstown, New Zealand', picture: 'https://www.noted.co.nz/media/13444/ls4611237_28_aspen_gi_84184157.jpg?width=501&height=374' },
+  { id: 21, name: 'Partiers', destination: 'Las Vegas, Nevada', picture: 'http://res.cloudinary.com/simpleview/image/upload/v1497480003/clients/lasvegas/strip_b86ddbea-3add-4995-b449-ac85d700b027.jpg' },
 ];
 
 const mockUsers = [

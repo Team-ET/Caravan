@@ -59,9 +59,19 @@ const Values = sequelize.define('values', {
   helpfulness: Sequelize.INTEGER,
 })
 
+
+Values.belongsTo(User);
+
+const Message = sequelize.define('message', {
+  text: Sequelize.STRING,
+});
+
+Message.belongsTo(User);
+Message.belongsTo(Group);
+
 // interst for user, many to many
 const Int_user = sequelize.define('int_group', {});
 Int_user.belongsTo(User);
 Int_user.belongsTo(Interest);
 
-module.exports = { User, Group, User_group, Interest, Int_user, Values }; 
+module.exports = { User, Group, User_group, Interest, Int_user, Values, Message }; 

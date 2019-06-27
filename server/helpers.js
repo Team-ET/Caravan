@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const { User, Group, User_group, Interest, Int_User, Values } = require('../database/index.js');
+const { User, Group, Message, User_group, Interest, Int_User, Values } = require('../database/index.js');
 
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
@@ -17,6 +17,16 @@ const storeGroup = (name, destination, date_start, date_end) => Group.findOrCrea
   where: { name },
   defaults: { name, destination, date_start, date_end }
 });
+// store a message
+const storeMessage = text => {
+  console.log(text);
+  Message.create({ text });
+}
+const getMessages = groupId => {
+  Message.findAll({
+    where: { groupId }
+  })
+}
 //function for getting all Groups from the db
 const findAllGroups = groups =>
  Group.findAll({
@@ -110,6 +120,7 @@ function userMatch(group, user) {
 module.exports = {
   storeUser,
   storeGroup,
+  getMessages,
   findAllGroups,
   findAllUsers,
   findUser,
@@ -121,4 +132,5 @@ module.exports = {
   getUserValues,
   clientErrorHandler,
   userMatch,
+  storeMessage
 };

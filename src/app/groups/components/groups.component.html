@@ -3,13 +3,13 @@
       <h3>Highest Matched Groups</h3>
       <div class="row justify-content-md-center">
   <mdb-card *ngFor="let group of groups" class="col-sm">
-          <mdb-card-img [src]='group.picUrl'></mdb-card-img>
+          <mdb-card-img [src]='group.picture'></mdb-card-img>
         <mdb-card-body>
           <mdb-card-title routerLink="/detail/{{group.id}}">
             <h3>{{ group.name }}</h3>
           </mdb-card-title>
           <mdb-card-text>
-            <h4>{{ group.location }}</h4>
+            <h4>{{ group.destination }}</h4>
           </mdb-card-text>
           
           <!-- Percentage Circle -->
@@ -35,13 +35,13 @@
     <h3>My Trips</h3>
     <div class="row justify-content-sm-center">
       <mdb-card *ngFor="let trip of trips" [class.selected]="trip === selectedTrip" (click)="onSelect(trip)" class="col-4">
-        <mdb-card-img [src]='trip.picUrl'></mdb-card-img>
+        <mdb-card-img [src]='trip.picture'></mdb-card-img>
         <mdb-card-body>
           <mdb-card-title>
             <h3>{{ trip.name }}</h3>
           </mdb-card-title>
           <mdb-card-text>
-            <h4>{{ trip.location }}</h4>
+            <h4>{{ trip.destination }}</h4>
           </mdb-card-text>
         </mdb-card-body>
       </mdb-card>

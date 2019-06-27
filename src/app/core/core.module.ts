@@ -5,7 +5,11 @@ import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GroupsModule } from '../groups/groups.module';
-
+import { RouterModule } from '@angular/router';
+import { DashComponent } from './components/dash/dash.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ChatComponent } from '../chat/chat.component';
+import { FormsModule } from '@angular/forms';
 import {
   NavbarModule,
   DropdownModule,
@@ -14,11 +18,6 @@ import {
   IconsModule,
   ModalModule
 } from 'angular-bootstrap-md';
-import { RouterModule } from '@angular/router';
-import { DashComponent } from './components/dash/dash.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-
-
 
 @NgModule({
   imports: [
@@ -30,6 +29,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CardsFreeModule,
     ButtonsModule,
     GroupsModule,
+    FormsModule
   ],
   declarations: [
     ProfileComponent,
@@ -38,6 +38,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MainComponent,
     DashComponent,
     NotFoundComponent,
+    ChatComponent
   ],
   exports: [
     HeaderComponent,
