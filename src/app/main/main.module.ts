@@ -15,6 +15,7 @@ import {
 } from 'angular-bootstrap-md';
 import { RouterModule } from '@angular/router';
 import { DashComponent } from './components/dash/dash.component';
+import { WidgetComponent } from './components/widget/widget.component';
 
 @NgModule({
   imports: [
@@ -33,11 +34,13 @@ import { DashComponent } from './components/dash/dash.component';
     FooterComponent,
     MainComponent,
     DashComponent,
+    WidgetComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     MainComponent,
+    WidgetComponent,
   ]
 })
 export class MainModule {}

@@ -11,7 +11,7 @@ import { GroupsService } from '../groups/services/groups.service';
 })
 export class GroupDetailComponent implements OnInit {
   groupId: number;
-  group: Group;
+  group: Group; // model
 
   constructor(readonly route:ActivatedRoute, private groupService:GroupsService) {
 
@@ -27,7 +27,6 @@ export class GroupDetailComponent implements OnInit {
   getGroupById(id: number) {
     this.groupService.getGroup(id).subscribe(result => {
       this.group = result;
-      console.log(result);
     });
   }
 

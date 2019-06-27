@@ -1,6 +1,8 @@
 export class Group {
   id?: number|null;
   name: string;
-  location: string;
-  picUrl?: string|null;
+  destination: string;
+  picture?: string|null;
+  date_start: string;
+  date_end: string;
 }
