@@ -1,6 +1,7 @@
 const axios = require('axios');
 
-const { User, Group, Message, User_group, Interest, Int_User, Values } = require('../database/index.js');
+
+const { User, Group, Message, User_group, Values, Photo } = require('../database/index.js');
 
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
@@ -17,6 +18,17 @@ const storeGroup = (name, destination, date_start, date_end) => Group.findOrCrea
   where: { name },
   defaults: { name, destination, date_start, date_end }
 });
+//function for storing photo
+const storePhoto = async (photo) => {
+  const imageObj = {
+    image: photo.url
+  }
+  return Photo.create(imageObj);
+};
+
+const findPhotos = (photo) => {
+  return Photo.findAll({})
+};
 // store a message
 const storeMessage = text => {
   console.log(text);
@@ -62,7 +74,7 @@ const findGroupUsers = groupId => User_group.findAll({
   });
 
 const findGroups = groupIds => {
-  return Group.findAll({ // find all movies that match the given id's in the movieDbArr
+  return Group.findAll({ // find all 
     where: {
       id: {
         [Op.or]: groupIds
@@ -72,7 +84,7 @@ const findGroups = groupIds => {
 }
 
 const findUsers = userIds => {
-  return User.findAll({ // find all movies that match the given id's in the movieDbArr
+  return User.findAll({ // find all users
     where: {
       id: {
         [Op.or]: userIds
@@ -95,19 +107,21 @@ function clientErrorHandler(err, req, res, next) {
 }
 
 function userMatch(group, user) {
+  // need to account for 0, need to account for no matches at all
+  
   let counter = 0;
-  if (user.tradition === group.tradition) {
+  if (user.tradition - 10 >= group.tradition) {
     counter++;
-  } if (user.achievement === group.achievement) {
-    counter++;
-  }
-  if (user.pleasure === group.pleasure) {
+  } if (user.achievement - 10 >= group.achievement) {
     counter++;
   }
-  if (user.stimulation === group.stimulation) {
+  if (user.pleasure - 10 >= group.pleasure) {
     counter++;
   }
-  if (user.helpfulness === group.stimulation) {
+  if (user.stimulation - 10 >= group.stimulation) {
+    counter++;
+  }
+  if (user.helpfulness - 10 >= group.stimulation) {
     counter++;
   } 
 
@@ -116,6 +130,32 @@ function userMatch(group, user) {
   } else {
     return console.log('Not Matched!');
   }
+}
+//lets make some helper functions for find these photos BOIIIIIIIIII******************************************************************************
+//user this function for testing, once it works, then test with findUserPhoto
+const findAllPhotos = (photo) => {
+  return Photo.findAll({});
+}
+//this should be your MAIN function for finding all the users Photos, export once you start testing
+const findUserPhoto = (photo) => {
+  Photo.findAll({
+    where: {
+      id: {
+        [Op.or]: userId
+      }
+    }
+  })
+}
+//once finding the user's photos by Id, this should work for the group Id's, will need to check, but make sure the user's phots are working first
+// dont forget that you will need to adjust your tables in the db in order to handle the group photos, should follow the same format as user photos
+const findGroupPhoto = (photo) => {
+  Photo.findAll({
+    where: {
+      id: {
+        [Op.or]: groupId
+      }
+    }
+  })
 }
 
 module.exports = {
@@ -133,5 +173,10 @@ module.exports = {
   getUserValues,
   clientErrorHandler,
   userMatch,
+  findAllPhotos,
+  findUserPhoto,
+  findGroupPhoto,
+  storePhoto,
+  findPhotos,
   storeMessage
 };

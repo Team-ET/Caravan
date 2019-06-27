@@ -33,7 +33,7 @@ const User = sequelize.define('user', {
   picture: Sequelize.STRING,
 });
 
-// table for group
+// // table for group
 const Group = sequelize.define('group', {
   name: Sequelize.STRING,
   destination: Sequelize.STRING,
@@ -41,15 +41,11 @@ const Group = sequelize.define('group', {
   date_end: Sequelize.STRING,
 });
 
-//joined table for users in groups many to many
+// //joined table for users in groups many to many
 const User_group = sequelize.define('user_group', {});
 User_group.belongsTo(User);
 User_group.belongsTo(Group);
 
-//interest for user
-const Interest = sequelize.define('interest', {
-  name: Sequelize.STRING
-});
 //  gonna move these values into the User
 const Values = sequelize.define('values', {
   tradition: Sequelize.INTEGER,
@@ -58,20 +54,19 @@ const Values = sequelize.define('values', {
   stimulation: Sequelize.INTEGER,
   helpfulness: Sequelize.INTEGER,
 })
-
-
+// adding a User to values
 Values.belongsTo(User);
+
+const Photo = sequelize.define('photo', {
+  image: Sequelize.STRING,
+})
+Photo.belongsTo(User);
 
 const Message = sequelize.define('message', {
   text: Sequelize.STRING,
 });
-
 Message.belongsTo(User);
 Message.belongsTo(Group);
 
-// interst for user, many to many
-const Int_user = sequelize.define('int_group', {});
-Int_user.belongsTo(User);
-Int_user.belongsTo(Interest);
 
-module.exports = { User, Group, User_group, Interest, Int_user, Values, Message }; 
+module.exports = { User, Group, User_group, Values, Message, Photo }; 

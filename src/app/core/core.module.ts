@@ -17,6 +17,12 @@ import {
   IconsModule,
   ModalModule
 } from 'angular-bootstrap-md';
+import { RouterModule } from '@angular/router';
+import { DashComponent } from './components/dash/dash.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { WidgetComponent } from './components/widget/widget.component';
+
+
 
 @NgModule({
   imports: [
@@ -37,11 +43,13 @@ import {
     MainComponent,
     DashComponent,
     NotFoundComponent,
+    WidgetComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     MainComponent,
+    WidgetComponent,
   ]
 })
 export class CoreModule { }
