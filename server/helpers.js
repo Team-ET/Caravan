@@ -124,6 +124,7 @@ const findUserPhoto = (photo) => {
   })
 }
 //once finding the user's photos by Id, this should work for the group Id's, will need to check, but make sure the user's phots are working first
+// dont forget that you will need to adjust your tables in the db in order to handle the group photos, should follow the same format as user photos
 const findGroupPhoto = (photo) => {
   Photo.findAll({
     where: {
