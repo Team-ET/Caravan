@@ -18,7 +18,7 @@ photos: Photos[];
 constructor(public widgetService: WidgetService) { }
 
   ngOnInit() {
-    this.getPhotos();
+    // this.getPhotos();
   }
    myClick() {
     // console.log('DO I CLICK')

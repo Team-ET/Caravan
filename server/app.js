@@ -176,7 +176,6 @@ app.post('/api/photos', (req, res) => {
 })
 
 app.get('/api/photos', (req, res) => {
-  console.log('WHERE ARE YOU');
   const photo = req.body;
   findPhotos(photo)
   .then((photos)=> {
