@@ -17,6 +17,17 @@ const storeGroup = (name, destination, date_start, date_end) => Group.findOrCrea
   where: { name },
   defaults: { name, destination, date_start, date_end }
 });
+//function for storing photo
+const storePhoto = async (photo) => {
+  const imageObj = {
+    image: photo.url
+  }
+  return Photo.create(imageObj);
+};
+
+const findPhotos = (photo) => {
+  return Photo.findAll({})
+};
 //function for getting all Groups from the db
 const findAllGroups = groups =>
  Group.findAll({
@@ -111,7 +122,7 @@ function userMatch(group, user) {
 //lets make some helper functions for find these photos BOIIIIIIIIII******************************************************************************
 //user this function for testing, once it works, then test with findUserPhoto
 const findAllPhotos = (photo) => {
-  Photo.findAll({});
+  return Photo.findAll({});
 }
 //this should be your MAIN function for finding all the users Photos, export once you start testing
 const findUserPhoto = (photo) => {
@@ -152,4 +163,6 @@ module.exports = {
   findAllPhotos,
   findUserPhoto,
   findGroupPhoto,
+  storePhoto,
+  findPhotos,
 };

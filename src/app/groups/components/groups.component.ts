@@ -27,7 +27,7 @@ export class GroupsComponent implements OnInit {
   getGroupMatches(): void {
     this.groupsService.getGroupMatches()
       .subscribe(groups => {
-        console.log('getting groups', groups);
+        // console.log('getting groups', groups);
         this.groups = groups;
       });
   }

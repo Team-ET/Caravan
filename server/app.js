@@ -11,7 +11,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const { mockData, mockTrips, mockUsers } = require('./data');
 const { getInsights, groupAvg } = require('./watson');
-const { storeUser, storeGroup, findAllGroups, findAllUsers, findUser, findGroup, findUserGroups, findGroupUsers, findGroups, findUsers, getUserValues, clientErrorHandler, findGroupPhoto, findUserPhoto, findAllPhotos } = require('../server/helpers.js');
+const { storeUser, storeGroup, findAllGroups, findAllUsers, storePhoto, findUser, findGroup, findUserGroups, findGroupUsers, findGroups, findUsers, getUserValues, clientErrorHandler, findGroupPhoto, findUserPhoto, findAllPhotos, findPhotos } = require('../server/helpers.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -156,6 +156,33 @@ app.get('/values', (req, res) => {
     res.send(value);
   })
   .catch(err => {
+    console.error(err);
+    res.sendStatus(500);
+  })
+})
+
+app.post('/api/photos', (req, res) => {
+  console.log("I MADE IT HERE") 
+  const photo = req.body;
+  storePhoto(photo)
+  .then((photos) => {
+    res.send(photos);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.sendStatus(500);
+    
+  });
+})
+
+app.get('/api/photos', (req, res) => {
+  console.log('WHERE ARE YOU');
+  const photo = req.body;
+  findPhotos(photo)
+  .then((photos)=> {
+    res.send(photos);
+  })
+  .catch((err) => {
     console.error(err);
     res.sendStatus(500);
   })

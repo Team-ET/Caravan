@@ -22,9 +22,9 @@ sequelize
 });
 
 // used for creating tables, make sure to turn off once tables are set, otherwise it will clear the whole table
-sequelize.sync({
-  force: true, // Drops info in database for testing
-})
+// sequelize.sync({
+//   force: true, // Drops info in database for testing
+// })
 
 //table for user
 const User = sequelize.define('user', {
