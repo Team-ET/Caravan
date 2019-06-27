@@ -21,9 +21,13 @@ import { GroupNewComponent } from './group-new/group-new.component';
 import { GroupFormComponent } from './group-form/group-form.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { CardsFreeModule } from 'angular-bootstrap-md';
+import { AccountComponent } from './account/account.component';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { ReferencesComponent } from './references/references.component';
+import { VerificationComponent } from './verification/verification.component';
 
 @NgModule({
-  declarations: [AppComponent, GroupDetailComponent, GroupFormComponent, SuccessAlertComponent, GroupNewComponent],
+  declarations: [AppComponent, GroupDetailComponent, GroupFormComponent, SuccessAlertComponent, GroupNewComponent, AccountComponent, ReviewsComponent, ReferencesComponent, VerificationComponent],
   imports: [
     CardsFreeModule.forRoot(),
     GroupsModule,
