@@ -10,7 +10,7 @@ const Op = Sequelize.Op;
 // function for storing user in db
 const storeUser = (name, email, picture, pers_test, pers_percent) => User.findOrCreate({
   where: { email },
-  defaults: { name, email, picture, pers_test, pers_percent } 
+  defaults: { name, email, picture, pers_test, pers_percent }
 });
 //function for storing group in db
 const storeGroup = (name, destination, date_start, date_end) => Group.findOrCreate({
@@ -22,8 +22,9 @@ const storeMessage = text => {
   console.log(text);
   Message.create({ text });
 }
+// get all of a group's messages
 const getMessages = groupId => {
-  Message.findAll({
+  return Message.findAll({
     where: { groupId }
   })
 }

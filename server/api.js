@@ -25,7 +25,10 @@ app.use(clientErrorHandler) // handles error for Angular client
 router.get('/groups', (req, res) => {
   findAllGroups()
     .then((group) => {
-      res.send(group)
+      // res.send(group)
+      const groups = [group[0], group[1], group[2]];
+      console.log(groups);
+      res.send(groups);
     })
     .catch(err => {
       console.error(err);
@@ -57,6 +60,20 @@ router.get('/groups/:id', (req, res) => {
     })
 });
 
+// GET group messages by group id
+router.get('/groups/:id/messages', (req, res) => {
+  const { id } = req.params;
+  return getMessages(id)
+    .then(messages => {
+      console.log(messages);
+      res.send(messages);
+    })
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    })
+});
+
 // GET users by group id
 router.get('/groups/:id/users', (req, res) => {
   findGroupUsers(req.params.id)
@@ -76,13 +93,24 @@ router.get('/groups/:id/users', (req, res) => {
 
 // GET user groups by email
 router.get('/trips', (req, res) => {
-  findUser(req.body.email)
-    .then(user => findUserGroups(user.id))
-    .then(data => {
-      const groupArr = data.map(data => data.dataValues.groupId);
-      return findGroups(groupArr);
-    })
-    .then(groups => {
+  // findUser(req.body.email)
+  //   .then(user => findUserGroups(user.id))
+  //   .then(data => {
+  //     const groupArr = data.map(data => data.dataValues.groupId);
+  //     return findGroups(groupArr);
+  //   })
+  //   .then(groups => {
+  //     console.log(groups);
+  //     res.send(groups);
+  //   })
+  //   .catch(err => {
+  //     console.error(err);
+  //     res.sendStatus(500);
+  //   })
+  findAllGroups()
+    .then((group) => {
+      // res.send(group)
+      const groups = [group[3]];
       console.log(groups);
       res.send(groups);
     })
@@ -129,8 +157,7 @@ router.get('/users', (req, res) => {
     })
 })
 
-// Duplicate???
-// GET a user's groups
+// GET user's groups
 router.get('/users:groups', (req, res) => {
   findUser(req.body.email)
     .then(user => findUserGroups(user.id))

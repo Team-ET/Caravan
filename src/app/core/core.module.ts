@@ -8,7 +8,6 @@ import { GroupsModule } from '../groups/groups.module';
 import { RouterModule } from '@angular/router';
 import { DashComponent } from './components/dash/dash.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { ChatComponent } from '../chat/chat.component';
 import { FormsModule } from '@angular/forms';
 import {
   NavbarModule,
@@ -38,7 +37,6 @@ import {
     MainComponent,
     DashComponent,
     NotFoundComponent,
-    ChatComponent
   ],
   exports: [
     HeaderComponent,
