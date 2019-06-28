@@ -16,6 +16,9 @@ src/app/auth/services/auth0.variables.ts
 /yarn.lock
 /package-lock.json
 
+# for testing
+/test
+
 
 # profiling files
 chrome-profiler-events.json
