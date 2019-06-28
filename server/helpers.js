@@ -58,7 +58,7 @@ const findUserGroups = userId => User_group.findAll({
 // get users by group id
 const findGroupUsers = groupId => User_group.findAll({
     attributes: ['userId'],
-    where: { groupId }
+    where: { groupId: groupId }
   });
 
 const findGroups = groupIds => {

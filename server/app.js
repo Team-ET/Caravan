@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, './src')));
 app.use('/api', api) // routes to api file endpoints
+// app.use(cors());
 
 io.on('connection', (socket) => {
   console.log('user connected');
