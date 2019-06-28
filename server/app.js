@@ -10,7 +10,7 @@ let io = socketIO(server);
 // const jwt = require('express-jwt');
 // const jwtAuthz = require('express-jwt-authz');
 // const jwksRsa = require('jwks-rsa');
-// const cors = require('cors');
+const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
 const { mockData, mockTrips, mockUsers } = require('./data');
@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, './src')));
 app.use('/api', api) // routes to api file endpoints
+app.use(cors());
 
 io.on('connection', (socket) => {
   console.log('user connected');
@@ -33,9 +34,9 @@ io.on('connection', (socket) => {
   });
 });
 
-// server.listen(3000, () => {
-//   console.log(`started on port:. The Angular app will be built and served at http://localhost:4200.`);
-// });
+server.listen(3000, () => {
+  console.log(`started on port:. The Angular app will be built and served at http://localhost:4200.`);
+});
 
 // Create user
 app.post('/users', (req, res) => {
@@ -128,6 +129,6 @@ app.get('/api/photos', (req, res) => {
   })
 })
 
-app.listen(3000, () => {
-  console.log('listening on http://localhost:3000! The Angular app will be built and served at http://localhost:4200.');
-});
+// app.listen(3000, () => {
+//   console.log('listening on http://localhost:3000! The Angular app will be built and served at http://localhost:4200.');
+// });

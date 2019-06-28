@@ -23,6 +23,7 @@ import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { CardsFreeModule } from 'angular-bootstrap-md';
 import { MessageService } from './message.service';
 import { ChatComponent } from './chat/chat.component';
+import { NavComponent } from './main/components/nav/nav.component';
 
 
 @NgModule({

@@ -16,6 +16,7 @@ import {
 import { RouterModule } from '@angular/router';
 import { DashComponent } from './components/dash/dash.component';
 import { WidgetComponent } from './components/widget/widget.component';
+import { NavComponent } from './components/nav/nav.component'
 //
 @NgModule({
   imports: [
@@ -35,12 +36,14 @@ import { WidgetComponent } from './components/widget/widget.component';
     MainComponent,
     DashComponent,
     WidgetComponent,
+    NavComponent
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     MainComponent,
     WidgetComponent,
+    NavComponent,
   ]
 })
 export class MainModule {}
