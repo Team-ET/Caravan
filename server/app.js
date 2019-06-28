@@ -21,7 +21,7 @@ const { storeMessage } = require('./helpers');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname, './src')));
+app.use(express.static(path.join(__dirname, './dist/CaravanApp')));
 app.use('/api', api) // routes to api file endpoints
 app.use(cors());
 
@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
 });
 
 server.listen(3000, () => {
-  console.log(`started on port:. The Angular app will be built and served at http://localhost:4200.`);
+  console.log(`started on port:. The Angular app will be built and served at http://localhost:3000.`);
 });
 
 // Create user
