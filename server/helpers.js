@@ -158,6 +158,16 @@ const findGroupPhoto = (photo) => {
   })
 }
 
+// check if user is a member of a group
+const isGroupMember = (name, groupId) => {
+  User.findOne({
+    where: { name: name }
+  })
+  .then(user => User_group.findAll({groupId: groupId}))
+  .then(userGroups => console.log(userGroups))
+  .catch(err => console.error(err));
+}
+
 module.exports = {
   storeUser,
   storeGroup,
@@ -178,5 +188,6 @@ module.exports = {
   findGroupPhoto,
   storePhoto,
   findPhotos,
-  storeMessage
+  storeMessage,
+  isGroupMember
 };
