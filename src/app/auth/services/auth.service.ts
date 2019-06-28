@@ -9,12 +9,18 @@ export class AuthService {
   private _idToken: string;
   private _accessToken: string;
   private _expiresAt: number;
+  private _scopes: string;
+
+  userProfile: any;
+  requestedScopes: string = "openid profile read:messages write:messages";
 
   auth0 = new auth0.WebAuth({
     clientID: AUTH_CONFIG.clientID,
     domain: AUTH_CONFIG.domain,
     responseType: 'token id_token',
-    redirectUri: AUTH_CONFIG.callbackURL
+    redirectUri: AUTH_CONFIG.callbackURL,
+    audience: AUTH_CONFIG.apiUrl,
+    scope: this.requestedScopes
   });
 
   constructor(public router: Router) {
@@ -86,6 +92,26 @@ export class AuthService {
     // Check whether the current time is past the
     // access token's expiry time
     return this._accessToken && Date.now() < this._expiresAt;
+  }
+
+  public getProfile(cb): void {
+    if (!this._accessToken) {
+      throw new Error("Access token must exist to fetch profile");
+    }
+
+    const self = this;
+    this.auth0.client.userInfo(this._accessToken, (err, profile) => {
+      console.log(profile);
+      if (profile) {
+        self.userProfile = profile;
+      }
+      cb(err, profile);
+    });
+  }
+
+  public userHasScopes(scopes: Array<string>): boolean {
+    const grantedScopes = JSON.parse(this._scopes).split(" ");
+    return scopes.every(scope => grantedScopes.includes(scope));
   }
 
 }

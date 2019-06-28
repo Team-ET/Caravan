@@ -74,9 +74,10 @@ router.get('/groups/:id/messages', (req, res) => {
     })
 });
 
-// GET users by group id
+// GET a group's users by group id
 router.get('/groups/:id/users', (req, res) => {
-  findGroupUsers(req.params.id)
+  const groupId = req.params.id;
+  findGroupUsers(groupId)
     .then(data => {
       const userArr = data.map(data => data.dataValues.userId);
       return findUsers(userArr);
