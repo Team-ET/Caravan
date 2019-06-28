@@ -21,13 +21,16 @@ import { GroupNewComponent } from './group-new/group-new.component';
 import { GroupFormComponent } from './group-form/group-form.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { CardsFreeModule } from 'angular-bootstrap-md';
-import { AccountComponent } from './account/account.component';
-import { ReviewsComponent } from './reviews/reviews.component';
-import { ReferencesComponent } from './references/references.component';
-import { VerificationComponent } from './verification/verification.component';
+import { AccountModule } from './account/account.module';
+import { BarRatingModule } from "ngx-bar-rating";
 
 @NgModule({
-  declarations: [AppComponent, GroupDetailComponent, GroupFormComponent, SuccessAlertComponent, GroupNewComponent, AccountComponent, ReviewsComponent, ReferencesComponent, VerificationComponent],
+  declarations: [
+    AppComponent,
+    GroupDetailComponent, 
+    GroupFormComponent, 
+    SuccessAlertComponent, 
+    GroupNewComponent],
   imports: [
     CardsFreeModule.forRoot(),
     GroupsModule,
@@ -40,7 +43,8 @@ import { VerificationComponent } from './verification/verification.component';
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
     GroupUsersModule,
-    ModalModule
+    ModalModule,
+    AccountModule,
   ],
   providers: [HttpErrorHandler, MessageService],
   bootstrap: [AppComponent]

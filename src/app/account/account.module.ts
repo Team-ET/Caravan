@@ -10,15 +10,16 @@ import {
   WavesModule, 
   InputUtilitiesModule } from 'angular-bootstrap-md';
 import { RouterModule } from '@angular/router';
-import { ReviewsComponent } from './components/reviews/reviews.component';
-import { ReferencesComponent } from './components/references/references.component';
+import { ReferenceComponent } from './components/reference/reference.component';
 import { VerificationComponent } from './components/verification/verification.component';
-
-
+import { ReviewComponent } from './components/review/review.component';
+import { BarRatingModule } from "ngx-bar-rating";
+import { AccountComponent } from './account.component'
 
 @NgModule({
-  declarations: [ReviewsComponent, ReferencesComponent, VerificationComponent],
+  declarations: [ReferenceComponent, VerificationComponent, ReviewComponent, AccountComponent],
   imports: [
+    BarRatingModule,
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
@@ -30,6 +31,7 @@ import { VerificationComponent } from './components/verification/verification.co
     RouterModule,
     IconsModule,
   ],
-  providers: [AuthService]
+  providers: [AuthService],
+  exports: [AccountComponent]
 })
 export class AccountModule { }
