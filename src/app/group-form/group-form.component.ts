@@ -36,7 +36,7 @@ export class GroupFormComponent implements OnInit {
 
     autocomplete.addListener('place_changed', function() {
       let place = autocomplete.getPlace();
-      console.log(place);
+      console.log(place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
     })
   }
 }
