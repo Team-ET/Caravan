@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GroupsService } from '../groups/services/groups.service';
 
+
 @Component({
   selector: 'app-group-form',
   templateUrl: './group-form.component.html',
@@ -19,7 +20,7 @@ export class GroupFormComponent implements OnInit {
 
   constructor(private groupService: GroupsService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   onSubmit() {
@@ -27,5 +28,15 @@ export class GroupFormComponent implements OnInit {
     }
   onOpen(event: any) {
     console.log(event);
+  }
+
+  getPlaces() {
+    let input = <HTMLInputElement>document.getElementById('searchBar');
+    let autocomplete = new google.maps.places.Autocomplete(input);
+
+    autocomplete.addListener('place_changed', function() {
+      let place = autocomplete.getPlace();
+      console.log(place);
+    })
   }
 }

@@ -1,3 +1,4 @@
+
 <h1>Create Group Form</h1>
 <form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
   
@@ -5,10 +6,10 @@
     Name:
     <input type="text" formControlName="name">
   </label>
-
+ 
   <label>
     Destination:
-    <input type="text" formControlName="destination">
+    <input type="text" id="searchBar" (change)="getPlaces()" formControlName="destination">
   </label>
 
   <label>
@@ -56,3 +57,4 @@
     <!--/.Content-->
   </div>
 </div>
+

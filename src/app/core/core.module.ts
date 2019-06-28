@@ -17,9 +17,7 @@ import {
   IconsModule,
   ModalModule
 } from 'angular-bootstrap-md';
-import { RouterModule } from '@angular/router';
-import { DashComponent } from './components/dash/dash.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+
 import { WidgetComponent } from './components/widget/widget.component';
 
 
