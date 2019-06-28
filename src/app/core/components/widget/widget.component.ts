@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cloudinary } from 'cloudinary-core';
 import { WidgetService } from './widget.service';
-
 import { Photos } from 'src/app/models/photos';
-
-
-
 
 @Component({
   selector: 'app-widget',
@@ -22,7 +18,7 @@ constructor(public widgetService: WidgetService) { }
   }
    myClick() {
     // console.log('DO I CLICK')
-    let myWidget = cloudinary.createUploadWidget({
+    let myWidget = Cloudinary.createUploadWidget({
       cloudName: 'sc0ttiee', 
       uploadPreset: 'atiwd1dv'}, async (error, result) => { 
         if (!error && result && result.event === "success") { 
