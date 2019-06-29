@@ -9,6 +9,7 @@ import {
   NavbarModule,
   DropdownModule,
   CardsFreeModule,
+  CarouselModule,
   ButtonsModule,
   IconsModule,
   ModalModule
@@ -18,8 +19,9 @@ import { DashComponent } from './components/dash/dash.component';
 import { WidgetComponent } from './components/widget/widget.component';
 import { NavComponent } from './components/nav/nav.component'
 import { SearchComponent } from './components/search/search.component';
+import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 
-//
+
 @NgModule({
   imports: [
     CommonModule,
@@ -30,7 +32,7 @@ import { SearchComponent } from './components/search/search.component';
     CardsFreeModule,
     ButtonsModule,
     GroupsModule,
-    
+    CarouselModule
   ],
   declarations: [
     SearchComponent,
@@ -40,7 +42,8 @@ import { SearchComponent } from './components/search/search.component';
     MainComponent,
     DashComponent,
     WidgetComponent,
-    NavComponent
+    NavComponent,
+    ProfilePictureComponent
   ],
   exports: [
     HeaderComponent,

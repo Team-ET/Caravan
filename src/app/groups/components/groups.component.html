@@ -1,7 +1,6 @@
 <!-- Start of Group Card -->
       <h3>Highest Matched Groups</h3>
-      <div class="row justify-content-md-center">
-  <mdb-card *ngFor="let group of groups" class="col-sm">
+  <mdb-card *ngFor="let group of groups">
           <mdb-card-img [src]='group.picture'></mdb-card-img>
         <mdb-card-body>
           <mdb-card-title routerLink="/detail/{{group.id}}">
@@ -22,7 +21,6 @@
         <!-- Percentage Circle -->
         </mdb-card-body>
         </mdb-card>
-        </div>
     <a href="#" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
 <!-- End of Group Card -->
 

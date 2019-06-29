@@ -21,6 +21,7 @@ import { CardsFreeModule } from 'angular-bootstrap-md';
 import { MessageService } from './message.service';
 import { ChatComponent } from './chat/chat.component';
 
+
 @NgModule({
   declarations: [
     AppComponent, 
