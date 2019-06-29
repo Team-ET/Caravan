@@ -40,7 +40,7 @@ export class ChatComponent implements OnInit {
 
   // GET messages for group from DB if user is a group member
   getDbMessages(id: number) {
-    this.groupsService.getGroupMessages(id).subscribe(result => {
+    this.chatService.getGroupMessages(id).subscribe(result => {
       this.messages = result;
     });
   }

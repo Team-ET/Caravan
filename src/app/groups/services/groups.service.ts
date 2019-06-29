@@ -5,7 +5,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Group, User, Message } from '../../models';
+import { Group, User } from '../../models';
 import { HttpErrorHandler, HandleError } from '../../http-error-handler.service';
 import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.component';
 
@@ -65,14 +65,6 @@ export class GroupsService {
     return this.http.get<User[]>(this.groupsUrl + `/${id}/users`)
       .pipe(
         catchError(this.handleError('getGroupUsers', null))
-      );
-  }
-
-  // GET messages for a group if user is a member
-  getGroupMessages(id: number): Observable<Message[]> {
-    return this.http.get<Message[]>(this.groupsUrl + `/${id}/messages`)
-      .pipe(
-        catchError(this.handleError('getGroupMessages', null))
       );
   }
 
