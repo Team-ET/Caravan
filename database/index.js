@@ -39,6 +39,7 @@ const Group = sequelize.define('group', {
   destination: Sequelize.STRING,
   date_start: Sequelize.STRING,
   date_end: Sequelize.STRING,
+  picture: Sequelize.STRING,
 });
 
 // //joined table for users in groups many to many

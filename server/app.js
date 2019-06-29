@@ -129,6 +129,6 @@ app.get('/api/photos', (req, res) => {
   })
 })
 
-app.listen(3000, () => {
-  console.log('listening on http://localhost:3000! The Angular app will be built and served at http://localhost:4200.');
-});
+// app.listen(3000, () => {
+//   console.log('listening on http://localhost:3000! The Angular app will be built and served at http://localhost:4200.');
+// });
