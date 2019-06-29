@@ -4,14 +4,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from '@angular/common/http';
-
 import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
 import { GroupsModule } from './groups/groups.module';
-
 import { ROUTES } from "./app.routes";
-
 import { HttpErrorHandler } from './http-error-handler.service';
 import { ChatService } from './chat.service';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
@@ -23,11 +20,15 @@ import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { CardsFreeModule } from 'angular-bootstrap-md';
 import { MessageService } from './message.service';
 import { ChatComponent } from './chat/chat.component';
-import { NavComponent } from './main/components/nav/nav.component';
-
 
 @NgModule({
-  declarations: [AppComponent, GroupDetailComponent, GroupFormComponent, SuccessAlertComponent, GroupNewComponent, ChatComponent],
+  declarations: [
+    AppComponent, 
+    GroupDetailComponent, 
+    GroupFormComponent, 
+    SuccessAlertComponent, 
+    GroupNewComponent, 
+    ChatComponent],
   imports: [
     CardsFreeModule.forRoot(),
     GroupsModule,
@@ -40,8 +41,7 @@ import { NavComponent } from './main/components/nav/nav.component';
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
     GroupUsersModule,
-    ModalModule
-  ],
+    ModalModule],
   providers: [HttpErrorHandler, ChatService, MessageService],
   bootstrap: [AppComponent]
 })

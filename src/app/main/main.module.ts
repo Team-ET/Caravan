@@ -17,6 +17,8 @@ import { RouterModule } from '@angular/router';
 import { DashComponent } from './components/dash/dash.component';
 import { WidgetComponent } from './components/widget/widget.component';
 import { NavComponent } from './components/nav/nav.component'
+import { SearchComponent } from './components/search/search.component';
+
 //
 @NgModule({
   imports: [
@@ -28,8 +30,10 @@ import { NavComponent } from './components/nav/nav.component'
     CardsFreeModule,
     ButtonsModule,
     GroupsModule,
+    
   ],
   declarations: [
+    SearchComponent,
     ProfileComponent,
     HeaderComponent,
     FooterComponent,
