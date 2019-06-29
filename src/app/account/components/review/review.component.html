@@ -1,3 +1,5 @@
+<div class=container>
+<mdb-card>
 <!-- Default form contact -->
 <form class="text-center border border-light p-5">
 
@@ -13,9 +15,8 @@
     <option value="4">Member4</option>
   </select>
 
-  <bar-rating [(rate)]="rate" [max]="5"></bar-rating>
-
   <!-- Comments -->
+  <bar-rating class="br-default" [(rate)]="rate" [max]="5"></bar-rating>
   <div class="form-group">
     <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Comments"></textarea>
   </div>
@@ -35,4 +36,6 @@
   <button class="btn btn-info btn-block" type="submit">Send</button>
 
   </form>
+</mdb-card>
+</div>
   <!-- Default form contact -->

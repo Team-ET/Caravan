@@ -22,7 +22,6 @@ import { GroupFormComponent } from './group-form/group-form.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { CardsFreeModule } from 'angular-bootstrap-md';
 import { AccountModule } from './account/account.module';
-import { BarRatingModule } from "ngx-bar-rating";
 
 @NgModule({
   declarations: [
