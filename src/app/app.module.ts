@@ -43,7 +43,8 @@ import { ChatComponent } from './chat/chat.component';
     ModalModule
   ],
   providers: [HttpErrorHandler, ChatService, MessageService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule {}
 
