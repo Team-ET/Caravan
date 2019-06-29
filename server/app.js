@@ -32,7 +32,8 @@ io.on('connection', (socket) => {
     storeMessage(message);
     io.emit('new-message', message);
   });
-});
+});//test
+
 
 server.listen(3000, () => {
   console.log(`started on port:. The Angular app will be built and served at http://localhost:4200.`);

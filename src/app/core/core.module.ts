@@ -62,7 +62,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     MainComponent,
     WidgetComponent,
-    DemoComponent
+    DemoComponent,
   ]
 })
 export class CoreModule { }
