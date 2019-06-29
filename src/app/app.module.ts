@@ -13,7 +13,7 @@ import { GroupsModule } from './groups/groups.module';
 import { ROUTES } from "./app.routes";
 
 import { HttpErrorHandler } from './http-error-handler.service';
-import { MessageService } from './message.service';
+import { ChatService } from './chat.service';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
 import { GroupUsersModule } from './group-users/group-users.module';
 import { Group } from './models';
@@ -22,14 +22,10 @@ import { GroupFormComponent } from './group-form/group-form.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { CardsFreeModule } from 'angular-bootstrap-md';
 import { AccountModule } from './account/account.module';
+import { MessageService } from './message.service';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    GroupDetailComponent, 
-    GroupFormComponent, 
-    SuccessAlertComponent, 
-    GroupNewComponent],
   imports: [
     CardsFreeModule.forRoot(),
     GroupsModule,
@@ -45,8 +41,16 @@ import { AccountModule } from './account/account.module';
     ModalModule,
     AccountModule,
   ],
-  providers: [HttpErrorHandler, MessageService],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    GroupDetailComponent, 
+    GroupFormComponent, 
+    SuccessAlertComponent, 
+    GroupNewComponent,
+    ChatComponent],
+  providers: [HttpErrorHandler, ChatService, MessageService],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule {}
 

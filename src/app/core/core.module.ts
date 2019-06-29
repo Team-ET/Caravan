@@ -5,7 +5,10 @@ import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GroupsModule } from '../groups/groups.module';
-
+import { RouterModule } from '@angular/router';
+import { DashComponent } from './components/dash/dash.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { FormsModule } from '@angular/forms';
 import {
   NavbarModule,
   DropdownModule,
@@ -14,9 +17,16 @@ import {
   IconsModule,
   ModalModule
 } from 'angular-bootstrap-md';
-import { RouterModule } from '@angular/router';
-import { DashComponent } from './components/dash/dash.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+
+import { WidgetComponent } from './components/widget/widget.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DemoComponent } from 'src/app/calendar/calendar.component';
+
 
 
 
@@ -30,6 +40,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CardsFreeModule,
     ButtonsModule,
     GroupsModule,
+    FormsModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
+    // NoopAnimationsModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     ProfileComponent,
@@ -38,11 +57,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MainComponent,
     DashComponent,
     NotFoundComponent,
+    WidgetComponent,
+    DemoComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     MainComponent,
+    WidgetComponent,
+    DemoComponent,
   ]
 })
 export class CoreModule { }

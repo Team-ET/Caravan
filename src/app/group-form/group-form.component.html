@@ -1,3 +1,4 @@
+
 <h1>Create Group Form</h1>
 <form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
   
@@ -5,10 +6,20 @@
     Name:
     <input type="text" formControlName="name">
   </label>
+ 
+  <label>
+    Destination:
+    <input type="text" id="searchBar" (change)="getPlaces()" formControlName="destination">
+  </label>
 
   <label>
-    Location:
-    <input type="text" formControlName="location">
+    Start Date:
+    <input type="text" formControlName="date_start">
+  </label>
+
+  <label>
+    End Date:
+    <input type="text" formControlName="date_end">
   </label>
 
   <button type="submit" [disabled]="!groupForm.valid" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
@@ -46,3 +57,4 @@
     <!--/.Content-->
   </div>
 </div>
+
