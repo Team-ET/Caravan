@@ -1,0 +1,41 @@
+<div class=container>
+<mdb-card>
+<!-- Default form contact -->
+<form class="text-center border border-light p-5">
+
+  <p class="h4 mb-4">Review Trip Members</p>
+
+  <!-- Member -->
+  <label>Member</label>
+  <select class="browser-default custom-select mb-4">
+    <option value="" disabled>Choose Member</option>
+    <option value="1" selected>Member1</option>
+    <option value="2">Member2</option>
+    <option value="3">Member3</option>
+    <option value="4">Member4</option>
+  </select>
+
+  <!-- Comments -->
+  <bar-rating class="br-default" [(rate)]="rate" [max]="5"></bar-rating>
+  <div class="form-group">
+    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Comments"></textarea>
+  </div>
+
+  <!-- Copy -->
+  <div class="row">
+    <div class="col-md-6 mx-auto d-flex justify-content-center">
+      <div class="custom-control custom-checkbox mb-4">
+        <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
+        <label class="custom-control-label" for="defaultContactFormCopy">Send me a copy of this review</label>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Send button -->
+  <button class="btn btn-info btn-block" type="submit">Send</button>
+
+  </form>
+</mdb-card>
+</div>
+  <!-- Default form contact -->
