@@ -22,7 +22,6 @@ router.get('/', (req, res) => {
     .then((group) => {
       // res.send(group)
       const groups = [group[0], group[1], group[2]];
-      console.log(groups);
       res.send(groups);
     })
     .catch(err => {
@@ -78,7 +77,6 @@ router.get('/:id/users', (req, res) => {
       return findUsers(userArr);
     })
     .then(users => {
-      console.log(users);
       res.send(users)
     })
     .catch(err => {

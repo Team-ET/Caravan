@@ -30,9 +30,8 @@ const findPhotos = (photo) => {
   return Photo.findAll({})
 };
 // store a message
-const storeMessage = text => {
-  console.log(text);
-  Message.create({ text });
+const storeMessage = message => {
+  Message.create({ message });
 }
 // get all of a group's messages
 const getMessages = groupId => {
@@ -160,12 +159,13 @@ const findGroupPhoto = (photo) => {
 
 // check if user is a member of a group
 const isGroupMember = (name, groupId) => {
-  User.findOne({
-    where: { name: name }
-  })
-  .then(user => User_group.findAll({groupId: groupId}))
-  .then(userGroups => console.log(userGroups))
-  .catch(err => console.error(err));
+  console.log('hi');
+  // User.findOne({
+  //   where: { name: name }
+  // })
+  // .then(user => User_group.findAll({groupId: groupId}))
+  // .then(userGroups => console.log(userGroups))
+  // .catch(err => console.error(err));
 }
 
 module.exports = {

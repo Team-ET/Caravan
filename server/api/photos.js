@@ -12,7 +12,6 @@ const {
 app.use(clientErrorHandler) // handles error for Angular client
 
 router.post('/', (req, res) => {
-  console.log("I MADE IT HERE")
   const photo = req.body;
   storePhoto(photo)
     .then((photos) => {

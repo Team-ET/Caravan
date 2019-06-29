@@ -20,7 +20,6 @@ import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.compo
 export class GroupsService {
   // message: string;
   groupsUrl = '/api/groups';  // URL to groups api
-  tripsUrl = '/api/trips';  // URL to trips api
   private handleError: HandleError;
 
   constructor(
@@ -55,7 +54,7 @@ export class GroupsService {
 
   // GET a user's trips
   getUserTrips(): Observable<Group[]> {
-    return this.http.get<Group[]>(this.tripsUrl)
+    return this.http.get<Group[]>(`${this.groupsUrl}/trips`)
       .pipe(
         catchError(this.handleError('getTrips', []))
       );
@@ -71,9 +70,9 @@ export class GroupsService {
 
   // GET messages for a group if user is a member
   getGroupMessages(id: number): Observable<Message[]> {
-    return this.http.get<User[]>(this.groupsUrl + `/${id}/users`)
+    return this.http.get<Message[]>(this.groupsUrl + `/${id}/messages`)
       .pipe(
-        catchError(this.handleError('getGroupUsers', null))
+        catchError(this.handleError('getGroupMessages', null))
       );
   }
 

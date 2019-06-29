@@ -15,14 +15,9 @@ export class GroupsComponent implements OnInit {
   constructor(private groupsService: GroupsService) { }
 
   ngOnInit() {
-    console.log('initializing groups');
     this.getGroupMatches();
-    this.getUserTrips();
+    // this.getUserTrips();
   }
-
-  // functioncall(e: MouseEvent) {
-  //   this.router.navigate()
-  // }
 
   getGroupMatches(): void {
     this.groupsService.getGroupMatches()
@@ -39,7 +34,5 @@ export class GroupsComponent implements OnInit {
         this.trips = trips;
       });
   }
-
-  
 
 }
