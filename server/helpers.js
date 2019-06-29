@@ -1,12 +1,6 @@
-const axios = require('axios');
-
-
 const { User, Group, Message, User_group, Values, Photo } = require('../database/index.js');
-
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-
-
 
 // function for storing user in db
 const storeUser = (name, email, picture, pers_test, pers_percent) => User.findOrCreate({
@@ -159,7 +153,7 @@ const findGroupPhoto = (photo) => {
 
 // check if user is a member of a group
 const isGroupMember = (name, groupId) => {
-  console.log('hi');
+  console.log('hit');
   // User.findOne({
   //   where: { name: name }
   // })

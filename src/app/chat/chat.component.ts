@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Message } from '../models';
 import { ChatService } from '../chat.service';
-import { GroupsService } from '../groups/services/groups.service';
 
 @Component({
   selector: 'app-chat',
@@ -11,22 +10,30 @@ import { GroupsService } from '../groups/services/groups.service';
   providers: [ ChatService ]
 })
 export class ChatComponent implements OnInit {
+  @Input() groupId: number;
+  text: string;
   message: Message;
   messages: Message[] = [];
   profile: any = {name: 'Erica'};
-  groupId: number = 1;
+  socket: any;
 
-  constructor(readonly route:ActivatedRoute, private chatService: ChatService, private groupsService: GroupsService) { }
+  constructor(readonly route: ActivatedRoute, private chatService: ChatService) {
+    // this.user = chatService.user;
+   }
 
   ngOnInit() {
     // this.route.params.subscribe(params => {
     // this.groupId = params.groupId;
     // this.getDbMessages(this.groupId);
     // });
-    this.getDbMessages(this.groupId);
+    this.chatService.joinGroupChat(this.groupId);
+    if (this.groupId) {
+      this.loadMessages(this.groupId);
+    }
     this.chatService
       .getMessages()
       .subscribe((message: Message) => {
+        console.log(message);
         this.messages.push(message);
       });
     // if (this.authService.userProfile) {
@@ -39,7 +46,7 @@ export class ChatComponent implements OnInit {
   }
 
   // GET messages for group from DB if user is a group member
-  getDbMessages(id: number) {
+  loadMessages(id: number) {
     this.chatService.getGroupMessages(id).subscribe(result => {
       this.messages = result;
     });
@@ -47,8 +54,8 @@ export class ChatComponent implements OnInit {
 
   // send a message via sockets
   sendMessage() {
-    this.chatService.sendMessage(this.message, this.profile, this.groupId);
-    this.message.text = '';
+    this.chatService.sendMessage(this.text, this.profile, this.groupId);
+    this.text = '';
   }
 
 }

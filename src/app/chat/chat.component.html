@@ -1,7 +1,7 @@
 <div>
     <h3>Chat</h3>
     <div *ngFor="let message of messages">{{message.user}}: {{message.text}}</div>
-    <input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
+    <input [(ngModel)]="text" (keyup)="$event.keyCode == 13 && sendMessage()" />
     <button (click)="sendMessage()">Send</button>
 </div>
 

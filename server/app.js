@@ -28,18 +28,27 @@ app.use('/api/photos', photos) // routes to api photos file endpoints
 app.use('/api/watson', watson) // routes to api watson file endpoints
 // app.use(cors());
 
+const groupChats = {};
+
 io.on('connection', (socket) => {
-  // socket.join('some room');
-  console.log('user connected', socket.id);
-  // socket.on('new-message', (message, user) => {
-  //   console.log(id, message);
-  //   socket.broadcast.to(id).emit('new-message', message);
-  // });
-  // socket.on('new-message', (message) => {
-  //   console.log(message, isGroupMember(message.user, message.groupId));
-  //   // storeMessage(message);
-  //   io.emit('new-message', message);
-  // });
+  console.log('user connected');
+  // user joins a group chat created from groupId
+  socket.on('join-chat', groupId => {
+    console.log(groupId);
+    socket.join(groupId);
+    console.log('SOCKET ROOMS', io.sockets.adapter.rooms);
+    if (groupChats[groupId]) {
+      groupChats[groupId].push(socket.id);
+    } else {
+      groupChats[groupId] = [socket.id];
+    }
+    console.log(groupChats);
+  });
+  // const { query } = socket.handshake;
+  socket.on('new-message', (message) => {
+    // storeMessage(message);
+    io.sockets.to(3).emit('new-message', message);
+  });
 });
 
 server.listen(3000, () => {

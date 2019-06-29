@@ -16,21 +16,20 @@ constructor(public widgetService: WidgetService) { }
   ngOnInit() {
     // this.getPhotos();
   }
-   myClick() {
-    // console.log('DO I CLICK')
+  myClick() {
     let myWidget = Cloudinary.createUploadWidget({
-      cloudName: 'sc0ttiee', 
+      cloudName: 'sc0ttiee',
       uploadPreset: 'atiwd1dv'}, async (error, result) => { 
-        if (!error && result && result.event === "success") { 
+        if (!error && result && result.event === 'success') { 
           console.log('Done! Here is the image info: ', result.info); 
           const photoObject = await this.widgetService.savePhoto(result.info);
         }
       }
-    )
+    );
     
-     document.getElementById("upload_widget").addEventListener("click", function(){
+    document.getElementById("upload_widget").addEventListener("click", function(){
         myWidget.open();
-      });//test
+    });//test
     
   }
   getPhotos(): void {
