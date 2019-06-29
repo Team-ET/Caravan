@@ -1,4 +1,4 @@
-
+<mdb-card class="calendar">
 <div class="row text-center">
   <div class="col-md-4">
     <div class="btn-group">
@@ -91,7 +91,7 @@
   </mwl-calendar-day-view>
 </div>
 
-<!-- Everything you see below is just for the demo, you don't need to include it in your app -->
+
 
 <br /><br /><br />
 
@@ -153,6 +153,7 @@
             dateFormat="Y-m-dTH:i"
             altFormat="F j, Y H:i"
             placeholder="Not set"
+            (change)="refresh.next()"
           />
         </td>
         <td>
@@ -203,3 +204,4 @@
     </button>
   </div>
 </ng-template>
+</mdb-card>

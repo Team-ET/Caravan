@@ -19,11 +19,13 @@ import {
 } from 'angular-bootstrap-md';
 
 import { WidgetComponent } from './components/widget/widget.component';
-import { DemoComponent } from 'src/app/calendar/calendar.component';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DemoComponent } from 'src/app/calendar/calendar.component';
 
 
 
@@ -45,7 +47,8 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
       provide: DateAdapter,
       useFactory: adapterFactory
     }),
-    
+    // NoopAnimationsModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     ProfileComponent,
