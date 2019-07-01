@@ -1,6 +1,7 @@
 require('dotenv').config();
 const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3'); // watson personality-insights
 const db = require('../database/index.js');
+const axios = require('axios');
 const express = require('express');
 const app = express();
 let http = require('http');
@@ -28,6 +29,12 @@ app.use('/api/photos', photos) // routes to api photos file endpoints
 app.use('/api/watson', watson) // routes to api watson file endpoints
 // app.use(cors());
 
+app.get('/twitter', (req, res) => {
+  axios.get('https://api.twitter.com/1.1/account/verify_credentials.json', (req, res) => {
+    
+  });
+});
+
 const groupChats = {};
 
 io.on('connection', (socket) => {
@@ -47,7 +54,7 @@ io.on('connection', (socket) => {
   // const { query } = socket.handshake;
   socket.on('new-message', (message) => {
     // storeMessage(message);
-    io.sockets.to(3).emit('new-message', message);
+    io.sockets.to(message.groupId).emit('new-message', message);
   });
 });
 
