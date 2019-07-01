@@ -19,7 +19,12 @@ import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.compo
 @Injectable()
 export class GroupsService {
   // message: string;
+<<<<<<< HEAD
   groupsUrl = '/api/groups';  // URL to groups api
+=======
+  private groupsUrl = '/api/groups';  // URL to groups api
+  tripsUrl = '/api/trips';  // URL to trips api
+>>>>>>> c33f8f55ebecaee055b762c85d839e568ac5bfa8
   private handleError: HandleError;
 
   constructor(

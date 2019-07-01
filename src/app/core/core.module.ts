@@ -18,6 +18,19 @@ import {
   IconsModule,
   ModalModule
 } from 'angular-bootstrap-md';
+<<<<<<< HEAD
+=======
+
+import { WidgetComponent } from './components/widget/widget.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DemoComponent } from 'src/app/calendar/calendar.component';
+
+>>>>>>> c33f8f55ebecaee055b762c85d839e568ac5bfa8
 
 
 
@@ -31,7 +44,15 @@ import {
     CardsFreeModule,
     ButtonsModule,
     GroupsModule,
-    FormsModule
+    FormsModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
+    // NoopAnimationsModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     ProfileComponent,
@@ -41,12 +62,14 @@ import {
     DashComponent,
     NotFoundComponent,
     WidgetComponent,
+    DemoComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     MainComponent,
     WidgetComponent,
+    DemoComponent,
   ]
 })
 export class CoreModule { }

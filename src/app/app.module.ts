@@ -21,12 +21,11 @@ import { GroupNewComponent } from './group-new/group-new.component';
 import { GroupFormComponent } from './group-form/group-form.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { CardsFreeModule } from 'angular-bootstrap-md';
+import { AccountModule } from './account/account.module';
 import { MessageService } from './message.service';
 import { ChatComponent } from './chat/chat.component';
 
-
 @NgModule({
-  declarations: [AppComponent, GroupDetailComponent, GroupFormComponent, SuccessAlertComponent, GroupNewComponent, ChatComponent],
   imports: [
     CardsFreeModule.forRoot(),
     GroupsModule,
@@ -39,10 +38,19 @@ import { ChatComponent } from './chat/chat.component';
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
     GroupUsersModule,
-    ModalModule
+    ModalModule,
+    AccountModule,
   ],
+  declarations: [
+    AppComponent,
+    GroupDetailComponent, 
+    GroupFormComponent, 
+    SuccessAlertComponent, 
+    GroupNewComponent,
+    ChatComponent],
   providers: [HttpErrorHandler, ChatService, MessageService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule {}
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AUTH_CONFIG } from '../../auth0-variables';
+import { AUTH_CONFIG } from '../../services/auth0.variables';
 import { AuthService } from '../../services/auth.service';
 import { map } from 'rxjs/operators';
 
