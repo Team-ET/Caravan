@@ -18,8 +18,6 @@ import {
   IconsModule,
   ModalModule
 } from 'angular-bootstrap-md';
-<<<<<<< HEAD
-=======
 
 import { WidgetComponent } from './components/widget/widget.component';
 import { FlatpickrModule } from 'angularx-flatpickr';
@@ -30,7 +28,6 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoComponent } from 'src/app/calendar/calendar.component';
 
->>>>>>> c33f8f55ebecaee055b762c85d839e568ac5bfa8
 
 
 
