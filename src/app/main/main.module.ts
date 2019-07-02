@@ -53,6 +53,8 @@ import { DemoComponent } from 'src/app/calendar/calendar.component';
     BrowserAnimationsModule,
   ],
   declarations: [
+    ProfilePictureComponent,
+    NavComponent,
     SearchComponent,
     ProfileComponent,
     HeaderComponent,

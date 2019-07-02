@@ -69,5 +69,17 @@ const Message = sequelize.define('message', {
 Message.belongsTo(User);
 Message.belongsTo(Group);
 
+const Reviews = sequelize.define('reviews', {
+  stars: Sequelize.INTEGER,
+  comment: Sequelize.STRING,
+  reviewer: Sequelize.STRING,
+});
+Reviews.belongsTo(User);
+
+const References = sequelize.define('references', {
+  comment: Sequelize.STRING,
+  referrer: Sequelize.STRING
+});
+References.belongsTo(User);
 
 module.exports = { User, Group, User_group, Values, Message, Photo }; 
