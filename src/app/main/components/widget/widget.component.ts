@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WidgetService } from './widget.service';
-
 import { Photos } from 'src/app/models/photos';
 
 @Component({

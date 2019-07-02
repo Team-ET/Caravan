@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule} from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -12,7 +13,6 @@ import {
   CarouselModule,
   ButtonsModule,
   IconsModule,
-  ModalModule
 } from 'angular-bootstrap-md';
 import { RouterModule } from '@angular/router';
 import { DashComponent } from './components/dash/dash.component';
@@ -30,7 +30,6 @@ import { DemoComponent } from 'src/app/calendar/calendar.component';
 
 
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -42,7 +41,7 @@ import { DemoComponent } from 'src/app/calendar/calendar.component';
     ButtonsModule,
     GroupsModule,
     CarouselModule,
-    // FormsModule,
+    FormsModule,
     NgbModalModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({

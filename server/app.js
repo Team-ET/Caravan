@@ -22,16 +22,11 @@ const { storeMessage, isGroupMember } = require('./helpers');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-<<<<<<< HEAD
-app.use(express.static(path.join(__dirname, './dist/CaravanApp')));
-app.use('/api', api) // routes to api file endpoints
-=======
 app.use(express.static(path.join(__dirname, './src')));
 app.use('/api/groups', groups) // routes to api groups file endpoints
 app.use('/api/users', users) // routes to api users file endpoints
 app.use('/api/photos', photos) // routes to api photos file endpoints
 app.use('/api/watson', watson) // routes to api watson file endpoints
->>>>>>> 671f9877f1e79f98349443d07b73c8ed22fbd45a
 // app.use(cors());
 
 app.get('/twitter', (req, res) => {
@@ -65,9 +60,5 @@ io.on('connection', (socket) => {
 
 
 server.listen(3000, () => {
-<<<<<<< HEAD
-  console.log(`started on port:. The Angular app will be built and served at http://localhost:3000.`);
-=======
   console.log(`started on port 3000. The Angular app will be built and served at http://localhost:4200.`);
->>>>>>> 671f9877f1e79f98349443d07b73c8ed22fbd45a
 });
