@@ -86,18 +86,17 @@ router.get('/:id/users', (req, res) => {
 });
 
 // GET user groups by email
-router.get('/trips', (req, res) => {
-  console.log('hit');
-  // findAllGroups()
-  //   .then((group) => {
-  //     const groups = [group[0], group[1], group[2]];
-  //     console.log(groups);
-  //     res.send(groups);
-  //   })
-  //   .catch(err => {
-  //     console.error(err);
-  //     res.sendStatus(500);
-  //   })
+router.get('/mytrips', (req, res) => {
+  findAllGroups()
+    .then((group) => {
+      // res.send(group)
+      const groups = [group[0], group[1], group[2]];
+      res.send(groups);
+    })
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    })
   // findUser(req.body.email)
   //   .then(user => findUserGroups(user.id))
   //   .then(data => {

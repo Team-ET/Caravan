@@ -14,7 +14,8 @@ import { ReferenceComponent } from './components/reference/reference.component';
 import { VerificationComponent } from './components/verification/verification.component';
 import { ReviewComponent } from './components/review/review.component';
 import { BarRatingModule } from "ngx-bar-rating";
-import { AccountComponent } from './account.component'
+import { AccountComponent } from './account.component';
+
 
 @NgModule({
   declarations: [ReferenceComponent, VerificationComponent, ReviewComponent, AccountComponent],

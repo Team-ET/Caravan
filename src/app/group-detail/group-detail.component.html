@@ -8,16 +8,16 @@
     Budget: $$$<br/>
     Overall Compatibility: 90%<br/>
   </p>
-  <div *ngIf="group.id !== 4">
+  <div *ngIf="group.id !== 5">
     <!--Request Button-->
     <div>
       <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
       (click)="frame.show()" mdbWavesEffect>Request to Join</button>
     </div>
   </div>
-  <div>
-  <!-- <div *ngIf="group.id === 4"> -->
-    <!--Chat-->
+  <!-- <div> -->
+  <!--Chat-->
+  <div *ngIf="group.id === 5">
     <div>
       <app-chat [groupId]='groupId'></app-chat>
     </div>

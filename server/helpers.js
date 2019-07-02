@@ -34,7 +34,7 @@ const getMessages = groupId => {
   })
 }
 //function for getting all Groups from the db
-const findAllGroups = groups =>
+const findAllGroups = () =>
  Group.findAll({
  });
 // function for getting all Users from the db

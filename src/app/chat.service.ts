@@ -49,8 +49,8 @@ export class ChatService {
     });
   }
 
-  public sendMessage(text: string, user: any, groupId: number) {
-    this.socket.emit('new-message', {text, user: user.name, groupId});
+  public sendMessage(text: string, username: string, groupId: number) {
+    this.socket.emit('new-message', {text, username, groupId});
   }
 
   public getMessages = () => {

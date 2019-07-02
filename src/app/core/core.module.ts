@@ -19,7 +19,6 @@ import {
   ModalModule
 } from 'angular-bootstrap-md';
 
-import { WidgetComponent } from './components/widget/widget.component';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';

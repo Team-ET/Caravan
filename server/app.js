@@ -53,8 +53,8 @@ io.on('connection', (socket) => {
   });
   // const { query } = socket.handshake;
   socket.on('new-message', (message) => {
-    // storeMessage(message);
     io.sockets.to(message.groupId).emit('new-message', message);
+    storeMessage(message);
   });
 });//test
 

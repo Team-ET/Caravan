@@ -29,9 +29,10 @@ constructor(public widgetService: WidgetService) { }
     
     document.getElementById("upload_widget").addEventListener("click", function(){
         myWidget.open();
-    });//test
+    });
     
   }
+
   getPhotos(): void {
     this.widgetService.getPhotos()
       .subscribe(photos => {

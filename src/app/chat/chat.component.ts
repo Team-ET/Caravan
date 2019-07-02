@@ -54,7 +54,7 @@ export class ChatComponent implements OnInit {
 
   // send a message via sockets
   sendMessage() {
-    this.chatService.sendMessage(this.text, this.profile, this.groupId);
+    this.chatService.sendMessage(this.text, this.profile.name, this.groupId);
     this.text = '';
   }
 

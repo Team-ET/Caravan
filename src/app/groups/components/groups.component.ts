@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Group } from '../../models/group';
 import { GroupsService } from '../services/groups.service';
+import { mockGroup } from '../services/mockGroup';
 
 @Component({
   selector: 'app-groups',
@@ -10,13 +11,14 @@ import { GroupsService } from '../services/groups.service';
 })
 export class GroupsComponent implements OnInit {
   groups: Group[];
-  trips: Group[];
+  // trips: Group[];
+  trips: Group[] = [];
 
   constructor(private groupsService: GroupsService) { }
 
   ngOnInit() {
     this.getGroupMatches();
-    // this.getUserTrips();
+    this.getUserTrips();
   }
 
   getGroupMatches(): void {
@@ -31,7 +33,8 @@ export class GroupsComponent implements OnInit {
     this.groupsService.getUserTrips()
       .subscribe(trips => {
         console.log('getting trips', trips);
-        this.trips = trips;
+        // this.trips = trips;
+        this.trips.push(mockGroup);
       });
   }
 
