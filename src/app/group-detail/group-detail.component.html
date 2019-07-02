@@ -1,9 +1,8 @@
+<div class="contianer"></div>
 <mdb-card>
 <ng-template [ngIf]="group">
   <h2>{{group.name}} Details</h2>
-  <div class="row justify-content-md-center">
   <app-group-users [groupId]='groupId'></app-group-users>
-  </div>
   <p>Dates: {{group.date_start}} - {{group.date_end}}<br/>
     Budget: $$$<br/>
     Overall Compatibility: 90%<br/>
@@ -20,6 +19,7 @@
   <div *ngIf="group.id === 5">
     <div>
       <app-chat [groupId]='groupId'></app-chat>
+      <app-calendar></app-calendar>
     </div>
   </div>
   <!-- <div *ngIf="condition; then thenBlock else elseBlock"></div>
@@ -67,7 +67,7 @@
           data-dismiss="modal">Take Me Back to My Dashboard</a>
       </div>
     </div>
-    <!--/.Content-->
+    <!--/.Content -->
   </div>
 </div>
 </mdb-card>

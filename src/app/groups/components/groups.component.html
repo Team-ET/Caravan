@@ -1,7 +1,9 @@
+<div class="container">
 <!-- Start of Group Card -->
-      <h3>Highest Matched Groups</h3>
-      <div class="row justify-content-md-center">
-  <mdb-card *ngFor="let group of groups" class="col-sm">
+<div class="container">    
+<h3>Highest Matched Groups</h3>
+      <div class="row">
+  <mdb-card *ngFor="let group of groups" class="col-4">
           <mdb-card-img [src]='group.picture'></mdb-card-img>
         <mdb-card-body>
           <mdb-card-title routerLink="/detail/{{group.id}}">
@@ -19,15 +21,15 @@
               </div>
           </div>
             </div>
-        <!-- Percentage Circle -->
+        <!-- Percentage Circle --->
         </mdb-card-body>
         </mdb-card>
-        </div>
-    <a href="#" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
+    <a routerLink="#" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
 <!-- End of Group Card -->
-
+</div>
+</div>
 <div class="spacer1"></div>
-
+<div class="cotainer">
   <!-- Start of Trip Card -->
   <div class="trips">
     <h3>My Trips</h3>
@@ -44,5 +46,10 @@
         </mdb-card-body>
       </mdb-card>
       <!-- End of Trip Card -->
+    </div>
+    <div class="row justify-content-center">
       <a href="/group/signup" mdbBtn color="primary">Create a Group</a>
+</div>
+</div>
+</div>
 </div>
