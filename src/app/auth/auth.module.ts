@@ -5,7 +5,8 @@ import { AuthService } from './services/auth.service';
 import { 
   InputsModule, 
   ButtonsModule, 
-  CardsFreeModule, 
+  CardsFreeModule,
+  CarouselModule, 
   IconsModule, 
   WavesModule, 
   InputUtilitiesModule } from 'angular-bootstrap-md';
@@ -25,6 +26,7 @@ import { PingComponent } from './components/ping/ping.component';
     WavesModule,
     RouterModule,
     IconsModule,
+    CarouselModule,
   ],
   declarations: [LoginComponent, PingComponent,],
   providers: [AuthService]

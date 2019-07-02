@@ -4,14 +4,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from '@angular/common/http';
-
 import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
-import { CoreModule } from './core/core.module';
+import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
 import { GroupsModule } from './groups/groups.module';
-
 import { ROUTES } from "./app.routes";
-
 import { HttpErrorHandler } from './http-error-handler.service';
 import { ChatService } from './chat.service';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
@@ -31,7 +28,7 @@ import { ChatComponent } from './chat/chat.component';
     GroupsModule,
     MDBBootstrapModule.forRoot(),
     AuthModule,
-    CoreModule,
+    MainModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
