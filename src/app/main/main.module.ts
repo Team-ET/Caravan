@@ -16,10 +16,19 @@ import {
 } from 'angular-bootstrap-md';
 import { RouterModule } from '@angular/router';
 import { DashComponent } from './components/dash/dash.component';
-import { WidgetComponent } from './components/widget/widget.component';
 import { NavComponent } from './components/nav/nav.component'
 import { SearchComponent } from './components/search/search.component';
 import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
+import { WidgetComponent } from './components/widget/widget.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DemoComponent } from 'src/app/calendar/calendar.component';
+
+
 
 
 @NgModule({
@@ -32,7 +41,16 @@ import { ProfilePictureComponent } from './components/profile-picture/profile-pi
     CardsFreeModule,
     ButtonsModule,
     GroupsModule,
-    CarouselModule
+    CarouselModule,
+    // FormsModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
+    // NoopAnimationsModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     SearchComponent,
@@ -42,8 +60,7 @@ import { ProfilePictureComponent } from './components/profile-picture/profile-pi
     MainComponent,
     DashComponent,
     WidgetComponent,
-    NavComponent,
-    ProfilePictureComponent
+    DemoComponent,
   ],
   exports: [
     HeaderComponent,
@@ -51,6 +68,7 @@ import { ProfilePictureComponent } from './components/profile-picture/profile-pi
     MainComponent,
     WidgetComponent,
     NavComponent,
+    DemoComponent,
   ]
 })
 export class MainModule {}

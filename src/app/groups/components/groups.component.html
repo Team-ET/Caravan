@@ -1,6 +1,7 @@
 <!-- Start of Group Card -->
       <h3>Highest Matched Groups</h3>
-  <mdb-card *ngFor="let group of groups">
+      <div class="row justify-content-md-center">
+  <mdb-card *ngFor="let group of groups" class="col-sm">
           <mdb-card-img [src]='group.picture'></mdb-card-img>
         <mdb-card-body>
           <mdb-card-title routerLink="/detail/{{group.id}}">
