@@ -51,8 +51,12 @@
     "mysql2": "^1.6.5",
     "ngx-bar-rating": "^1.1.0",
     "nodemon": "^1.19.1",
+<<<<<<< HEAD
     "sequelize": "^5.9.1",
     "socket.io": "^2.2.0",
+=======
+    "sequelize": "^5.9.0",
+>>>>>>> 671f9877f1e79f98349443d07b73c8ed22fbd45a
     "socket.io-client": "^2.2.0",
     "tedious": "^6.2.0",
     "tslib": "^1.9.0",
