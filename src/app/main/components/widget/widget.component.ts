@@ -4,7 +4,7 @@ import { WidgetService } from './widget.service';
 import { Photos } from 'src/app/models/photos';
 
 
-
+//
 
 @Component({
   selector: 'app-widget',

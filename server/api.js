@@ -20,7 +20,6 @@ const {
   clientErrorHandler } = require('../server/helpers.js');
 
 app.use(clientErrorHandler) // handles error for Angular client
-
 // GET all groups
 router.get('/groups', (req, res) => {
   findAllGroups()

@@ -7,3 +7,4 @@ export interface User {
   photoUrl: string;
   isNewUser?: boolean;
 }
+//
