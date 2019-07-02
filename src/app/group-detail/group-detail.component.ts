@@ -15,7 +15,7 @@ export class GroupDetailComponent implements OnInit {
 
   constructor(readonly route:ActivatedRoute, private groupService:GroupsService) {
 
-   }
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {

@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { DashComponent } from './components/dash/dash.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
+import { WidgetComponent } from './components/widget/widget.component';
 import {
   NavbarModule,
   DropdownModule,
@@ -18,7 +19,6 @@ import {
   ModalModule
 } from 'angular-bootstrap-md';
 
-import { WidgetComponent } from './components/widget/widget.component';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';

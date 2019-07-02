@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cloudinary } from 'cloudinary-core';
 import { WidgetService } from './widget.service';
-
 import { Photos } from 'src/app/models/photos';
-
-
-
 
 @Component({
   selector: 'app-widget',
@@ -20,23 +16,23 @@ constructor(public widgetService: WidgetService) { }
   ngOnInit() {
     // this.getPhotos();
   }
-   myClick() {
-    // console.log('DO I CLICK')
-    let myWidget = cloudinary.createUploadWidget({
-      cloudName: 'sc0ttiee', 
+  myClick() {
+    let myWidget = Cloudinary.createUploadWidget({
+      cloudName: 'sc0ttiee',
       uploadPreset: 'atiwd1dv'}, async (error, result) => { 
-        if (!error && result && result.event === "success") { 
+        if (!error && result && result.event === 'success') { 
           console.log('Done! Here is the image info: ', result.info); 
           const photoObject = await this.widgetService.savePhoto(result.info);
         }
       }
-    )
+    );
     
-     document.getElementById("upload_widget").addEventListener("click", function(){
+    document.getElementById("upload_widget").addEventListener("click", function(){
         myWidget.open();
-      });//test
+    });
     
   }
+
   getPhotos(): void {
     this.widgetService.getPhotos()
       .subscribe(photos => {

@@ -8,17 +8,18 @@
     Budget: $$$<br/>
     Overall Compatibility: 90%<br/>
   </p>
-  <div *ngIf="group.id !== 4">
+  <div *ngIf="group.id !== 5">
     <!--Request Button-->
     <div>
       <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
       (click)="frame.show()" mdbWavesEffect>Request to Join</button>
     </div>
   </div>
-  <div *ngIf="group.id === 4">
-    <!--Chat-->
+  <!-- <div> -->
+  <!--Chat-->
+  <div *ngIf="group.id === 5">
     <div>
-      <app-chat></app-chat>
+      <app-chat [groupId]='groupId'></app-chat>
     </div>
   </div>
   <!-- <div *ngIf="condition; then thenBlock else elseBlock"></div>
@@ -56,7 +57,7 @@
       <div class="modal-body">
         <div class="text-center">
           <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
-          <p>Your request to join {{group.name}} has been sent!</p>
+          <p>Your request to join {{group?.name}} has been sent!</p>
         </div>
       </div>
 
