@@ -1,17 +1,11 @@
-const axios = require('axios');
-
-
 const { User, Group, Message, User_group, Values, Photo } = require('../database/index.js');
-
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-
-
 // function for storing user in db
-const storeUser = (name, email, picture, pers_test, pers_percent) => User.findOrCreate({
-  where: { email },
-  defaults: { name, email, picture, pers_test, pers_percent }
+const storeUser = (id_api, name, picture) => User.findOrCreate({
+  where: { id_api },
+  defaults: { id_api, name, picture }
 });
 //function for storing group in db
 const storeGroup = (name, destination, date_start, date_end) => Group.findOrCreate({
@@ -30,9 +24,14 @@ const findPhotos = (photo) => {
   return Photo.findAll({})
 };
 // store a message
-const storeMessage = text => {
-  console.log(text);
-  Message.create({ text });
+const storeMessage = message => {
+  const { text, username, groupId } = message;
+  console.log(message);
+  Message.create({
+    text,
+    username,
+    groupId
+   });
 }
 // get all of a group's messages
 const getMessages = groupId => {
@@ -41,7 +40,7 @@ const getMessages = groupId => {
   })
 }
 //function for getting all Groups from the db
-const findAllGroups = groups =>
+const findAllGroups = () =>
  Group.findAll({
  });
 // function for getting all Users from the db
@@ -50,8 +49,8 @@ const findAllUsers = (users) =>
  );
 
 // find user by email
-const findUser = email => User.findOne({
-  where: { email }
+const findUser = id_api => User.findOne({
+  where: { id_api }
 });
 
 // find group by id
@@ -158,6 +157,17 @@ const findGroupPhoto = (photo) => {
   })
 }
 
+// check if user is a member of a group
+const isGroupMember = (name, groupId) => {
+  console.log('hit');
+  // User.findOne({
+  //   where: { name: name }
+  // })
+  // .then(user => User_group.findAll({groupId: groupId}))
+  // .then(userGroups => console.log(userGroups))
+  // .catch(err => console.error(err));
+}
+
 module.exports = {
   storeUser,
   storeGroup,
@@ -178,5 +188,6 @@ module.exports = {
   findGroupPhoto,
   storePhoto,
   findPhotos,
-  storeMessage
+  storeMessage,
+  isGroupMember
 };

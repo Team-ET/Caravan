@@ -9,6 +9,7 @@
 
 # auth
 src/app/auth/services/auth0.variables.ts
+src/app/cloudinary.variables.ts
 .env
 
 # dependencies
@@ -54,3 +55,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+/config.js
