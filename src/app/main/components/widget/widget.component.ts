@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD:src/app/core/components/widget/widget.component.ts
 // import { Cloudinary } from 'cloudinary-core';
-=======
->>>>>>> 1cf1a1865779f2b4bc1238f7b1a170ba7a585b97:src/app/main/components/widget/widget.component.ts
 import { WidgetService } from './widget.service';
 import { Photos } from 'src/app/models/photos';
 

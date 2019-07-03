@@ -52,14 +52,7 @@ import { DemoComponent } from 'src/app/calendar/calendar.component';
     BrowserAnimationsModule,
   ],
   declarations: [
-<<<<<<< HEAD:src/app/core/core.module.ts
     ProfileComponent,//test
-=======
-    ProfilePictureComponent,
-    NavComponent,
-    SearchComponent,
-    ProfileComponent,
->>>>>>> 1cf1a1865779f2b4bc1238f7b1a170ba7a585b97:src/app/main/main.module.ts
     HeaderComponent,
     FooterComponent,
     MainComponent,
