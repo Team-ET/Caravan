@@ -36,7 +36,7 @@ import { DemoComponent } from 'src/app/calendar/calendar.component';
     NavbarModule,
     IconsModule,
     RouterModule,
-    DropdownModule.forRoot(),
+    DropdownModule.forRoot(),//test
     CardsFreeModule,
     ButtonsModule,
     GroupsModule,

@@ -9,7 +9,7 @@ import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { GroupsModule } from './groups/groups.module';
-
+//test
 import { ROUTES } from "./app.routes";
 
 import { HttpErrorHandler } from './http-error-handler.service';
