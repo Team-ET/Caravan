@@ -11,14 +11,17 @@ import { mockGroup } from '../services/mockGroup';
 })
 export class GroupsComponent implements OnInit {
   groups: Group[];
-  // trips: Group[];
-  trips: Group[] = [];
+  trips: Group[];
+  sub: string;
+  // trips: Group[] = [];
 
-  constructor(private groupsService: GroupsService) { }
+  constructor(private groupsService: GroupsService) { 
+    this.sub = 'mock-api-id';
+  }
 
   ngOnInit() {
     this.getGroupMatches();
-    this.getUserTrips();
+    this.getUserTrips(this.sub);
   }
 
   getGroupMatches(): void {
@@ -29,12 +32,12 @@ export class GroupsComponent implements OnInit {
       });
   }
 
-  getUserTrips(): void {
-    this.groupsService.getUserTrips()
+  getUserTrips(sub): void {
+    this.groupsService.getUserTrips(sub)
       .subscribe(trips => {
         console.log('getting trips', trips);
-        // this.trips = trips;
-        this.trips.push(mockGroup);
+        this.trips = trips;
+        // this.trips.push(mockGroup);
       });
   }
 

@@ -14,9 +14,10 @@ app.use(clientErrorHandler) // handles error for Angular client
 
 // Create user
 router.post('/', (req, res) => {
-  const { name, email, picture, pers_test, pers_percent } = req.body
-  storeUser(name, email, picture, pers_test, pers_percent)
+  const { sub, name, picture } = req.body
+  storeUser(sub, name, picture)
     .then(() => {
+      console.log('STORED?');
       res.send(201)
     })
     .catch(err => {

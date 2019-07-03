@@ -68,10 +68,13 @@ router.get('/:id/messages', (req, res) => {
 });
 
 // GET a group's users by group id
-router.get('/:id/users', (req, res) => {
+router.get('/:id/users', (req, res, next) => {
   const groupId = req.params.id;
   findGroupUsers(groupId)
     .then(data => {
+      if (data.length === 0) {
+        return [];
+      }
       const userArr = data.map(data => data.dataValues.userId);
       return findUsers(userArr);
     })
@@ -95,7 +98,8 @@ router.get('/:id/trips', (req, res) => {
     })
     .then(groups => {
       console.log('GROUPS', groups);
-      res.send(groups);
+      const tripsArr = groups.map(group => group.dataValues);
+      res.send(tripsArr);
     })
     .catch(err => {
       console.error(err);

@@ -1,33 +1,32 @@
 <div class="container">
 <!-- Start of Group Card -->
-<div class="container">    
-<h3>Highest Matched Groups</h3>
-      <div class="row">
-  <mdb-card *ngFor="let group of groups" class="col-4">
-          <mdb-card-img [src]='group.picture'></mdb-card-img>
+  <div class="container">
+  <h3>Highest Matched Groups</h3>
+    <div class="row">
+      <mdb-card *ngFor="let group of groups" class="col-4">
+        <mdb-card-img [src]='group.picture'></mdb-card-img>
         <mdb-card-body>
-          <mdb-card-title routerLink="/detail/{{group.id}}">
-            <h3>{{ group.name }}</h3>
-          </mdb-card-title>
-          <mdb-card-text>
-            <h4>{{ group.destination }}</h4>
-          </mdb-card-text>
-          
-          <!-- Percentage Circle -->
-          <div class="circle-container">
-            <div id="activeBorder" class="active-border">
-              <div id="circle" class="circle">
-                <span class="prec 270" id="prec">90%</span>
-              </div>
-          </div>
+        <mdb-card-title routerLink="/detail/{{group.id}}">
+          <h3>{{ group.name }}</h3>
+        </mdb-card-title>
+        <mdb-card-text>
+          <h4>{{ group.destination }}</h4>
+        </mdb-card-text>
+        <!-- Percentage Circle -->
+        <div class="circle-container">
+          <div id="activeBorder" class="active-border">
+            <div id="circle" class="circle">
+              <span class="prec 270" id="prec">90%</span>
             </div>
+        </div>
+        </div>
         <!-- Percentage Circle --->
         </mdb-card-body>
-        </mdb-card>
-    <a routerLink="#" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
+        <a routerLink="#" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
+      </mdb-card>
+    </div>
+  </div>
 <!-- End of Group Card -->
-</div>
-</div>
 <div class="spacer1"></div>
 <div class="cotainer">
   <!-- Start of Trip Card -->
@@ -37,19 +36,19 @@
       <mdb-card *ngFor="let trip of trips" [class.selected]="trip === selectedTrip" (click)="onSelect(trip)" class="col-4">
         <mdb-card-img [src]='trip.picture'></mdb-card-img>
         <mdb-card-body>
-          <mdb-card-title routerLink="/detail/{{trip.id}}">
-            <h3>{{ trip.name }}</h3>
-          </mdb-card-title>
-          <mdb-card-text>
-            <h4>{{ trip.destination }}</h4>
-          </mdb-card-text>
+        <mdb-card-title routerLink="/my-trips/{{trip.id}}">
+          <h3>{{ trip.name }}</h3>
+        </mdb-card-title>
+        <mdb-card-text>
+          <h4>{{ trip.destination }}</h4>
+        </mdb-card-text>
         </mdb-card-body>
       </mdb-card>
       <!-- End of Trip Card -->
     </div>
     <div class="row justify-content-center">
       <a href="/group/signup" mdbBtn color="primary">Create a Group</a>
-</div>
-</div>
+    </div>
+  </div>
 </div>
 </div>

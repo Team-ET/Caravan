@@ -1,0 +1,21 @@
+<div class="container">
+  <mdb-card>
+    <ng-template [ngIf]="group">
+      <div class="container">
+        <h2>{{group.name}} Details</h2>
+        <app-group-users [groupId]='groupId'></app-group-users>
+        <p>Dates: {{group.date_start}} - {{group.date_end}}<br/>
+        Budget: $$$<br/>
+        Overall Compatibility: 90%<br/>
+        </p>
+      </div>
+      <!--Group Chat-->
+      <div class="container">
+        <app-chat [groupId]='groupId'></app-chat>
+      </div>
+      <div>
+        <app-calendar></app-calendar>
+      </div>
+    </ng-template>
+</mdb-card>
+</div>

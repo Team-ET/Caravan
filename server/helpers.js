@@ -3,9 +3,9 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 // function for storing user in db
-const storeUser = (name, email, picture, pers_test, pers_percent) => User.findOrCreate({
-  where: { email },
-  defaults: { name, email, picture, pers_test, pers_percent }
+const storeUser = (id_api, name, picture) => User.findOrCreate({
+  where: { id_api },
+  defaults: { id_api, name, picture }
 });
 //function for storing group in db
 const storeGroup = (name, destination, date_start, date_end) => Group.findOrCreate({
@@ -25,7 +25,13 @@ const findPhotos = (photo) => {
 };
 // store a message
 const storeMessage = message => {
-  Message.create({ message });
+  const { text, username, groupId } = message;
+  console.log(message);
+  Message.create({
+    text,
+    username,
+    groupId
+   });
 }
 // get all of a group's messages
 const getMessages = groupId => {
@@ -43,8 +49,8 @@ const findAllUsers = (users) =>
  );
 
 // find user by email
-const findUser = email => User.findOne({
-  where: { email }
+const findUser = id_api => User.findOne({
+  where: { id_api }
 });
 
 // find group by id

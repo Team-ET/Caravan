@@ -1,4 +1,4 @@
-<div class="contianer"></div>
+<div class="container">
 <mdb-card>
 <ng-template [ngIf]="group">
   <h2>{{group.name}} Details</h2>
@@ -15,31 +15,6 @@
     </div>
   </div>
   <!-- <div> -->
-  <!--Chat-->
-  <div *ngIf="group.id === 5">
-    <div>
-      <app-chat [groupId]='groupId'></app-chat>
-      <app-calendar></app-calendar>
-    </div>
-  </div>
-  <!-- <div *ngIf="condition; then thenBlock else elseBlock"></div>
-    <ng-template #thenBlock>
-      <app-chat></app-chat>
-    </ng-template>
-    <ng-template #elseBlock>
-      <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
-      (click)="frame.show()" mdbWavesEffect>Request to Join</button>
-    </ng-template>
-  </div> -->
-  <!--Request Button-->
-    <!-- <div>
-      <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
-      (click)="frame.show()" mdbWavesEffect>Request to Join</button>
-    </div> -->
-    <!--Chat-->
-    <!-- <div>
-      <app-chat></app-chat>
-    </div> -->
 </ng-template>
 <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
   aria-labelledby="myModalLabel" aria-hidden="true" (open)="onOpen($event)">
@@ -71,3 +46,4 @@
   </div>
 </div>
 </mdb-card>
+</div>

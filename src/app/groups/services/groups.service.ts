@@ -53,8 +53,8 @@ export class GroupsService {
   // }
 
   // GET a user's trips
-  getUserTrips(): Observable<Group[]> {
-    return this.http.get<Group[]>(`${this.groupsUrl}/trips`)
+  getUserTrips(sub: string): Observable<Group[]> {
+    return this.http.get<Group[]>(`${this.groupsUrl}/${sub}/trips`)
       .pipe(
         catchError(this.handleError('getTrips', []))
       );
