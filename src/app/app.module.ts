@@ -21,6 +21,10 @@ import { CardsFreeModule } from 'angular-bootstrap-md';
 import { AccountModule } from './account/account.module';
 import { MessageService } from './message.service';
 import { ChatComponent } from './chat/chat.component';
+import { UserGroupDetailComponent } from './user-group-detail/user-group-detail.component';
+import { CloudinaryModule } from '@cloudinary/angular-5.x';
+import { cloudinaryOptions } from './cloudinary.variables';
+import * as  Cloudinary from 'cloudinary-core';
 
 @NgModule({
   imports: [
@@ -37,17 +41,18 @@ import { ChatComponent } from './chat/chat.component';
     GroupUsersModule,
     ModalModule,
     AccountModule,
+    CloudinaryModule.forRoot(Cloudinary, cloudinaryOptions)
   ],
   declarations: [
     AppComponent,
-    GroupDetailComponent, 
-    GroupFormComponent, 
-    SuccessAlertComponent, 
+    GroupDetailComponent,
+    GroupFormComponent,
+    SuccessAlertComponent,
     GroupNewComponent,
-    ChatComponent],
+    ChatComponent,
+    UserGroupDetailComponent],
   providers: [HttpErrorHandler, ChatService, MessageService],
   bootstrap: [AppComponent],
-  
 })
 export class AppModule {}
 

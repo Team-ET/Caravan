@@ -27,12 +27,14 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 // import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoComponent } from 'src/app/calendar/calendar.component';
-
-
+import { AuthModule } from '../auth/auth.module';
+import { AuthService } from '../auth/services/auth.service';
+import { ProfileService } from './components/profile/profile.service';
 
 @NgModule({
   imports: [
     CommonModule,
+    // AuthModule,
     NavbarModule,
     IconsModule,
     RouterModule,
@@ -70,6 +72,10 @@ import { DemoComponent } from 'src/app/calendar/calendar.component';
     WidgetComponent,
     NavComponent,
     DemoComponent,
+  ],
+  providers: [
+    AuthService,
+    ProfileService
   ]
 })
 export class MainModule {}
