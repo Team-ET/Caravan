@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+// import { Cloudinary } from 'cloudinary-core';
 import { WidgetService } from './widget.service';
 import { Photos } from 'src/app/models/photos';
+import { CLOUDNAME, PRESET } from 'config.js';
 
 @Component({
   selector: 'app-widget',
@@ -10,7 +12,7 @@ import { Photos } from 'src/app/models/photos';
 export class WidgetComponent implements OnInit {
 photos: Photos[];
   
-constructor(public widgetService: WidgetService) { }
+constructor(public widgetService: WidgetService) { }//test
 
   ngOnInit() {
   this.getPhotos();
@@ -18,8 +20,8 @@ constructor(public widgetService: WidgetService) { }
   myClick() {
     // console.log('DO I CLICK')
     let myWidget = cloudinary.createUploadWidget({
-      cloudName: 'sc0ttiee', 
-      uploadPreset: 'atiwd1dv'}, async (error, result) => { 
+      cloudName: CLOUDNAME, 
+      uploadPreset: PRESET }, async (error, result) => { 
         if (!error && result && result.event === "success") { 
           console.log('Done! Here is the image info: ', result.info); 
           const photoObject = await this.widgetService.savePhoto(result.info);

@@ -12,11 +12,11 @@ import {
   CardsFreeModule,
   CarouselModule,
   ButtonsModule,
-  IconsModule,
+  IconsModule,//test
 } from 'angular-bootstrap-md';
 import { RouterModule } from '@angular/router';
 import { DashComponent } from './components/dash/dash.component';
-import { NavComponent } from './components/nav/nav.component'
+import { NavComponent } from 'src/app/main/components/nav/nav.component'
 import { SearchComponent } from './components/search/search.component';
 import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { WidgetComponent } from './components/widget/widget.component';
@@ -38,7 +38,7 @@ import { ProfileService } from './components/profile/profile.service';
     NavbarModule,
     IconsModule,
     RouterModule,
-    DropdownModule.forRoot(),
+    DropdownModule.forRoot(),//test
     CardsFreeModule,
     ButtonsModule,
     GroupsModule,
@@ -54,16 +54,16 @@ import { ProfileService } from './components/profile/profile.service';
     BrowserAnimationsModule,
   ],
   declarations: [
-    ProfilePictureComponent,
-    NavComponent,
-    SearchComponent,
-    ProfileComponent,
+    ProfileComponent,//test
     HeaderComponent,
     FooterComponent,
     MainComponent,
     DashComponent,
     WidgetComponent,
     DemoComponent,
+    NavComponent,
+    ProfilePictureComponent,
+    SearchComponent,
   ],
   exports: [
     HeaderComponent,

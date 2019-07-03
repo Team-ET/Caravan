@@ -6,7 +6,8 @@ const {
   findUserPhoto,
   findAllPhotos,
   findPhotos,
-  clientErrorHandler
+  clientErrorHandler,
+  storePhoto
 } = require('../helpers');
 
 app.use(clientErrorHandler) // handles error for Angular client

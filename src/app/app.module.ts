@@ -8,6 +8,7 @@ import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
 import { GroupsModule } from './groups/groups.module';
+//test
 import { ROUTES } from "./app.routes";
 import { HttpErrorHandler } from './http-error-handler.service';
 import { ChatService } from './chat.service';
