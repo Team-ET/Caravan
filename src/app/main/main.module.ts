@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
+import { FormsModule} from '@angular/forms'
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { MainComponent } from './main/main.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { MainComponent } from './main.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GroupsModule } from '../groups/groups.module';
-import { RouterModule } from '@angular/router';
-import { DashComponent } from './components/dash/dash.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { FormsModule } from '@angular/forms';
 import {
   NavbarModule,
   DropdownModule,
   CardsFreeModule,
+  CarouselModule,
   ButtonsModule,
   IconsModule,
-  ModalModule
 } from 'angular-bootstrap-md';
-
+import { RouterModule } from '@angular/router';
+import { DashComponent } from './components/dash/dash.component';
+import { NavComponent } from './components/nav/nav.component'
+import { SearchComponent } from './components/search/search.component';
+import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { WidgetComponent } from './components/widget/widget.component';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -26,7 +27,6 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 // import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoComponent } from 'src/app/calendar/calendar.component';
-
 
 
 
@@ -40,6 +40,7 @@ import { DemoComponent } from 'src/app/calendar/calendar.component';
     CardsFreeModule,
     ButtonsModule,
     GroupsModule,
+    CarouselModule,
     FormsModule,
     NgbModalModule,
     FlatpickrModule.forRoot(),
@@ -51,12 +52,18 @@ import { DemoComponent } from 'src/app/calendar/calendar.component';
     BrowserAnimationsModule,
   ],
   declarations: [
+<<<<<<< HEAD:src/app/core/core.module.ts
     ProfileComponent,//test
+=======
+    ProfilePictureComponent,
+    NavComponent,
+    SearchComponent,
+    ProfileComponent,
+>>>>>>> 1cf1a1865779f2b4bc1238f7b1a170ba7a585b97:src/app/main/main.module.ts
     HeaderComponent,
     FooterComponent,
     MainComponent,
     DashComponent,
-    NotFoundComponent,
     WidgetComponent,
     DemoComponent,
   ],
@@ -65,7 +72,8 @@ import { DemoComponent } from 'src/app/calendar/calendar.component';
     FooterComponent,
     MainComponent,
     WidgetComponent,
+    NavComponent,
     DemoComponent,
   ]
 })
-export class CoreModule { }
+export class MainModule {}

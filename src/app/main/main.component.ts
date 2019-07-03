@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Cloudinary } from 'cloudinary-core';
 
 @Component({
   selector: 'app-main',
@@ -12,4 +11,5 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
   }
+
 }

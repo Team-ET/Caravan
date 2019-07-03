@@ -6,10 +6,6 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Photos } from 'src/app/models/photos';
 
-
-
-
-
 import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.component';
 import { HandleError, HttpErrorHandler } from 'src/app/http-error-handler.service';
 
@@ -18,7 +14,7 @@ import { HandleError, HttpErrorHandler } from 'src/app/http-error-handler.servic
   providedIn: 'root'
 })
 export class WidgetService {
-  photoUrl = '/api/photos'
+  photoUrl = '/api/photos';
   private handleError: HandleError;
 
   constructor(
@@ -29,7 +25,7 @@ export class WidgetService {
 
   async savePhoto(photo: any): Promise<void> {
     return this.http.post<void>(this.photoUrl, photo, {responseType: 'text' as 'json'})// specifying response type to avoid error
-      .toPromise()
+      .toPromise();
   }
 
   getPhotos(): Observable<Photos[]> {

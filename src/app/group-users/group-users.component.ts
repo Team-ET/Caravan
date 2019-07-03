@@ -25,7 +25,6 @@ export class GroupUsersComponent implements OnInit {
   loadUsers(groupId: number) {
     this.groupService.getGroupUsers(groupId).subscribe(result => {
       this.users = result;
-      console.log(result);
     });
   }
 
