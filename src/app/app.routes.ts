@@ -7,6 +7,7 @@ import { AuthGuard } from './auth/guards/auth.guard';
 import { GroupDetailComponent } from '../app/group-detail/group-detail.component';
 import { GroupFormComponent } from '../app/group-form/group-form.component';
 import { AccountComponent } from './account/account.component';
+import { UserGroupDetailComponent } from './user-group-detail/user-group-detail.component';
 
 export const ROUTES: Routes = [
   { path: '', component: LoginComponent},
@@ -15,6 +16,7 @@ export const ROUTES: Routes = [
   // { path: "trip", component: TripComponent, canActivate: [AuthGuard] },
   // { path: "insight", component: InsightComponent, canActivate: [AuthGuard] },
   { path: 'detail/:groupId', component: GroupDetailComponent },
+  { path: 'my-trips/:groupId', component: UserGroupDetailComponent},
   { path: 'group/signup', component: GroupFormComponent },
   { path: 'account', component: AccountComponent }
   // { path: "**", component: NotFoundComponent },

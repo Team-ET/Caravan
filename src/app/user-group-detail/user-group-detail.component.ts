@@ -4,25 +4,23 @@ import { Group } from '../models';
 import { GroupsService } from '../groups/services/groups.service';
 
 @Component({
-  selector: 'app-group-detail',
-  templateUrl: './group-detail.component.html',
-  styleUrls: ['./group-detail.component.scss'],
+  selector: 'app-user-group-detail',
+  templateUrl: './user-group-detail.component.html',
+  styleUrls: ['./user-group-detail.component.scss'],
   providers: [GroupsService]
 })
-export class GroupDetailComponent implements OnInit {
+export class UserGroupDetailComponent implements OnInit {
   groupId: number;
   group: Group; // model
 
   constructor(readonly route:ActivatedRoute, private groupService:GroupsService) {
-
-  }
-  
-  // subsribe to the the id param in the route, set it as groupId, and get group from database using groupId
-  ngOnInit() {
     this.route.params.subscribe(params => {
     this.groupId = params.groupId;
     this.getGroupById(this.groupId);
     });
+  }
+
+  ngOnInit() {
   }
 
   getGroupById(id: number) {

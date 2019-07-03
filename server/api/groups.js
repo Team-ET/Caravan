@@ -68,10 +68,13 @@ router.get('/:id/messages', (req, res) => {
 });
 
 // GET a group's users by group id
-router.get('/:id/users', (req, res) => {
+router.get('/:id/users', (req, res, next) => {
   const groupId = req.params.id;
   findGroupUsers(groupId)
     .then(data => {
+      if (data.length === 0) {
+        return [];
+      }
       const userArr = data.map(data => data.dataValues.userId);
       return findUsers(userArr);
     })
@@ -85,31 +88,23 @@ router.get('/:id/users', (req, res) => {
 });
 
 // GET user groups by email
-router.get('/mytrips', (req, res) => {
-  findAllGroups()
-    .then((group) => {
-      // res.send(group)
-      const groups = [group[0], group[1], group[2]];
-      res.send(groups);
+router.get('/:id/trips', (req, res) => {
+  findUser(req.params.id)
+    .then(user => findUserGroups(user.id))
+    .then(data => {
+      const groupArr = data.map(data => data.dataValues.groupId);
+      console.log('GROUPDATA', groupArr);
+      return findGroups(groupArr);
+    })
+    .then(groups => {
+      console.log('GROUPS', groups);
+      const tripsArr = groups.map(group => group.dataValues);
+      res.send(tripsArr);
     })
     .catch(err => {
       console.error(err);
       res.sendStatus(500);
     })
-  // findUser(req.body.email)
-  //   .then(user => findUserGroups(user.id))
-  //   .then(data => {
-  //     const groupArr = data.map(data => data.dataValues.groupId);
-  //     return findGroups(groupArr);
-  //   })
-  //   .then(groups => {
-  //     console.log(groups);
-  //     res.send(groups);
-  //   })
-  //   .catch(err => {
-  //     console.error(err);
-  //     res.sendStatus(500);
-  //   })
 });
 
 module.exports = router;
