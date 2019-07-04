@@ -1,3 +1,3 @@
-export * from './group';
+export * from './trip';
 export * from './message';
-export * from './user';
+export * from './member';

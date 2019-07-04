@@ -35,12 +35,12 @@ const getMessages = groupId => {
 }
 //function for getting all Groups from the db
 const findAllGroups = () =>
- Group.findAll({
- });
+Group.findAll({
+});
 // function for getting all Users from the db
 const findAllUsers = (users) =>
- User.findAll(
- );
+User.findAll(
+);
 
 // find user by email
 const findUser = email => User.findOne({

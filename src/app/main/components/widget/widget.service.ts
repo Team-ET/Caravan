@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Photos } from 'src/app/models/photos';
 
-import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.component';
-import { HandleError, HttpErrorHandler } from 'src/app/http-error-handler.service';
+import { SuccessAlertComponent } from 'src/app/main/components/success-alert/success-alert.component';
+import { HandleError, HttpErrorHandler } from 'src/app/main/services/http-error-handler.service';
 
 //test
 @Injectable({

@@ -4,24 +4,20 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from '@angular/common/http';
-import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule} from 'angular-bootstrap-md';
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
-import { GroupsModule } from './groups/groups.module';
+import { TripsModule } from './trips/trips.module';
 import { ROUTES } from "./app.routes";
-import { HttpErrorHandler } from './http-error-handler.service';
-import { ChatService } from './chat.service';
-import { Group } from './models';
-import { SuccessAlertComponent } from './success-alert/success-alert.component';
+import { Trip } from './models';
+import { SuccessAlertComponent } from './main/components/success-alert/success-alert.component';
 import { CardsFreeModule } from 'angular-bootstrap-md';
 import { AccountModule } from './account/account.module';
-import { MessageService } from './message.service';
-import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   imports: [
     CardsFreeModule.forRoot(),
-    GroupsModule,
+    TripsModule,
     MDBBootstrapModule.forRoot(),
     AuthModule,
     MainModule,
@@ -30,15 +26,11 @@ import { ChatComponent } from './chat/chat.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
-    GroupsModule,
-    ModalModule,
     AccountModule,
   ],
   declarations: [
     AppComponent,
-    SuccessAlertComponent,
-    ChatComponent],
-  providers: [HttpErrorHandler, ChatService, MessageService],
+  ],
   bootstrap: [AppComponent],
   
 })
