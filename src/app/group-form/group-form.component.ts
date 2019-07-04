@@ -21,14 +21,14 @@ export class GroupFormComponent implements OnInit {
   destination: string;
 
 
-  constructor(private groupService: GroupsService) { }
+  constructor(private groupService: GroupsService) {
+   }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
     const { name, date_end, date_start } = this.groupForm.value;
-    console.log(this.picture, this.destination);
     const formValues = {
       name,
       date_start,
@@ -36,25 +36,21 @@ export class GroupFormComponent implements OnInit {
       picture: this.picture,
       destination: this.destination
     }
-    console.log('FORMVALS', formValues);
     this.groupService.createGroup(formValues); // call create group method passing in the form values
-    console.log(this.groupForm);
     }
+
   onOpen(event: any) {
     console.log(event);
   }
 
   getPlaces() {
-    let input = <HTMLInputElement>document.getElementById('searchBar');
-    let autocomplete = new google.maps.places.Autocomplete(input);
+    const input = <HTMLInputElement>document.getElementById('searchBar');
+    const autocomplete = new google.maps.places.Autocomplete(input);
 
-    autocomplete.addListener('place_changed', function() {
-      let place = autocomplete.getPlace();
-      this.picture = place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500});
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      this.picture = place.photos[0].getUrl({maxWidth: 500, maxHeight: 500});
       this.destination = place.formatted_address;
-      console.log('PLACE', place, this.picture, this.destination);
-      // console.log(place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
-      // console.log(place.formatted_address);
-    })
+    });
   }
 }
