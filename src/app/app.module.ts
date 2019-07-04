@@ -8,7 +8,6 @@ import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
 import { GroupsModule } from './groups/groups.module';
-//test
 import { ROUTES } from "./app.routes";
 import { HttpErrorHandler } from './http-error-handler.service';
 import { ChatService } from './chat.service';
@@ -41,6 +40,10 @@ import * as Cloudinary from 'cloudinary-core';
     GroupUsersModule,
     ModalModule,
     AccountModule,
+<<<<<<< HEAD
+=======
+    // CloudinaryModule.forRoot(Cloudinary, cloudinaryOptions)
+>>>>>>> d9f924c8fde2ee6ac53a32319046366b79e7bf13
   ],
   declarations: [
     AppComponent,
