@@ -25,7 +25,7 @@ import { UserGroupDetailComponent } from './user-group-detail/user-group-detail.
 
 import * as Cloudinary from 'cloudinary-core';
 
-@NgModule({
+@NgModule({//test
   imports: [
     CardsFreeModule.forRoot(),
     GroupsModule,
@@ -40,10 +40,6 @@ import * as Cloudinary from 'cloudinary-core';
     GroupUsersModule,
     ModalModule,
     AccountModule,
-<<<<<<< HEAD
-=======
-    // CloudinaryModule.forRoot(Cloudinary, cloudinaryOptions)
->>>>>>> d9f924c8fde2ee6ac53a32319046366b79e7bf13
   ],
   declarations: [
     AppComponent,
