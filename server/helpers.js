@@ -2,17 +2,25 @@ const { User, Group, Message, User_group, Values, Photo } = require('../database
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-// function for storing user in db
+//storing user in db
 const storeUser = (id_api, name, picture) => User.findOrCreate({
   where: { id_api },
   defaults: { id_api, name, picture }
 });
-//function for storing group in db
+
+//storing group in db
 const storeGroup = (name, destination, date_start, date_end) => Group.findOrCreate({
   where: { name },
   defaults: { name, destination, date_start, date_end }
 });
-//function for storing photo
+
+//storing user id and group id in User_group table; adding user to a group
+const addUserToGroup = (userId, groupId, pending) => User_group.findOrCreate({
+  where: { userId, groupId },
+  defaults: { userId, groupId, pending }
+});
+
+//storing photo
 const storePhoto = async (photo) => {
   const imageObj = {
     image: photo.url
@@ -20,9 +28,6 @@ const storePhoto = async (photo) => {
   return Photo.create(imageObj);
 };
 
-const findPhotos = (photo) => {
-  return Photo.findAll({})
-};
 // store a message
 const storeMessage = message => {
   const { text, username, groupId } = message;
@@ -33,6 +38,9 @@ const storeMessage = message => {
     groupId
    });
 }
+const findPhotos = (photo) => {
+  return Photo.findAll({})
+};
 // get all of a group's messages
 const getMessages = groupId => {
   return Message.findAll({
@@ -172,6 +180,7 @@ module.exports = {
   storeUser,
   storeGroup,
   getMessages,
+  addUserToGroup,
   findAllGroups,
   findAllUsers,
   findUser,

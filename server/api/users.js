@@ -3,6 +3,7 @@ const router = express.Router();
 const app = express();
 const {
   storeUser,
+  addUserToGroup,
   findAllUsers,
   findUser,
   findUserGroups,
@@ -17,7 +18,6 @@ router.post('/', (req, res) => {
   const { sub, name, picture } = req.body
   storeUser(sub, name, picture)
     .then(() => {
-      console.log('STORED?');
       res.send(201)
     })
     .catch(err => {
@@ -26,7 +26,32 @@ router.post('/', (req, res) => {
     })
 })
 
-// GET a user's values by email
+// Add a user to a group by associating userid with groupid in User_group table
+router.post('/:id/:sub/:pending', (req, res) => {
+  console.log(req.params);
+  const { id, sub, pending } = req.params;
+  // storeUser(sub, name, picture)
+  //   .then(() => {
+  //     res.send(201)
+  //   })
+  //   .catch(err => {
+  //     console.error(err);
+  //     res.sendStatus(500);
+  //   })
+  findUser(sub)
+  .then((user) => {
+    return addUserToGroup(user.id, id, pending);
+  })
+  .then(() => {
+    res.sendStatus(201);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.sendStatus(500);
+  })
+})
+
+// GET a user's values by sub
 router.get('/:values', (req, res) => {
   getUserValues()
     .then((value) => {
@@ -65,18 +90,18 @@ router.get('/:groups', (req, res) => {
       console.error(err);
       res.sendStatus(500);
     })
+});
 
-  // get watson data stored in database by user email
-  router.get('/values', (req, res) => {
-    getUserValues()
-      .then((value) => {
-        res.send(value);
-      })
-      .catch(err => {
-        console.error(err);
-        res.sendStatus(500);
-      })
-  })
-})
+  // get watson data stored in database by sub
+router.get('/values', (req, res) => {
+  getUserValues()
+    .then((value) => {
+      res.send(value);
+    })
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    })
+});
 
 module.exports = router;
