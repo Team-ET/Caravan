@@ -41,4 +41,5 @@ constructor(public widgetService: WidgetService) { }
         this.photos = photos;
       });
   }
+  
 }

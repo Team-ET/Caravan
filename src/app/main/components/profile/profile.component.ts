@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../../auth/services/auth.service';
-import { ProfileService } from './profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,18 +7,23 @@ import { ProfileService } from './profile.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  profile: any;
+  @Input() profile: any;
 
-  constructor(public auth: AuthService, public profileService: ProfileService) { }
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
     // if (this.auth.isAuthenticated()) {
     //   this.auth.renewTokens();
     //   this.loadProfile();
     // }
-    this.loadProfile();
-    this.storeProfile(this.profile);
+    // this.loadProfile();
+    // this.auth.getProfile((err, profile) => {
+    //   console.log('STORING PROFILE', profile);
+    //   this.storeProfile(profile);
+    // });
+    console.log('PROFILE', this.profile);
   }
+
   loadProfile() {
     if (this.auth.userProfile) {
       this.profile = this.auth.userProfile;
@@ -28,10 +32,12 @@ export class ProfileComponent implements OnInit {
       this.profile = profile;
     });
     }
-    console.log(this.profile);
+    // console.log('PROFILE', this.auth.userProfile);
   }
 
-  storeProfile(user) {
-    this.profileService.createUser(user);
-  }
+  // storeProfile(user) {
+  //   console.log('USER', user);
+  //   this.profileService.createUser(user);
+  // }
+
 }
