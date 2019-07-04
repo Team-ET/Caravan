@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Cloudinary } from 'cloudinary-core';
+import * as Cloudinary from 'cloudinary-core';
 import { WidgetService } from './widget.service';
 import { Photos } from 'src/app/models/photos';
-import { CLOUDNAME, PRESET } from './config';
+import { CLOUDNAME, PRESET } from 'config.js';
 
 @Component({
   selector: 'app-widget',
