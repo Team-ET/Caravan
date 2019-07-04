@@ -11,11 +11,7 @@ import { GroupsModule } from './groups/groups.module';
 import { ROUTES } from "./app.routes";
 import { HttpErrorHandler } from './http-error-handler.service';
 import { ChatService } from './chat.service';
-import { GroupDetailComponent } from './group-detail/group-detail.component';
-import { GroupUsersModule } from './group-users/group-users.module';
 import { Group } from './models';
-import { GroupNewComponent } from './group-new/group-new.component';
-import { GroupFormComponent } from './group-form/group-form.component';
 import { SuccessAlertComponent } from './success-alert/success-alert.component';
 import { CardsFreeModule } from 'angular-bootstrap-md';
 import { AccountModule } from './account/account.module';
@@ -34,16 +30,13 @@ import { ChatComponent } from './chat/chat.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
-    GroupUsersModule,
+    GroupsModule,
     ModalModule,
     AccountModule,
   ],
   declarations: [
     AppComponent,
-    GroupDetailComponent, 
-    GroupFormComponent, 
-    SuccessAlertComponent, 
-    GroupNewComponent,
+    SuccessAlertComponent,
     ChatComponent],
   providers: [HttpErrorHandler, ChatService, MessageService],
   bootstrap: [AppComponent],

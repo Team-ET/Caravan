@@ -4,8 +4,8 @@ import { LoginComponent } from "./auth/components/login/login.component";
 // import { TripComponent } from "./trip/trip.component"
 // import { InsightComponent } from "./insight/insight.component"
 import { AuthGuard } from './auth/guards/auth.guard';
-import { GroupDetailComponent } from '../app/group-detail/group-detail.component';
-import { GroupFormComponent } from '../app/group-form/group-form.component';
+import { GroupDetailComponent } from './groups/components/detail/group-detail.component';
+import { GroupFormComponent } from './groups/components/form/group-form.component';
 import { AccountComponent } from './account/account.component';
 
 export const ROUTES: Routes = [

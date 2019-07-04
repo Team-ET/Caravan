@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../models';
-import { GroupsService } from '../groups/services/groups.service';
+import { User } from '../../../models';
+import { GroupsService } from '../../services/groups.service';
 
 @Component({
   selector: 'app-group-users',

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Group } from '../../models/group';
-import { GroupsService } from '../services/groups.service';
-import { mockGroup } from '../services/mockGroup';
+import { Group } from '../../../models/group';
+import { GroupsService } from '../../services/groups.service';
+import { mockGroup } from '../../services/mockGroup';
 
 @Component({
-  selector: 'app-groups',
-  templateUrl: './groups.component.html',
+  selector: 'app-thumbnail',
+  templateUrl: './groups-thumbnail.html',
   providers: [ GroupsService ],
-  styleUrls: ['./groups.component.scss']
+  styleUrls: ['./group-thumbnail.scss']
 })
-export class GroupsComponent implements OnInit {
+export class GroupThumbnailComponent implements OnInit {
   groups: Group[];
   // trips: Group[];
   trips: Group[] = [];

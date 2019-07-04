@@ -37,7 +37,7 @@ export class GroupsService {
   }
 
   // GET group details from server
-   getGroup(id: number): Observable<Group> {
+  getGroup(id: number): Observable<Group> {
     return this.http.get<Group>(this.groupsUrl + `/${id}`)
       .pipe(
         catchError(this.handleError('getGroup', null))
