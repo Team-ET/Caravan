@@ -19,7 +19,7 @@ import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.compo
 @Injectable()
 export class GroupAllService {
   // message: string;
-  groupsUrl = '/api/groups';  // URL to groups api
+  groupsUrl = '/api/groups/all';  // URL to groups api
   private handleError: HandleError;
 
   constructor(
@@ -29,55 +29,20 @@ export class GroupAllService {
   }
 
   // GET group matches from server
-  getGroupMatches(): Observable<Group[]> {
-    return this.http.get<Group[]>(this.groupsUrl)
-      .pipe(
-        catchError(this.handleError('getGroups', []))
-      );
-  }
+  // getGroupMatches(): Observable<Group[]> {
+  //   return this.http.get<Group[]>(this.groupsUrl)
+  //     .pipe(
+  //       catchError(this.handleError('getGroups', []))
+  //     );
+  // }
 
   // GET group details from server
-   getGroup(id: number): Observable<Group> {
-    return this.http.get<Group>(this.groupsUrl + `/${id}`)
+   getAllGroups(): Observable<Group> {
+    return this.http.get<Group>(this.groupsUrl)
       .pipe(
         catchError(this.handleError('getGroup', null))
       );
   }
 
-  // // GET a user's trips
-  //  getUserGroups(email: string): Observable<Group> {
-  //   return this.http.get<Group>(this.groupsUrl + `/trips${email}`)
-  //     .pipe(
-  //       catchError(this.handleError('getTrips', null))
-  //     );
-  // }
-
-  // GET a user's trips
-  getUserTrips(sub: string): Observable<Group[]> {
-    return this.http.get<Group[]>(`${this.groupsUrl}/${sub}/trips`)
-      .pipe(
-        catchError(this.handleError('getTrips', []))
-      );
-  }
-
-  // GET a group's users
-  getGroupUsers(id: number): Observable<User[]> {
-    return this.http.get<User[]>(this.groupsUrl + `/${id}/users`)
-      .pipe(
-        catchError(this.handleError('getGroupUsers', null))
-      );
-  }
-
-  // POST info from create group form to server
-  async createGroup(group: Group): Promise<void> {
-    await this.http.post<void>(this.groupsUrl + '/signup', group, {responseType: 'text' as 'json'}) // specifying response type to avoid error
-      .toPromise()
-        .then(result => {
-          console.log('Form Promise:', result);
-        })
-        .catch(err => {
-          console.error(err);
-        });
-  }
 
 }

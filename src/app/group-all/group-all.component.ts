@@ -18,15 +18,14 @@ export class GroupAllComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getGroupMatches();
+    this.getAllGroups();
   }
-
-  getGroupMatches(): void {
-    this.groupsService.getGroupMatches()
-      .subscribe(groups => {
-        // console.log('getting groups', groups);
-        this.groups = groups;
-      });
+  
+  getAllGroups(): void {
+    this.groupsService.getAllGroups()
+    .subscribe(groups => {
+      this.groups = groups;
+    })
   }
 
 }
