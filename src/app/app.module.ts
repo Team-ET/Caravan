@@ -24,6 +24,7 @@ import { ChatComponent } from './chat/chat.component';
 import { UserGroupDetailComponent } from './user-group-detail/user-group-detail.component';
 
 import * as Cloudinary from 'cloudinary-core';
+import { GroupAllComponent } from './group-all/group-all.component';
 
 @NgModule({//test
   imports: [
@@ -48,7 +49,8 @@ import * as Cloudinary from 'cloudinary-core';
     SuccessAlertComponent,
     GroupNewComponent,
     ChatComponent,
-    UserGroupDetailComponent],
+    UserGroupDetailComponent,
+    GroupAllComponent],
   providers: [HttpErrorHandler, ChatService, MessageService],
   bootstrap: [AppComponent],
 })
