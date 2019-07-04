@@ -8,7 +8,7 @@ app.use(clientErrorHandler) // handles error for Angular client
 
 // Get Personality insights from Watson API
 router.get('/', (req, res) => {
-  console.log(req.body.text);
+  // console.log(req.body.text);
   getInsights(req.body.text, res);//maybe change this to query, so that we can input the queried text we are gathering from Facebook and Twitter
 });
 
