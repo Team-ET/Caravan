@@ -1,18 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-// import { Group-All Service } from '../groups/services/groups.service';
+import { Group } from 'src/app/models/group';
+import { GroupAllService } from 'src/app/group-all/group-all.service';
 
 
 @Component({
-  selector: 'app-group-all',
+  selector: 'app-groups',
   templateUrl: './group-all.component.html',
+  providers: [ GroupAllService ],
   styleUrls: ['./group-all.component.scss']
 })
 export class GroupAllComponent implements OnInit {
+  groups: Group[];
+  
 
-  constructor() { }
+  constructor(private groupsService: GroupAllService) { 
+
+  }
 
   ngOnInit() {
+    this.getGroupMatches();
+  }
+
+  getGroupMatches(): void {
+    this.groupsService.getGroupMatches()
+      .subscribe(groups => {
+        // console.log('getting groups', groups);
+        this.groups = groups;
+      });
   }
 
 }

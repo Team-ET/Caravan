@@ -1,1 +1,33 @@
-<h3>All Matching Groups</h3>
+<div class="container">
+<!-- Start of Group Card -->
+  <div class="container">
+  <h3>Highest Matched Groups</h3>
+    <div class="row">
+      <mdb-card *ngFor="let group of groups" class="col-4">
+        <mdb-card-img [src]='group.picture'></mdb-card-img>
+        <mdb-card-body>
+        <mdb-card-title routerLink="/detail/{{group.id}}">
+          <h3>{{ group.name }}</h3>
+        </mdb-card-title>
+        <mdb-card-text>
+          <h4>{{ group.destination }}</h4>
+        </mdb-card-text>
+        <!-- Percentage Circle -->
+        <div class="circle-container">
+          <div id="activeBorder" class="active-border">
+            <div id="circle" class="circle">
+              <span class="prec 270" id="prec">90%</span>
+            </div>
+        </div>
+        </div>
+        <!-- Percentage Circle --->
+        </mdb-card-body>
+      </mdb-card>
+        <a href="/group-all" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
+    </div>
+  </div>
+<!-- End of Group Card -->
+<div class="spacer1"></div>
+<div class="cotainer">
+  <!-- Start of Trip Card -->
+ 
