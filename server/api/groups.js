@@ -43,8 +43,8 @@ router.get('/all', (req, res) => {
 
 // Create group
 router.post('/signup', (req, res) => {
-  const { name, destination, date_start, date_end } = req.body;
-  storeGroup(name, destination, date_start, date_end)
+  const { name, destination, date_start, date_end, picture } = req.body;
+  storeGroup(name, destination, date_start, date_end, picture)
     .then(result => res.sendStatus(201))
     .catch(err => {
       console.error(err);

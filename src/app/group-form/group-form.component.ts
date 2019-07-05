@@ -51,6 +51,9 @@ export class GroupFormComponent implements OnInit {
       const place = autocomplete.getPlace();
       this.picture = place.photos[0].getUrl({maxWidth: 500, maxHeight: 500});
       this.destination = place.formatted_address;
+      console.log(place.formatted_address);
+      console.log(this.picture);
+      
     });
   }
 }
