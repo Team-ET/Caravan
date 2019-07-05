@@ -1,0 +1,14 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "workbench.colorCustomizations": {
+    },
+    "files.exclude": {
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/assets/**/*.js": true,
+        "**/*.map": true
+    },
+    "prettier.requireConfig": true,
+    "typescript.tsdk": "./node_modules/typescript/lib"
+}

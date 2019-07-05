@@ -1,6 +1,4 @@
 const Sequelize = require('sequelize');
-// making connection to db
-// const bcrypt = require('bcrypt');
 
 const sequelize = new Sequelize(process.env.DATABASE_NAME, process.env.USERNAME, process.env.PASSWORD, {
   host: process.env.HOST,
@@ -9,9 +7,10 @@ const sequelize = new Sequelize(process.env.DATABASE_NAME, process.env.USERNAME,
     options: {
       encrypt: true,
     }
-  } 
+  }
 });
-//checking for connection, can be commented out once you know connection is made
+
+//checking for connection
 sequelize
   .authenticate()
   .then(() => {
@@ -26,42 +25,67 @@ sequelize
 //   force: true, // Drops info in database for testing
 // })
 
-//table for user
+// user schema
 const User = sequelize.define('user', {
+  id_api: Sequelize.STRING,
   name: Sequelize.STRING,
-  email: Sequelize.STRING,
   picture: Sequelize.STRING,
 });
 
-// table for group
+// group schema
 const Group = sequelize.define('group', {
   name: Sequelize.STRING,
   destination: Sequelize.STRING,
   date_start: Sequelize.STRING,
   date_end: Sequelize.STRING,
+  picture: Sequelize.STRING,
 });
 
-//joined table for users in groups many to many
-const User_group = sequelize.define('user_group', {});
+// join for users and groups
+const User_group = sequelize.define('user_group', {
+  pending: Sequelize.BOOLEAN
+});
 User_group.belongsTo(User);
 User_group.belongsTo(Group);
 
-//interest for user
-const Interest = sequelize.define('interest', {
-  name: Sequelize.STRING
-});
-
+// move these values into user schema
 const Values = sequelize.define('values', {
   tradition: Sequelize.INTEGER,
   achievement: Sequelize.INTEGER,
-  pleasure: Sequelize.INTEGER,
+  enjoyment: Sequelize.INTEGER,
   stimulation: Sequelize.INTEGER,
   helpfulness: Sequelize.INTEGER,
 })
+// adding a user id to values
+Values.belongsTo(User);
 
-// interst for user, many to many
-const Int_user = sequelize.define('int_group', {});
-Int_user.belongsTo(User);
-Int_user.belongsTo(Interest);
+// schema for photoalbum
+const Photo = sequelize.define('photo', {
+  image: Sequelize.STRING,
+})
+// adding user id to photos
+Photo.belongsTo(User);
 
-module.exports = { User, Group, User_group, Interest, Int_user, Values }; 
+// schema for group messages
+const Message = sequelize.define('message', {
+  text: Sequelize.STRING,
+  username: Sequelize.STRING
+});
+// adding user id and group id to each message
+Message.belongsTo(User);
+Message.belongsTo(Group);
+
+const Reviews = sequelize.define('reviews', {
+  stars: Sequelize.INTEGER,
+  comment: Sequelize.STRING,
+  reviewer: Sequelize.STRING,
+});
+Reviews.belongsTo(User);
+
+const References = sequelize.define('references', {
+  comment: Sequelize.STRING,
+  referrer: Sequelize.STRING
+});
+References.belongsTo(User);
+
+module.exports = { User, Group, User_group, Values, Message, Photo };
