@@ -30,14 +30,14 @@ import { GroupAllComponent } from './group-all/group-all.component';
   imports: [
     CardsFreeModule.forRoot(),
     GroupsModule,
-    MDBBootstrapModule.forRoot(),
+    MDBBootstrapModule.forRoot(),//test
     AuthModule,
     MainModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES),//tset
     GroupUsersModule,
     ModalModule,
     AccountModule,
@@ -51,7 +51,7 @@ import { GroupAllComponent } from './group-all/group-all.component';
     ChatComponent,
     UserGroupDetailComponent,
     GroupAllComponent],
-  providers: [HttpErrorHandler, ChatService, MessageService],
+  providers: [HttpErrorHandler, ChatService, MessageService,],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import * as Cloudinary from 'cloudinary-core';
+// import * as Cloudinary from 'cloudinary-core';
 import { WidgetService } from './widget.service';
 import { Photos } from 'src/app/models/photos';
 import { CLOUDNAME, PRESET } from 'config.js';
+// import * as cloudinary from 'cloudinary-core';
 
 @Component({
   selector: 'app-widget',
-  templateUrl: './widget.component.html',
+  templateUrl: './widget.component.html',//test
   styleUrls: ['./widget.component.scss']
 })
 export class WidgetComponent implements OnInit {
@@ -31,7 +32,7 @@ constructor(public widgetService: WidgetService) { }
     
     document.getElementById("upload_widget").addEventListener("click", function(){
         myWidget.open();
-      });//test
+      }, false);//test
     
   }
   getPhotos(): void {
