@@ -109,6 +109,12 @@ export class AuthService {
     });
   }
 
+  public returnProfile(): void {
+    return this.userProfile;
+  }
+
+  // public 
+
   public userHasScopes(scopes: Array<string>): boolean {
     const grantedScopes = JSON.parse(this._scopes).split(" ");
     return scopes.every(scope => grantedScopes.includes(scope));

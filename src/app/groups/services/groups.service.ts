@@ -68,12 +68,21 @@ export class GroupsService {
       );
   }
 
+  // GET a group's join requests
+  getRequests(sub: string): Observable<User[]> {
+    return this.http.get<User[]>(this.groupsUrl + `/${sub}/requests`)
+      .pipe(
+        catchError(this.handleError('getGroupRequests', null))
+      );
+  }
+
   // POST info from create group form to server
-  async createGroup(group: Group): Promise<void> {
-    await this.http.post<void>(this.groupsUrl + '/signup', group, {responseType: 'text' as 'json'}) // specifying response type to avoid error
+  async createGroup(group: Group, sub: string): Promise<void> {
+    const data = {group, sub, pending: false};
+    await this.http.post<void>(this.groupsUrl + '/signup', data, {responseType: 'text' as 'json'}) // specifying response type to avoid error
       .toPromise()
         .then(result => {
-          console.log('Form Promise:', result);
+          console.log('Group Created', result);
         })
         .catch(err => {
           console.error(err);

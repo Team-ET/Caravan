@@ -1,5 +1,5 @@
 import { GroupsComponent } from './components/groups.component';
-import { GroupsService } from './services/groups.service'
+import { GroupsService } from './services/groups.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {
