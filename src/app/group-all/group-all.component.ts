@@ -10,7 +10,7 @@ import { GroupAllService } from 'src/app/group-all/group-all.service';
   styleUrls: ['./group-all.component.scss']
 })
 export class GroupAllComponent implements OnInit {
-  groups: Group[];
+  groups: Group;
   
 
   constructor(private groupsService: GroupAllService) { 

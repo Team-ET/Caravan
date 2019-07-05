@@ -8,9 +8,9 @@ const storeUser = (id_api, name, picture) => User.findOrCreate({
   defaults: { id_api, name, picture }
 });
 //function for storing group in db
-const storeGroup = (name, destination, date_start, date_end) => Group.findOrCreate({
+const storeGroup = (name, destination, date_start, date_end, picture) => Group.findOrCreate({
   where: { name },
-  defaults: { name, destination, date_start, date_end }
+  defaults: { name, destination, date_start, date_end, picture }
 });
 //function for storing photo
 const storePhoto = async (photo) => {
