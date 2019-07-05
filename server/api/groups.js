@@ -3,6 +3,7 @@ const router = express.Router();
 const app = express();
 const {
   storeUser,
+  addUserToGroup,
   storeGroup,
   getMessages,
   findAllGroups,
@@ -31,13 +32,25 @@ router.get('/', (req, res) => {
 
 // Create group
 router.post('/signup', (req, res) => {
-  const { name, destination, date_start, date_end } = req.body;
-  storeGroup(name, destination, date_start, date_end)
-    .then(result => res.sendStatus(201))
-    .catch(err => {
-      console.error(err);
-      res.sendStatus(500);
-    })
+  console.log(req.body);
+  const {group, sub, pending} = req.body;
+  const { name, destination, date_start, date_end, picture } = group;
+  const makeGroup = storeGroup(name, destination, date_start, date_end, picture);
+  const getUser = findUser(sub);
+  Promise.all([makeGroup, getUser])
+  .then((ids) => {
+    const groupId = ids[0][0].dataValues.id;
+    const userId = ids[1].dataValues.id;
+    console.log('GROUP ID and USER ID', groupId, userId);
+    return addUserToGroup(userId, groupId, pending);
+  })
+  .then((result => {
+    res.sendStatus(201);
+  }))
+  .catch(err => {
+    console.error(err);
+    res.sendStatus(500);
+  })
 });
 
 // GET group by group id

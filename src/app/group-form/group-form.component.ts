@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { RouterModule, Routes, ActivatedRoute, NavigationStart } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GroupsService } from '../groups/services/groups.service';
-import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-group-form',
@@ -15,7 +13,6 @@ export class GroupFormComponent implements OnInit {
   profile: any;
   groupForm = new FormGroup({
     name: new FormControl('', Validators.required),
-    // destination: new FormControl('', Validators.required),
     date_start: new FormControl('', Validators.required),
     date_end: new FormControl('', Validators.required),
   });
@@ -23,11 +20,14 @@ export class GroupFormComponent implements OnInit {
   destination: string;
 
 
-  constructor(private groupService: GroupsService, public activatedRoute: ActivatedRoute) {
+  constructor(
+    private groupService: GroupsService,
+    public activatedRoute: ActivatedRoute) {
    }
 
   ngOnInit(): void {
     this.profile = window.history.state.profile[0];
+    console.log(window.history);
   }
 
   onSubmit() {
@@ -39,7 +39,7 @@ export class GroupFormComponent implements OnInit {
       picture: this.picture,
       destination: this.destination
     };
-    this.groupService.createGroup(formValues); // call create group method passing in the form values
+    this.groupService.createGroup(formValues, this.profile.sub); // call create group method passing in the form values and user sub (unique id)
     }
 
   onOpen(event: any) {
@@ -56,4 +56,5 @@ export class GroupFormComponent implements OnInit {
       this.destination = place.formatted_address;
     });
   }
+
 }

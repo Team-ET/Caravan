@@ -13,7 +13,6 @@ export class GroupsComponent implements OnInit {
   @Input() profile: any;
   groups: Group[];
   trips: Group[];
-  // trips: Group[] = [];
 
   constructor(private groupsService: GroupsService) {
   }

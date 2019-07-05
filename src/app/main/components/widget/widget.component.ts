@@ -34,6 +34,7 @@ constructor(public widgetService: WidgetService) { }
       });//test
     
   }
+
   getPhotos(): void {
     this.widgetService.getPhotos()
       .subscribe(photos => {

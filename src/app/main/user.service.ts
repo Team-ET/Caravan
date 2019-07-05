@@ -18,13 +18,15 @@ import { AuthService } from '../auth/services/auth.service';
 
 @Injectable()
 export class UserService {
+  profile: any;
   user: User;
   usersUrl = '/api/users';  // URL to groups api
   private handleError: HandleError;
 
   constructor(
     private http: HttpClient,
-    private httpErrorHandler: HttpErrorHandler) {
+    private httpErrorHandler: HttpErrorHandler,
+    private auth: AuthService) {
     this.handleError = httpErrorHandler.createHandleError('UserService');
   }
 
@@ -46,15 +48,17 @@ export class UserService {
   }
 
   // POST user and groupid to server; add a user to a group
-  // async addUser(user: User): Promise<void> {
-  //   await this.http.post<User>(this.userurl + '/signup', group, {responseType: 'text' as 'json'}) // specifying response type to avoid error
-  //     .toPromise()
-  //       .then(result => {
-  //         console.log('Form Promise:', result);
-  //       })
-  //       .catch(err => {
-  //         console.error(err);
-  //       });
-  // }
+  async addUser(id: number, sub: string, pending: boolean): Promise<void> {
+    const data = {id, sub, pending};
+    console.log(data);
+    await this.http.post<void>(this.usersUrl + '/join-group', data, {responseType: 'text' as 'json'}) // specifying response type to avoid error
+      .toPromise()
+        .then(result => {
+          console.log('Add User to Group', result);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+  }
 
 }

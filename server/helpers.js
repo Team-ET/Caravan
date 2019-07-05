@@ -38,19 +38,23 @@ const storeMessage = message => {
     groupId
    });
 }
+
 const findPhotos = (photo) => {
   return Photo.findAll({})
 };
+
 // get all of a group's messages
 const getMessages = groupId => {
   return Message.findAll({
     where: { groupId }
   })
 }
+
 //function for getting all Groups from the db
 const findAllGroups = () =>
  Group.findAll({
  });
+ 
 // function for getting all Users from the db
 const findAllUsers = (users) =>
  User.findAll(

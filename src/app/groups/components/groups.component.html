@@ -1,3 +1,4 @@
+<ng-template [ngIf]="profile">
 <div class="container">
 <!-- Start of Group Card -->
   <div class="container">
@@ -6,9 +7,9 @@
       <mdb-card *ngFor="let group of groups" class="col-4">
         <mdb-card-img [src]='group.picture'></mdb-card-img>
         <mdb-card-body>
-        <mdb-card-title routerLink="/detail/{{group.id}}">
+        <a routerLink="/detail/{{group.id}}" [state]="{ profile: [profile] }">
           <h3>{{ group.name }}</h3>
-        </mdb-card-title>
+        </a>
         <mdb-card-text>
           <h4>{{ group.destination }}</h4>
         </mdb-card-text>
@@ -52,3 +53,4 @@
   </div>
 </div>
 </div>
+</ng-template>
