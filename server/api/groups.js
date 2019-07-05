@@ -44,7 +44,6 @@ router.get('/all', (req, res) => {
 
 // Create group
 router.post('/signup', (req, res) => {
-<<<<<<< HEAD
   console.log(req.body);
   const {group, sub, pending} = req.body;
   const { name, destination, date_start, date_end, picture } = group;
@@ -64,15 +63,6 @@ router.post('/signup', (req, res) => {
     console.error(err);
     res.sendStatus(500);
   })
-=======
-  const { name, destination, date_start, date_end, picture } = req.body;
-  storeGroup(name, destination, date_start, date_end, picture)
-    .then(result => res.sendStatus(201))
-    .catch(err => {
-      console.error(err);
-      res.sendStatus(500);
-    })
->>>>>>> f73c20527e5a237aed43bb03f9e506a49631847a
 });
 
 // GET group by group id
