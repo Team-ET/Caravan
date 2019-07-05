@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <mdb-card>
 <div class="groups">
@@ -15,6 +16,9 @@
 </p>
 </mdb-card>
 =======
+=======
+<ng-template [ngIf]="profile">
+>>>>>>> 45e7cd0849a5372adc7adcc04484635be2677192
 <div class="container">
 <!-- Start of Group Card -->
   <div class="container">
@@ -23,9 +27,9 @@
       <mdb-card *ngFor="let group of groups" class="col-4">
         <mdb-card-img [src]='group.picture'></mdb-card-img>
         <mdb-card-body>
-        <mdb-card-title routerLink="/detail/{{group.id}}">
+        <a routerLink="/detail/{{group.id}}" [state]="{ profile: [profile] }">
           <h3>{{ group.name }}</h3>
-        </mdb-card-title>
+        </a>
         <mdb-card-text>
           <h4>{{ group.destination }}</h4>
         </mdb-card-text>
@@ -40,7 +44,7 @@
         <!-- Percentage Circle --->
         </mdb-card-body>
       </mdb-card>
-        <a href="/group-all" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
+        <a routerLink="/group-all" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
     </div>
   </div>
 <!-- End of Group Card -->
@@ -64,9 +68,13 @@
       <!-- End of Trip Card -->
     </div>
     <div class="row justify-content-center">
-      <a href="/group/signup" mdbBtn color="primary">Create a Group</a>
+      <a routerLink="/group/signup" [state]="{ profile: [profile] }" mdbBtn color="primary">Create a Group</a>
     </div>
   </div>
 </div>
 </div>
+<<<<<<< HEAD
 >>>>>>> f73c20527e5a237aed43bb03f9e506a49631847a
+=======
+</ng-template>
+>>>>>>> 45e7cd0849a5372adc7adcc04484635be2677192

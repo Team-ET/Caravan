@@ -2,7 +2,7 @@ const { User, Group, Message, User_group, Values, Photo } = require('../database
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-// function for storing user in db
+//storing user in db
 const storeUser = (id_api, name, picture) => User.findOrCreate({
   where: { id_api },
   defaults: { id_api, name, picture }
@@ -12,7 +12,14 @@ const storeGroup = (name, destination, date_start, date_end, picture) => Group.f
   where: { name },
   defaults: { name, destination, date_start, date_end, picture }
 });
-//function for storing photo
+
+//storing user id and group id in User_group table; adding user to a group
+const addUserToGroup = (userId, groupId, pending) => User_group.findOrCreate({
+  where: { userId, groupId },
+  defaults: { userId, groupId, pending }
+});
+
+//storing photo
 const storePhoto = async (photo) => {
   const imageObj = {
     image: photo.url
@@ -20,9 +27,6 @@ const storePhoto = async (photo) => {
   return Photo.create(imageObj);
 };
 
-const findPhotos = (photo) => {
-  return Photo.findAll({})
-};
 // store a message
 const storeMessage = message => {
   const { text, username, groupId } = message;
@@ -33,18 +37,25 @@ const storeMessage = message => {
     groupId
    });
 }
+
+const findPhotos = () => {
+  return Photo.findAll({})
+};
+
 // get all of a group's messages
 const getMessages = groupId => {
   return Message.findAll({
     where: { groupId }
   })
 }
+
 //function for getting all Groups from the db
 const findAllGroups = () =>
  Group.findAll({
  });
+ 
 // function for getting all Users from the db
-const findAllUsers = (users) =>
+const findAllUsers = () =>
  User.findAll(
  );
 
@@ -63,14 +74,29 @@ const findGroup = id => Group.findOne({
 // get user groups by user id
 const findUserGroups = userId => User_group.findAll({
     attributes: ['groupId'],
-    where: { userId }
+    where: { userId, pending: false }
 });
 
 // get users by group id
-const findGroupUsers = groupId => User_group.findAll({
+const findPendingUsers = groupIds => User_group.findAll({
     attributes: ['userId'],
-    where: { groupId: groupId }
+    where: {
+       groupId: {
+         [Op.or]: groupIds
+       },
+       pending: true
+    }
   });
+
+const findGroupUsers = groupIds => User_group.findAll({
+  attributes: ['userId'],
+  where: {
+    groupId: {
+      [Op.or]: groupIds
+    },
+    pending: false
+  }
+});
 
 const findGroups = groupIds => {
   return Group.findAll({ // find all 
@@ -172,12 +198,14 @@ module.exports = {
   storeUser,
   storeGroup,
   getMessages,
+  addUserToGroup,
   findAllGroups,
   findAllUsers,
   findUser,
   findGroup,
   findUserGroups,
   findGroupUsers,
+  findPendingUsers,
   findGroups,
   findUsers,
   getUserValues,
