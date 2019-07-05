@@ -17,6 +17,7 @@ constructor(public widgetService: WidgetService) { }
   ngOnInit() {
   this.getPhotos();
   }
+  
   myClick() {
     // console.log('DO I CLICK')
     let myWidget = cloudinary.createUploadWidget({
