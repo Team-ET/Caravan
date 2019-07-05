@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const app = express();
+const _ = require('lodash');
 const {
   storeUser,
   addUserToGroup,
@@ -12,6 +13,7 @@ const {
   findGroup,
   findUserGroups,
   findGroupUsers,
+  findPendingUsers,
   findGroups,
   clientErrorHandler } = require('../helpers.js');
 
@@ -42,7 +44,7 @@ router.get('/all', (req, res) => {
     })
 });
 
-// Create group
+// Create group and add group creator as member
 router.post('/signup', (req, res) => {
   console.log(req.body);
   const {group, sub, pending} = req.body;
@@ -112,7 +114,29 @@ router.get('/:id/users', (req, res, next) => {
     });
 });
 
-// GET user groups by email
+// GET a user's group join requests
+router.get('/:sub/requests', (req, res) => {
+  findUser(req.params.sub)
+    .then(user => findUserGroups(user.id))
+    .then(data => {
+      const groups = data.map(data => data.dataValues.groupId);
+      return findPendingUsers(groups);
+    })
+    .then(data => {
+      const userArr = data.map(data => data.dataValues.userId);
+      const userids = _.uniq(userArr);
+      return findUsers(userids);
+    })
+    .then((users) => {
+      res.send(users);
+    })
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    })
+});
+
+// GET user groups by sub
 router.get('/:id/trips', (req, res) => {
   findUser(req.params.id)
     .then(user => findUserGroups(user.id))

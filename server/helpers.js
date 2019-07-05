@@ -38,7 +38,7 @@ const storeMessage = message => {
    });
 }
 
-const findPhotos = (photo) => {
+const findPhotos = () => {
   return Photo.findAll({})
 };
 
@@ -55,7 +55,7 @@ const findAllGroups = () =>
  });
  
 // function for getting all Users from the db
-const findAllUsers = (users) =>
+const findAllUsers = () =>
  User.findAll(
  );
 
@@ -74,14 +74,29 @@ const findGroup = id => Group.findOne({
 // get user groups by user id
 const findUserGroups = userId => User_group.findAll({
     attributes: ['groupId'],
-    where: { userId }
+    where: { userId, pending: false }
 });
 
 // get users by group id
-const findGroupUsers = groupId => User_group.findAll({
+const findPendingUsers = groupIds => User_group.findAll({
     attributes: ['userId'],
-    where: { groupId: groupId }
+    where: {
+       groupId: {
+         [Op.or]: groupIds
+       },
+       pending: true
+    }
   });
+
+const findGroupUsers = groupIds => User_group.findAll({
+  attributes: ['userId'],
+  where: {
+    groupId: {
+      [Op.or]: groupIds
+    },
+    pending: false
+  }
+});
 
 const findGroups = groupIds => {
   return Group.findAll({ // find all 
@@ -190,6 +205,7 @@ module.exports = {
   findGroup,
   findUserGroups,
   findGroupUsers,
+  findPendingUsers,
   findGroups,
   findUsers,
   getUserValues,
