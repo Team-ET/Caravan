@@ -1,0 +1,12 @@
+<div class="container">
+  <h3>Group Requests</h3>
+  <div class="row">
+    <mdb-card *ngFor="let request of requests" class="col-4">
+      <mdb-card-img [src]='request.picture'></mdb-card-img>
+      <mdb-card-body>
+        <h3>{{ request.name }}</h3>
+      </mdb-card-body>
+      <a routerLink="#" mdbBtn color="primary" mdbWavesEffect>Accept</a>
+    </mdb-card>
+  </div>
+</div>

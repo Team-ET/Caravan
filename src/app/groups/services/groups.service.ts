@@ -68,6 +68,14 @@ export class GroupsService {
       );
   }
 
+  // GET a group's join requests
+  getRequests(sub: string): Observable<User[]> {
+    return this.http.get<User[]>(this.groupsUrl + `/${sub}/requests`)
+      .pipe(
+        catchError(this.handleError('getGroupRequests', null))
+      );
+  }
+
   // POST info from create group form to server
   async createGroup(group: Group, sub: string): Promise<void> {
     const data = {group, sub, pending: false};

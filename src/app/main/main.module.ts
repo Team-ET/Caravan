@@ -30,6 +30,7 @@ import { DemoComponent } from 'src/app/calendar/calendar.component';
 import { AuthModule } from '../auth/auth.module';
 import { AuthService } from '../auth/services/auth.service';
 import { UserService } from './user.service';
+import { RequestsComponent } from '../requests/requests.component';
 
 @NgModule({
   imports: [
@@ -64,6 +65,7 @@ import { UserService } from './user.service';
     NavComponent,
     ProfilePictureComponent,
     SearchComponent,
+    RequestsComponent
   ],
   exports: [
     HeaderComponent,
