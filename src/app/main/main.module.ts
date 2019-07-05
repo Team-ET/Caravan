@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms'
+import { FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -12,11 +12,11 @@ import {
   CardsFreeModule,
   CarouselModule,
   ButtonsModule,
-  IconsModule,//test
+  IconsModule,
 } from 'angular-bootstrap-md';
 import { RouterModule } from '@angular/router';
 import { DashComponent } from './components/dash/dash.component';
-import { NavComponent } from 'src/app/main/components/nav/nav.component'
+import { NavComponent } from 'src/app/main/components/nav/nav.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { WidgetComponent } from './components/widget/widget.component';
@@ -29,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoComponent } from 'src/app/calendar/calendar.component';
 import { AuthModule } from '../auth/auth.module';
 import { AuthService } from '../auth/services/auth.service';
-import { ProfileService } from './components/profile/profile.service';
+import { UserService } from './user.service';
+import { RequestsComponent } from '../requests/requests.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,7 @@ import { ProfileService } from './components/profile/profile.service';
     NavbarModule,
     IconsModule,
     RouterModule,
-    DropdownModule.forRoot(),//test
+    DropdownModule.forRoot(),
     CardsFreeModule,
     ButtonsModule,
     GroupsModule,
@@ -54,7 +55,7 @@ import { ProfileService } from './components/profile/profile.service';
     BrowserAnimationsModule,
   ],
   declarations: [
-    ProfileComponent,//test
+    ProfileComponent,
     HeaderComponent,
     FooterComponent,
     MainComponent,
@@ -64,6 +65,7 @@ import { ProfileService } from './components/profile/profile.service';
     NavComponent,
     ProfilePictureComponent,
     SearchComponent,
+    RequestsComponent
   ],
   exports: [
     HeaderComponent,
@@ -75,7 +77,7 @@ import { ProfileService } from './components/profile/profile.service';
   ],
   providers: [
     AuthService,
-    ProfileService
+    UserService
   ]
 })
 export class MainModule {}

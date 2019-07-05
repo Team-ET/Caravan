@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Group } from '../../models/group';
 import { GroupsService } from '../services/groups.service';
 import { mockGroup } from '../services/mockGroup';
@@ -6,22 +6,20 @@ import { mockGroup } from '../services/mockGroup';
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',
-  providers: [ GroupsService ],
-  styleUrls: ['./groups.component.scss']
+  styleUrls: ['./groups.component.scss'],
+  providers: [ GroupsService ]
 })
 export class GroupsComponent implements OnInit {
+  @Input() profile: any;
   groups: Group[];
   trips: Group[];
-  sub: string;
-  // trips: Group[] = [];
 
-  constructor(private groupsService: GroupsService) { 
-    this.sub = 'mock-api-id';
+  constructor(private groupsService: GroupsService) {
   }
 
   ngOnInit() {
     this.getGroupMatches();
-    this.getUserTrips(this.sub);
+    this.getUserTrips(this.profile.sub);
   }
 
   getGroupMatches(): void {

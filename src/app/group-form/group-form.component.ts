@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { RouterModule, Routes, ActivatedRoute, NavigationStart } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GroupsService } from '../groups/services/groups.service';
-
 
 @Component({
   selector: 'app-group-form',
@@ -11,9 +10,10 @@ import { GroupsService } from '../groups/services/groups.service';
   providers: [GroupsService]
 })
 export class GroupFormComponent implements OnInit {
+  profile: any;
   groupForm = new FormGroup({
     name: new FormControl('', Validators.required),
-    // destination: new FormControl('', Validators.required),
+    destination: new FormControl(''),
     date_start: new FormControl('', Validators.required),
     date_end: new FormControl('', Validators.required),
   });
@@ -21,22 +21,36 @@ export class GroupFormComponent implements OnInit {
   destination: string;
 
 
-  constructor(private groupService: GroupsService) {
+  constructor(
+    private groupService: GroupsService,
+    public activatedRoute: ActivatedRoute) {
    }
 
   ngOnInit(): void {
+    this.profile = window.history.state.profile[0];
+    console.log(window.history);
   }
 
   onSubmit() {
-    const { name, date_end, date_start } = this.groupForm.value;
-    const formValues = {
-      name,
-      date_start,
-      date_end,
-      picture: this.picture,
-      destination: this.destination
+    const { name, date_end, date_start, destination } = this.groupForm.value;
+    let formValues;
+    if (this.destination) {
+      formValues = {
+        name,
+        date_start,
+        date_end,
+        picture: this.picture,
+        destination: this.destination
+      };
+    } else {
+      formValues = {
+        name,
+        date_start,
+        date_end,
+        destination
+      };
     }
-    this.groupService.createGroup(formValues); // call create group method passing in the form values
+    this.groupService.createGroup(formValues, this.profile.sub); // call create group method passing in the form values and user sub (unique id)
     }
 
   onOpen(event: any) {
@@ -56,4 +70,5 @@ export class GroupFormComponent implements OnInit {
       
     });
   }
+
 }

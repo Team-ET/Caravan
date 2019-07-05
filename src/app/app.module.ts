@@ -25,6 +25,7 @@ import { UserGroupDetailComponent } from './user-group-detail/user-group-detail.
 
 import * as Cloudinary from 'cloudinary-core';
 import { GroupAllComponent } from './group-all/group-all.component';
+import { RequestsComponent } from './requests/requests.component';
 
 @NgModule({//test
   imports: [
