@@ -30,8 +30,21 @@ router.get('/', (req, res) => {
     })
 });
 
+router.get('/all', (req, res) => {
+  findAllGroups()
+    .then((groups) => {
+      res.send(groups);
+    })
+    .catch(err => {
+
+      console.error(err);
+      res.sendStatus(500);
+    })
+});
+
 // Create group
 router.post('/signup', (req, res) => {
+<<<<<<< HEAD
   console.log(req.body);
   const {group, sub, pending} = req.body;
   const { name, destination, date_start, date_end, picture } = group;
@@ -51,6 +64,15 @@ router.post('/signup', (req, res) => {
     console.error(err);
     res.sendStatus(500);
   })
+=======
+  const { name, destination, date_start, date_end, picture } = req.body;
+  storeGroup(name, destination, date_start, date_end, picture)
+    .then(result => res.sendStatus(201))
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    })
+>>>>>>> f73c20527e5a237aed43bb03f9e506a49631847a
 });
 
 // GET group by group id
@@ -71,7 +93,7 @@ router.get('/:id/messages', (req, res) => {
   const { id } = req.params;
   return getMessages(id)
     .then(messages => {
-      console.log(messages);
+
       res.send(messages);
     })
     .catch(err => {
@@ -106,11 +128,11 @@ router.get('/:id/trips', (req, res) => {
     .then(user => findUserGroups(user.id))
     .then(data => {
       const groupArr = data.map(data => data.dataValues.groupId);
-      console.log('GROUPDATA', groupArr);
+
       return findGroups(groupArr);
     })
     .then(groups => {
-      console.log('GROUPS', groups);
+
       const tripsArr = groups.map(group => group.dataValues);
       res.send(tripsArr);
     })

@@ -7,11 +7,16 @@ const storeUser = (id_api, name, picture) => User.findOrCreate({
   where: { id_api },
   defaults: { id_api, name, picture }
 });
+<<<<<<< HEAD
 
 //storing group in db
 const storeGroup = (name, destination, date_start, date_end) => Group.findOrCreate({
+=======
+//function for storing group in db
+const storeGroup = (name, destination, date_start, date_end, picture) => Group.findOrCreate({
+>>>>>>> f73c20527e5a237aed43bb03f9e506a49631847a
   where: { name },
-  defaults: { name, destination, date_start, date_end }
+  defaults: { name, destination, date_start, date_end, picture }
 });
 
 //storing user id and group id in User_group table; adding user to a group

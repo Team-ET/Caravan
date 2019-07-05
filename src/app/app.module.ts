@@ -22,11 +22,11 @@ import { AccountModule } from './account/account.module';
 import { MessageService } from './message.service';
 import { ChatComponent } from './chat/chat.component';
 import { UserGroupDetailComponent } from './user-group-detail/user-group-detail.component';
-import { CloudinaryModule } from '@cloudinary/angular-5.x';
-import { cloudinaryOptions } from './cloudinary.variables';
-import * as  Cloudinary from 'cloudinary-core';
 
-@NgModule({
+import * as Cloudinary from 'cloudinary-core';
+import { GroupAllComponent } from './group-all/group-all.component';
+
+@NgModule({//test
   imports: [
     CardsFreeModule.forRoot(),
     GroupsModule,
@@ -41,7 +41,6 @@ import * as  Cloudinary from 'cloudinary-core';
     GroupUsersModule,
     ModalModule,
     AccountModule,
-    // CloudinaryModule.forRoot(Cloudinary, cloudinaryOptions)
   ],
   declarations: [
     AppComponent,
@@ -50,7 +49,8 @@ import * as  Cloudinary from 'cloudinary-core';
     SuccessAlertComponent,
     GroupNewComponent,
     ChatComponent,
-    UserGroupDetailComponent],
+    UserGroupDetailComponent,
+    GroupAllComponent],
   providers: [HttpErrorHandler, ChatService, MessageService],
   bootstrap: [AppComponent],
 })
