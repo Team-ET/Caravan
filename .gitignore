@@ -11,6 +11,7 @@
 src/app/auth/services/auth0.variables.ts
 src/app/cloudinary.variables.ts
 .env
+config.js
 
 # dependencies
 /node_modules
