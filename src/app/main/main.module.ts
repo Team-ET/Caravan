@@ -19,7 +19,7 @@ import { DashComponent } from './components/dash/dash.component';
 import { NavComponent } from 'src/app/main/components/nav/nav.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
-import { WidgetComponent } from './components/widget/widget.component';
+// import { WidgetComponent } from './components/widget/widget.component';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -60,7 +60,7 @@ import { RequestsComponent } from '../requests/requests.component';
     FooterComponent,
     MainComponent,
     DashComponent,
-    WidgetComponent,
+    // WidgetComponent,
     DemoComponent,
     NavComponent,
     ProfilePictureComponent,
@@ -71,7 +71,7 @@ import { RequestsComponent } from '../requests/requests.component';
     HeaderComponent,
     FooterComponent,
     MainComponent,
-    WidgetComponent,
+    // WidgetComponent,
     NavComponent,
     DemoComponent,
   ],
