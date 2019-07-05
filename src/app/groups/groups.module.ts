@@ -18,10 +18,7 @@ import { RouterModule} from '@angular/router';
     DropdownModule,
     CardsFreeModule,
     ButtonsModule,
-<<<<<<< HEAD
-=======
     RouterModule,
->>>>>>> f73c20527e5a237aed43bb03f9e506a49631847a
     IconsModule],
   declarations: [GroupsComponent],
   exports: [GroupsComponent],
