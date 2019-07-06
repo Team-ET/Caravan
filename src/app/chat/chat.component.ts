@@ -11,15 +11,15 @@ import { ChatService } from '../chat.service';
 })
 export class ChatComponent implements OnInit {
   @Input() groupId: number;
+  @Input() profile: any;
   text: string;
   message: Message;
   messages: Message[] = [];
-  profile: any = {name: 'Erica'};
   socket: any;
 
   constructor(readonly route: ActivatedRoute, private chatService: ChatService) {
     // this.user = chatService.user;
-   }
+  }
 
   ngOnInit() {
     // this.route.params.subscribe(params => {

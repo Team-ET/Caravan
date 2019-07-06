@@ -4,6 +4,7 @@ const app = express();
 const {
   storeUser,
   addUserToGroup,
+  updateGroup,
   findAllUsers,
   findUser,
   findUserGroups,
@@ -55,6 +56,18 @@ router.get('/:values', (req, res) => {
     })
 })
 
+// UPDATE user's group join request from pending to not pending
+router.put('/:sub/:id', (req, res) => {
+  console.log(req.params);
+  const { sub, id } = req.params;
+  updateGroup(sub, id)
+    .then(result => res.send(result))
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    })
+});
+
 // GET all users
 router.get('/', (req, res) => {
   findAllUsers()
@@ -67,11 +80,14 @@ router.get('/', (req, res) => {
     })
 })
 
-// GET user's groups
+// GET user's groups - TODO DELETE
 router.get('/:groups', (req, res) => {
   findUser(req.body.email)
     .then(user => findUserGroups(user.id))
     .then(data => {
+      if (data.length === 0) {
+        return [];
+      }
       const groupArr = data.map(data => data.dataValues.groupId);
       return findGroups(groupArr);
     })
@@ -84,7 +100,7 @@ router.get('/:groups', (req, res) => {
     })
 });
 
-  // get watson data stored in database by sub
+  //GET watson data stored in database by sub
 router.get('/values', (req, res) => {
   getUserValues()
     .then((value) => {
