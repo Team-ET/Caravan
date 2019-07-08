@@ -57,14 +57,20 @@ router.get('/:values', (req, res) => {
 })
 
 // UPDATE user's group join request from pending to not pending
-router.put('/:sub/:id', (req, res) => {
+router.put('/:sub/:groupId', (req, res) => {
   console.log(req.params);
-  const { sub, id } = req.params;
-  updateGroup(sub, id)
-    .then(result => res.send(result))
+  const { sub, groupId } = req.params;
+  findUser(sub)
+  .then(user => {
+    console.log(user);
+    updateGroup(user.dataValues.id, groupId)
+  })
+    .then(result => {
+      res.sendStatus(200);
+    })
     .catch(err => {
       console.error(err);
-      res.sendStatus(500);
+      res.sendStatus(409);
     })
 });
 

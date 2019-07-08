@@ -91,11 +91,11 @@ const findPendingUsers = groupIds => User_group.findAll({
 // update status of pending in user groups from true to false
 const updateGroup = (userId, groupId) => {
   return User_group.update({
-    userId, groupId
+    pending: false
   },
   {
     returning: true,
-    where: {pending: false}
+    where: {userId, groupId}
   }
 )};
 
