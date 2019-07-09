@@ -11,11 +11,20 @@
       </div>
       <!--Group Chat-->
       <div class="container">
-        <app-chat [groupId]='groupId'></app-chat>
+        <div class="row-5">
+        <div class="col-4">
+        <app-chat [groupId]='groupId' [profile]='profile'></app-chat>
       </div>
-      <div>
+      </div>
+      <div class="spacer"></div>
+    <div class=row-8>
+      <div class=col>
+    <div>
         <app-calendar></app-calendar>
+      </div>
+      </div>
+      </div>
       </div>
     </ng-template>
 </mdb-card>
-</div>
+

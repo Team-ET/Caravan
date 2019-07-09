@@ -1,17 +1,3 @@
-<mdb-card>
-<div class="groups">
-  <div *ngFor="let group of groups"
-    [class.selected]="group === selectedGroup"
-    (click)="onSelect(group)">
-      <h3>{{ group.name }}</h3>
-      <img [src]='group.picUrl' alt="">
-      <h4>{{ group.location }}</h4>
-  </div>
-</div>
-<p>
-  Group Component
-</p>
-</mdb-card>
 <ng-template [ngIf]="profile">
 <div class="container">
 <!-- Start of Group Card -->
@@ -21,7 +7,7 @@
       <mdb-card *ngFor="let group of groups" class="col-4">
         <mdb-card-img [src]='group.picture'></mdb-card-img>
         <mdb-card-body>
-        <a routerLink="/detail/{{group.id}}" [state]="{ profile: [profile] }">
+        <a routerLink="/detail/{{group.id}}" [state]="{ groupId: [groupId], profile: [profile] }">
           <h3>{{ group.name }}</h3>
         </a>
         <mdb-card-text>
@@ -51,9 +37,9 @@
       <mdb-card *ngFor="let trip of trips" [class.selected]="trip === selectedTrip" (click)="onSelect(trip)" class="col-4">
         <mdb-card-img [src]='trip.picture'></mdb-card-img>
         <mdb-card-body>
-        <mdb-card-title routerLink="/my-trips/{{trip.id}}">
+        <a routerLink="/my-trips/{{trip.id}}" [state]="{ groupId: [groupId], profile: [profile] }">
           <h3>{{ trip.name }}</h3>
-        </mdb-card-title>
+        </a>
         <mdb-card-text>
           <h4>{{ trip.destination }}</h4>
         </mdb-card-text>

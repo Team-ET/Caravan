@@ -1,7 +1,10 @@
+<div class="container">
+<mdb-card>
 <div>
     <h3>Chat</h3>
     <div *ngFor="let message of messages">{{message.username}}: {{message.text}}</div>
     <input [(ngModel)]="text" (keyup)="$event.keyCode == 13 && sendMessage()" />
-    <button (click)="sendMessage()">Send</button>
+    <button (click)="sendMessage()" mdbBtn color="primary" rounded="true">Send</button>
 </div>
-
+</mdb-card>
+</div>

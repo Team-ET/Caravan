@@ -35,7 +35,7 @@ const storeMessage = message => {
     text,
     username,
     groupId
-   });
+  });
 }
 
 const findPhotos = () => {
@@ -51,13 +51,13 @@ const getMessages = groupId => {
 
 //function for getting all Groups from the db
 const findAllGroups = () =>
- Group.findAll({
- });
- 
+Group.findAll({
+});
+
 // function for getting all Users from the db
 const findAllUsers = () =>
- User.findAll(
- );
+User.findAll(
+);
 
 // find user by email
 const findUser = id_api => User.findOne({
@@ -81,10 +81,10 @@ const findUserGroups = userId => User_group.findAll({
 const findPendingUsers = groupIds => User_group.findAll({
     attributes: ['userId'],
     where: {
-       groupId: {
-         [Op.or]: groupIds
-       },
-       pending: true
+      groupId: {
+        [Op.or]: groupIds
+      },
+      pending: true
     }
   });
 
@@ -94,7 +94,7 @@ const findGroupUsers = groupIds => User_group.findAll({
     groupId: {
       [Op.or]: groupIds
     },
-    pending: false
+    // pending: false
   }
 });
 
