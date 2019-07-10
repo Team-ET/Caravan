@@ -6,8 +6,6 @@ import { Photos } from 'src/app/models/photos';
 // import { CLOUDNAME, PRESET } from 'config';
 
 
-
-
 @Component({
   selector: 'app-widget',
   templateUrl: './widget.component.html',
