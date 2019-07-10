@@ -17,11 +17,12 @@ export class WidgetComponent implements OnInit {
 photos: Photos[];
   
 constructor(public widgetService: WidgetService) { }
-
-  ngOnInit() {
+  // Input() cloudinary: any;
+  //this about passing this down to get rid of the cloudinary TS errors
+  ngOnInit() {//test
   this.getPhotos();
   }
-  myClick() {
+  myClick(): any {
 
     let myWidget = cloudinary.createUploadWidget({
       cloudName: 'sc0ttiee',
