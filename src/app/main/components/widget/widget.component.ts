@@ -22,7 +22,12 @@ constructor(public widgetService: WidgetService) { }
   ngOnInit() {//test
   this.getPhotos();
   }
+<<<<<<< HEAD
   myClick(): any {
+=======
+  
+  myClick() {
+>>>>>>> 9c2a8ef67013a990408b45e7fbcb82d0fddd222f
 
     let myWidget = cloudinary.createUploadWidget({
       cloudName: 'sc0ttiee',
