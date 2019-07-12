@@ -6,7 +6,7 @@
       <mdb-card-body>
         <h3>{{ request.name }}</h3>
       </mdb-card-body>
-      <a routerLink="#" mdbBtn color="primary" mdbWavesEffect>Accept</a>
+      <a (click)="addGroupMember(requests.sub, )" mdbBtn color="primary" mdbWavesEffect>Accept</a>
     </mdb-card>
   </div>
 </div>

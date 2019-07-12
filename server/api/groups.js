@@ -3,18 +3,19 @@ const router = express.Router();
 const app = express();
 const _ = require('lodash');
 const {
-  storeUser,
   addUserToGroup,
   storeGroup,
   getMessages,
   findAllGroups,
   findUser,
+  findUserById,
   findUsers,
   findGroup,
   findUserGroups,
   findGroupUsers,
   findPendingUsers,
   findGroups,
+  updateGroup,
   clientErrorHandler } = require('../helpers.js');
 
 app.use(clientErrorHandler) // handles error for Angular client
@@ -123,16 +124,44 @@ router.get('/:sub/requests', (req, res) => {
       return findPendingUsers(groups);
     })
     .then(data => {
-      const userArr = data.map(data => data.dataValues.userId);
-      const userids = _.uniq(userArr);
-      return findUsers(userids);
+      const requests = data.map(data => {
+        return [data.dataValues.userId, data.dataValues.groupId];
+      }).flat();
+      return Promise.all(requests.map((id, i) => {
+        if (i % 2 === 0) {
+          return findUserById(id);
+        } else {
+          return findGroup(id);
+        }
+      }))
     })
-    .then((users) => {
-      res.send(users);
+    .then((results) => {
+      const requests = results.map(result => {
+        return data.dataValues;
+      })
+      res.send(requests);
     })
     .catch(err => {
       console.error(err);
       res.sendStatus(500);
+    })
+});
+
+// UPDATE user's group join request from pending to not pending
+router.put('/add-user', (req, res) => {
+  console.log(req.body);
+  const { sub, groupId } = req.body;
+  findUser(sub)
+    .then(user => {
+      console.log(user);
+      updateGroup(user.dataValues.id, groupId)
+    })
+    .then(result => {
+      res.sendStatus(200);
+    })
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(409);
     })
 });
 

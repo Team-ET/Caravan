@@ -64,6 +64,11 @@ const findUser = id_api => User.findOne({
   where: { id_api }
 });
 
+// find user by user id
+const findUserById = id => User.findOne({
+  where: { id }
+});
+
 // find group by id
 const findGroup = id => Group.findOne({
   where: { id }
@@ -79,12 +84,12 @@ const findUserGroups = userId => User_group.findAll({
 
 // get users by group id
 const findPendingUsers = groupIds => User_group.findAll({
-    attributes: ['userId'],
+    attributes: ['userId', 'groupId'],
     where: {
-       groupId: {
-         [Op.or]: groupIds
-       },
-       pending: true
+      groupId: {
+        [Op.or]: groupIds
+      },
+      pending: true
     }
   });
 
@@ -197,6 +202,7 @@ module.exports = {
   findAllGroups,
   findAllUsers,
   findUser,
+  findUserById,
   findGroup,
   findUserGroups,
   findGroupUsers,
