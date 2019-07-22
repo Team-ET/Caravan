@@ -23,12 +23,8 @@ constructor(public widgetService: WidgetService) { }
   ngOnInit() {//test
   this.getPhotos();
   }
-<<<<<<< HEAD
-  myClick(): any {
-=======
   
   myClick() {
->>>>>>> 9c2a8ef67013a990408b45e7fbcb82d0fddd222f
 
     let myWidget = cloudinary.createUploadWidget({
       cloudName: 'sc0ttiee',
@@ -39,11 +35,13 @@ constructor(public widgetService: WidgetService) { }
         }
       }
     )
+
     document.getElementById("upload_widget").addEventListener("click", function(){
         myWidget.open();
       }, false);
   }
 
+  
   getPhotos(): void {
     this.widgetService.getPhotos()
       .subscribe(photos => {
@@ -51,5 +49,4 @@ constructor(public widgetService: WidgetService) { }
         this.photos = photos;
       });
   }
-  
 }

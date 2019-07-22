@@ -35,4 +35,8 @@ export class RequestsComponent implements OnInit {
       });
   }
 
+  onOpen(event: any) {
+    console.log(event);
+  }
+
 }
