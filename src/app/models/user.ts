@@ -3,4 +3,6 @@ export class User {
   sub: string;
   name: string;
   picture: string;
+  group?: string|null;
+  groupId?: number|null;
 }

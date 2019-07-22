@@ -44,14 +44,6 @@ export class GroupsService {
       );
   }
 
-  // // GET a user's trips
-  //  getUserGroups(email: string): Observable<Group> {
-  //   return this.http.get<Group>(this.groupsUrl + `/trips${email}`)
-  //     .pipe(
-  //       catchError(this.handleError('getTrips', null))
-  //     );
-  // }
-
   // GET a user's trips
   getUserTrips(sub: string): Observable<Group[]> {
     return this.http.get<Group[]>(`${this.groupsUrl}/${sub}/trips`)
@@ -73,6 +65,13 @@ export class GroupsService {
     return this.http.get<User[]>(this.groupsUrl + `/${sub}/requests`)
       .pipe(
         catchError(this.handleError('getGroupRequests', null))
+      );
+  }
+
+  updateGroupRequest(sub: string, groupId: number): Observable<void> {
+    return this.http.put<void>(this.groupsUrl + `/add-user`, {sub, groupId})
+      .pipe(
+        catchError(this.handleError('updateGroupRequest', null))
       );
   }
 
