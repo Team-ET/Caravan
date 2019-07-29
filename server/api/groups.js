@@ -99,9 +99,9 @@ router.get('/:id/users', (req, res, next) => {
   const groupId = req.params.id;
   findGroupUsers(groupId)
     .then(data => {
-      if (data.length === 0) {
-        return [];
-      }
+      // if (data.length === 0) {
+      //   return [];
+      // }
       const userArr = data.map(data => data.dataValues.userId);
       return findUsers(userArr);
     })
@@ -119,10 +119,16 @@ router.get('/:sub/requests', (req, res) => {
   findUser(req.params.sub)
     .then(user => findUserGroups(user.id))
     .then(data => {
+      if (data.length === 0) {
+        return [];
+      }
       const groups = data.map(data => data.dataValues.groupId);
       return findPendingUsers(groups);
     })
     .then(data => {
+      if (data.length === 0) {
+        return [];
+      }
       const userArr = data.map(data => data.dataValues.userId);
       const userids = _.uniq(userArr);
       return findUsers(userids);
@@ -141,6 +147,9 @@ router.get('/:id/trips', (req, res) => {
   findUser(req.params.id)
     .then(user => findUserGroups(user.id))
     .then(data => {
+      if (data.length === 0) {
+        return [];
+      }
       const groupArr = data.map(data => data.dataValues.groupId);
 
       return findGroups(groupArr);

@@ -10,11 +10,16 @@ import { GroupsService } from '../groups/services/groups.service';
   providers: [GroupsService]
 })
 export class UserGroupDetailComponent implements OnInit {
+  profile: any
   groupId: number;
   group: Group; // model
 
-  constructor(readonly route:ActivatedRoute, private groupService:GroupsService) {
+  constructor(readonly route: ActivatedRoute, private groupService: GroupsService) {
+    console.log(this.groupId);
+    this.profile = window.history.state.profile[0];
+    this.groupId = window.history.state.groupId[0];
     this.route.params.subscribe(params => {
+      console.log(params);
     this.groupId = params.groupId;
     this.getGroupById(this.groupId);
     });
