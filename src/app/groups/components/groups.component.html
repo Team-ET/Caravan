@@ -1,44 +1,34 @@
-<mdb-card>
-<div class="groups">
-  <div *ngFor="let group of groups"
-    [class.selected]="group === selectedGroup"
-    (click)="onSelect(group)">
-      <h3>{{ group.name }}</h3>
-      <img [src]='group.picUrl' alt="">
-      <h4>{{ group.location }}</h4>
-  </div>
-</div>
-<p>
-  Group Component
-</p>
-</mdb-card>
 <ng-template [ngIf]="profile">
 <div class="container">
 <!-- Start of Group Card -->
   <div class="container">
   <h3>Highest Matched Groups</h3>
+  <mdb-card>
     <div class="row">
-      <mdb-card *ngFor="let group of groups" class="col-4">
-        <mdb-card-img [src]='group.picture'></mdb-card-img>
-        <mdb-card-body>
-        <a routerLink="/detail/{{group.id}}" [state]="{ profile: [profile] }">
-          <h3>{{ group.name }}</h3>
-        </a>
-        <mdb-card-text>
-          <h4>{{ group.destination }}</h4>
-        </mdb-card-text>
-        <!-- Percentage Circle -->
-        <div class="circle-container">
+      <div *ngFor="let group of groups" class="col-4">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="hovereffect">
+              <img class="img-responsive" [src]="group.picture" alt="" height="200px" width="200px">
+                  <div class="overlay">
+                      <h2>{{ group.destination }}</h2>
+                <a routerLink="/detail/{{group.id}}" [state]="{ profile: [profile] }">
+                  <h3>{{ group.name }}</h3>
+                </a>
+                <div class="circle-container">
           <div id="activeBorder" class="active-border">
             <div id="circle" class="circle">
               <span class="prec 270" id="prec">90%</span>
             </div>
         </div>
         </div>
-        <!-- Percentage Circle --->
-        </mdb-card-body>
-      </mdb-card>
-        <a routerLink="/group-all" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+      
+    </mdb-card>
+    <a routerLink="/group-all" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
     </div>
   </div>
 <!-- End of Group Card -->
