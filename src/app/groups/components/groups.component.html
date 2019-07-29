@@ -2,7 +2,9 @@
 <div class="container">
 <!-- Start of Group Card -->
   <div class="container">
+    <div class="row justify-content-center">
   <h3>Highest Matched Groups</h3>
+  </div>
   <mdb-card>
     <div class="row">
       <div *ngFor="let group of groups" class="col-4">
@@ -26,8 +28,8 @@
       </div>
       </div>
     </div>
-      
     </mdb-card>
+    <div class="row justify-content-center">
     <a routerLink="/group-all" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
     </div>
   </div>
