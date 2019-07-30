@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
   findAllGroups()
     .then((group) => {
       // res.send(group)
-      const groups = [group[0], group[1], group[2]];
+      const groups = [group[0], group[1], group[2], group[3], group[4], group[5]];
       res.send(groups);
     })
     .catch(err => {
