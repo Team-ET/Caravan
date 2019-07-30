@@ -38,20 +38,24 @@
   <!-- Start of Trip Card -->
   <div class="trips">
     <h3>My Trips</h3>
+    <mdb-card>
     <div class="row justify-content-sm-center">
-      <mdb-card *ngFor="let trip of trips" [class.selected]="trip === selectedTrip" (click)="onSelect(trip)" class="col-4">
-        <mdb-card-img [src]='trip.picture'></mdb-card-img>
-        <mdb-card-body>
+      <div *ngFor="let trip of trips" [class.selected]="trip === selectedTrip" (click)="onSelect(trip)" class="col-4">
+        <div class="view overlay">
+        <img [src]="trip.picture" class="img-fluid" alt="group" width="200px" height="200px">
+        <div class="mask flex-center rgba-red-strong">
+          <div class="white-text">
         <a routerLink="/my-trips/{{trip.id}}" [state]="{ groupId: [groupId], profile: [profile] }">
           <h3>{{ trip.name }}</h3>
         </a>
-        <mdb-card-text>
           <h4>{{ trip.destination }}</h4>
-        </mdb-card-text>
-        </mdb-card-body>
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
       </mdb-card>
       <!-- End of Trip Card -->
-    </div>
     <div class="row justify-content-center">
       <a routerLink="/group/signup" [state]="{ profile: [profile] }" mdbBtn color="primary">Create a Group</a>
     </div>
