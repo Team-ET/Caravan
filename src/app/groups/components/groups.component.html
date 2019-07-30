@@ -8,11 +8,10 @@
   <mdb-card>
     <div class="row">
       <div *ngFor="let group of groups" class="col-4">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-          <div class="hovereffect">
-              <img class="img-responsive" [src]="group.picture" alt="" height="200px" width="200px">
-                  <div class="overlay">
-                      <h2>{{ group.destination }}</h2>
+        <div class="view overlay">
+          <img [src]="group.picture" class="img-fluid " alt="group" width="200px" height="200px">
+          <div class="mask flex-center rgba-red-strong">
+              <div class="white-text"><h2>{{ group.destination }}</h2>
                 <a routerLink="/detail/{{group.id}}" [state]="{ profile: [profile] }">
                   <h3>{{ group.name }}</h3>
                 </a>
@@ -24,7 +23,7 @@
         </div>
         </div>
         </div>
-        </div>
+          </div>
       </div>
       </div>
     </div>
