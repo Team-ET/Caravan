@@ -3,13 +3,9 @@
 <ng-template [ngIf]="group">
   <h2>{{group.name}} Details</h2>
   <app-group-users [groupId]='groupId'></app-group-users>
-  <mdb-card>
-  <mdb-body>
     Dates: {{group.date_start}} - {{group.date_end}}<br/>
     Budget: $$$<br/>
     Overall Compatibility: 90%<br/>
-  </mdb-body>
-  </mdb-card>
   <div *ngIf="group.id !== 5">
     <!--Request Button-->
     <div>
