@@ -35,7 +35,7 @@ import { RequestsComponent } from '../requests/requests.component';
 @NgModule({
   imports: [
     CommonModule,
-    // AuthModule,
+    AuthModule,
     NavbarModule,
     IconsModule,
     RouterModule,

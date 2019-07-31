@@ -1,34 +1,17 @@
-<div class="container">
-<<<<<<< HEAD
+<div class="container" style="margin-top: 50px; margin-left: 10px">
   <ng-template [ngIf]="requests">
-    <h3>Group Requests</h3>
-    <div class="row">
-      <div *ngFor="let request of requests" class="col-4">
-        <mdb-card>
-          <h2>{{ request.group }}</h2>
-          <mdb-card-img [src]='request.picture'></mdb-card-img>
-          <mdb-card-body>
-            <h3>{{ request.name }}</h3>
-          </mdb-card-body>
+    <h4>Group Requests</h4>
+    <div class="row justify-content-center">
+      <div *ngFor="let request of requests" class="col-14">
+          <h4>{{ request.group }}</h4>
+          <img [src]='request.picture' height="100px">
+            <h5>{{ request.name }}</h5>
           <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
             (click)="frame.show()" (click)="addGroupMember(request.sub, request.groupId)" mdbWavesEffect>Accept</button>
           <!-- <a (click)="addGroupMember(request.sub, request.groupId)" mdbBtn color="primary" mdbWavesEffect>Accept</a> -->
-        </mdb-card>
       </div>
     </div>
   </ng-template>
-=======
-  <h3>Group Requests</h3>
-  <div class="row">
-    <mdb-card *ngFor="let request of requests" class="col-4">
-      <img [src]='request.picture'>
-      <div>
-        <h3>{{ request.name }}</h3>
-      </div>
-      <a routerLink="#" mdbBtn color="primary" mdbWavesEffect>Accept</a>
-    </mdb-card>
-  </div>
->>>>>>> e1487d0cc9583d9a2a637b74e57cc7b0460f9791
 </div>
 
 <!-- Pop-up Modal -->
