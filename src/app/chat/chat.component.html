@@ -1,7 +1,20 @@
 <div>
     <h3>Chat</h3>
-    <div *ngFor="let message of messages">{{message.username}}: {{message.text}}</div>
-    <input [(ngModel)]="text" (keyup)="$event.keyCode == 13 && sendMessage()" />
-    <button (click)="sendMessage()">Send</button>
-</div>
-
+    <div class="color-block peach-gradient z-depth-1 chat-module-container">
+      <div class="chat-module">
+        <div *ngFor="let message of messages">
+          <div class="color-block z-depth-1 chat-message-block">
+            <span class="chat-message-user">{{message.username}}:</span>
+            <span class="chat-message">{{message.text}}</span>
+          </div>
+        </div>
+        <div class="chat-form">
+          <input mdbInput type="text" class="form-control" [(ngModel)]="text"
+            (keyup)="$event.keyCode == 13 && sendMessage()"
+            placeholder="type your message then click send or press enter..." />
+          <button mdbBtn type="button" gradient="peach" rounded="true" (click)="sendMessage()"
+            mdbWavesEffect>Send</button>
+        </div>
+      </div>
+    </div>
+   </div>

@@ -15,7 +15,6 @@ export class ChatService {
   private url = 'http://localhost:3000';
   private socket;
   public user: any;
-  public profile: any = {name: 'Erica'};
   @Input() groupId: number;
 
   constructor(
@@ -24,35 +23,23 @@ export class ChatService {
     private authService: AuthService) {
     this.handleError = httpErrorHandler.createHandleError('ChatService');
     this.user = authService.userProfile;
-    // this.socket = io(this.url, {
-    //   query: {
-    //     user: this.profile.name,
-    //     groupId: this.groupId
-    //   }
-    // });
-    // this.socket.emit('');
     this.socket = io(this.url);
     this.socket.connect();
-
-    // this.socket.on('connect', () => {
-    //   // Connected, let's sign-up for to receive messages for this room
-    //   console.log('trying to connect to room');
-    //   this.socket.emit('room', this.groupId);
-    // });
   }
 
+  // When socket connects, send user id to server to join group room
   public joinGroupChat(id: number) {
     this.socket.on('connect', () => {
-      // Connected, let's sign-up for to receive messages for this room
-      console.log('trying to connect to room');
       this.socket.emit('join-chat', id);
     });
   }
 
+  // Send message to server
   public sendMessage(text: string, username: string, groupId: number) {
     this.socket.emit('new-message', {text, username, groupId});
   }
 
+  // Get any messages that are sent in group chat via socket
   public getMessages = () => {
     return Observable.create((observer) => {
         this.socket.on('new-message', (message, user) => {
@@ -61,7 +48,7 @@ export class ChatService {
     });
   }
 
-  // GET messages for a group if user is a member
+  // GET all messages for a group if user is a member
   public getGroupMessages(id: number): Observable<Message[]> {
     return this.http.get<Message[]>(`api/groups/${id}/messages`)
       .pipe(

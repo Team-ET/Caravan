@@ -7,10 +7,17 @@ const storeUser = (id_api, name, picture) => User.findOrCreate({
   where: { id_api },
   defaults: { id_api, name, picture }
 });
-//function for storing group in db
+
+//storing group in db
 const storeGroup = (name, destination, date_start, date_end, picture) => Group.findOrCreate({
   where: { name },
   defaults: { name, destination, date_start, date_end, picture }
+});
+
+//storing user values after getting personality profile from Watson
+const storeValues = (tradition, achievement, enjoyment, stimulation, helpfulness, userId) => Values.findOrCreate({
+  where: { userId },
+  defaults: { tradition, achievement, enjoyment, stimulation, helpfulness }
 });
 
 //storing user id and group id in User_group table; adding user to a group
@@ -64,6 +71,11 @@ const findUser = id_api => User.findOne({
   where: { id_api }
 });
 
+// find user by user id
+const findUserById = id => User.findOne({
+  where: { id }
+});
+
 // find group by id
 const findGroup = id => Group.findOne({
   where: { id }
@@ -79,23 +91,23 @@ const findUserGroups = userId => User_group.findAll({
 
 // get users by group id
 const findPendingUsers = groupIds => User_group.findAll({
-    attributes: ['userId'],
+    attributes: ['userId', 'groupId'],
     where: {
-       groupId: {
-         [Op.or]: groupIds
-       },
-       pending: true
+      groupId: {
+        [Op.or]: groupIds
+      },
+      pending: true
     }
   });
 
 // update status of pending in user groups from true to false
 const updateGroup = (userId, groupId) => {
   return User_group.update({
-    userId, groupId
+    pending: false
   },
   {
     returning: true,
-    where: {pending: false}
+    where: {userId, groupId}
   }
 )};
 
@@ -123,9 +135,9 @@ const findUsers = userIds => {
   })
 };
 
-const getUserValues = userId =>
-  Values.findOne({ where: { userId }})
-  .then(user => user.id);
+const getUserValues = userId => {
+  return Values.findOne({ where: { userId }})
+}
 
 // handle angular client errors
 function clientErrorHandler(err, req, res, next) {
@@ -136,31 +148,6 @@ function clientErrorHandler(err, req, res, next) {
   }
 }
 
-function userMatch(group, user) {
-  // need to account for 0, need to account for no matches at all
-  
-  let counter = 0;
-  if (user.tradition - 10 >= group.tradition) {
-    counter++;
-  } if (user.achievement - 10 >= group.achievement) {
-    counter++;
-  }
-  if (user.pleasure - 10 >= group.pleasure) {
-    counter++;
-  }
-  if (user.stimulation - 10 >= group.stimulation) {
-    counter++;
-  }
-  if (user.helpfulness - 10 >= group.stimulation) {
-    counter++;
-  } 
-
-  if (counter >= 3) {
-    return console.log('Matched!');
-  } else {
-    return console.log('Not Matched!');
-  }
-}
 //lets make some helper functions for find these photos BOIIIIIIIIII******************************************************************************
 //user this function for testing, once it works, then test with findUserPhoto
 const findAllPhotos = (photo) => {
@@ -191,12 +178,14 @@ const findGroupPhoto = (photo) => {
 module.exports = {
   storeUser,
   storeGroup,
+  storeValues,
   getMessages,
   addUserToGroup,
   updateGroup,
   findAllGroups,
   findAllUsers,
   findUser,
+  findUserById,
   findGroup,
   findUserGroups,
   findGroupUsers,
@@ -205,7 +194,6 @@ module.exports = {
   findUsers,
   getUserValues,
   clientErrorHandler,
-  userMatch,
   findAllPhotos,
   findUserPhoto,
   findGroupPhoto,
