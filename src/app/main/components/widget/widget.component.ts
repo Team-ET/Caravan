@@ -5,9 +5,6 @@ import { WidgetService } from './widget.service';
 import { Photos } from 'src/app/models/photos';
 // import { CLOUDNAME, PRESET } from 'config';
 
-
-
-
 @Component({
   selector: 'app-widget',
   templateUrl: './widget.component.html',
@@ -24,22 +21,24 @@ constructor(public widgetService: WidgetService) { }
   this.getPhotos();
   }
   
-  myClick() {
 
-    let myWidget = cloudinary.createUploadWidget({
-      cloudName: 'sc0ttiee',
-      uploadPreset: 'atiwd1dv' }, async (error, result) => {
-        if (!error && result && result.event === "success") {
-          console.log('Done! Here is the image info: ', result.info);
-          const photoObject = await this.widgetService.savePhoto(result.info);
-        }
-      }
-    )
+  // myClick() {
 
-    document.getElementById("upload_widget").addEventListener("click", function(){
-        myWidget.open();
-      }, false);
-  }
+  //   let myWidget = cloudinary.Cloudinary.createUploadWidget({
+  //     cloudName: 'sc0ttiee',
+  //     uploadPreset: 'atiwd1dv' }, async (error, result) => {
+  //       if (!error && result && result.event === "success") {
+  //         console.log('Done! Here is the image info: ', result.info);
+  //         const photoObject = await this.widgetService.savePhoto(result.info);
+  //       }
+  //     }
+  //   )
+
+
+  //   document.getElementById("upload_widget").addEventListener("click", function(){
+  //       myWidget.open();
+  //     }, false);
+  // }
 
   
   getPhotos(): void {
