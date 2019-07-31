@@ -1,4 +1,5 @@
 <div class="container">
+<<<<<<< HEAD
   <ng-template [ngIf]="requests">
     <h3>Group Requests</h3>
     <div class="row">
@@ -16,6 +17,18 @@
       </div>
     </div>
   </ng-template>
+=======
+  <h3>Group Requests</h3>
+  <div class="row">
+    <mdb-card *ngFor="let request of requests" class="col-4">
+      <img [src]='request.picture'>
+      <div>
+        <h3>{{ request.name }}</h3>
+      </div>
+      <a routerLink="#" mdbBtn color="primary" mdbWavesEffect>Accept</a>
+    </mdb-card>
+  </div>
+>>>>>>> e1487d0cc9583d9a2a637b74e57cc7b0460f9791
 </div>
 
 <!-- Pop-up Modal -->

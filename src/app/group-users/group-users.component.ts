@@ -10,16 +10,16 @@ import { GroupsService } from '../groups/services/groups.service';
 })
 export class GroupUsersComponent implements OnInit {
   @Input() groupId: number;
-
   users: User[] = [];
 
 
   constructor(private groupService: GroupsService) { }
 
   ngOnInit() {
-    if (this.groupId) {
+    console.log(this.groupId);
+    // if (this.groupId) {
       this.loadUsers(this.groupId);
-    }
+    // }
   }
 
   loadUsers(groupId: number) {

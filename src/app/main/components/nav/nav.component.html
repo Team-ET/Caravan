@@ -11,7 +11,7 @@ darken-3"
 role="navigation">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a (click)="logout()" class="navbar-brand" href="#">Caravan</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" href="#">Caravan</a></mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
@@ -36,7 +36,7 @@ role="navigation">
         </a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
           <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/account">My account</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect="">Log out</a>
+          <a (click)="logout()" class="dropdown-item waves-light" mdbWavesEffect>Logout</a>
         </div>
       </li>
 

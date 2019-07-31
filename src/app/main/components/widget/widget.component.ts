@@ -1,9 +1,8 @@
-// declare var require: any
-import { Component, OnInit } from '@angular/core';
-import * as cloudinary from 'cloudinary-core';
-import { WidgetService } from './widget.service';
-import { Photos } from 'src/app/models/photos';
-// import { CLOUDNAME, PRESET } from 'config';
+// // import { Component, OnInit } from '@angular/core';
+// // import * as Cloudinary from 'cloudinary-core';
+// // import { WidgetService } from './widget.service';
+// // import { Photos } from 'src/app/models/photos';
+// // import { CLOUDNAME, PRESET } from './config.js';
 
 @Component({
   selector: 'app-widget',
@@ -14,12 +13,12 @@ import { Photos } from 'src/app/models/photos';
 export class WidgetComponent implements OnInit {
 photos: Photos[];
   
-constructor(public widgetService: WidgetService) { }
-  // Input() cloudinary: any;
-  //this about passing this down to get rid of the cloudinary TS errors
-  ngOnInit() {//test
-  this.getPhotos();
-  }
+// constructor(public widgetService: WidgetService) { }
+//   // Input() cloudinary: any;
+//   //this about passing this down to get rid of the cloudinary TS errors
+//   ngOnInit() {//test
+//   this.getPhotos();
+//   }
   
 
   // myClick() {
@@ -41,11 +40,11 @@ constructor(public widgetService: WidgetService) { }
   // }
 
   
-  getPhotos(): void {
-    this.widgetService.getPhotos()
-      .subscribe(photos => {
-        console.log('getting photos', photos);
-        this.photos = photos;
-      });
-  }
-}
+//   getPhotos(): void {
+//     this.widgetService.getPhotos()
+//       .subscribe(photos => {
+//         console.log('getting photos', photos);
+//         this.photos = photos;
+//       });
+//   }
+// }

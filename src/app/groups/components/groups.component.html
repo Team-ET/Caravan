@@ -1,22 +1,21 @@
 <ng-template [ngIf]="profile">
   <div class="container">
-    <!-- Start of Group Card -->
-    <ng-template [ngIf]="groups">
-    <div class="container">
-      <h3>Highest Matched Groups</h3>
-      <div class="row">
-        <div *ngFor="let group of groups" class="col-4">
-          <mdb-card>
-            <mdb-card-img [src]='group.picture'></mdb-card-img>
-            <mdb-card-body>
-              <a routerLink="/detail/{{group.id}}" [state]="{ profile: [profile] }">
-                <h3>{{ group.name }}</h3>
-              </a>
-              <mdb-card-text>
-                <h5>{{ group.destination }}</h5>
-              </mdb-card-text>
-              <!-- Percentage Circle -->
-              <!-- <div class="circle-container">
+    <div class="row justify-content-center">
+  <h3>Highest Matched Groups</h3>
+  </div>
+  <mdb-card>
+    <div class="row">
+      <div *ngFor="let group of groups" class="col-4">
+        <div class="view overlay">
+          <img [src]="group.picture" class="img-group" alt="group" width="265px" height="200px">
+          <div class="mask flex-center rgba-red-strong">
+              <div class="white-text" style="text-align: center">
+                {{ group.destination }} 
+              <br/>
+                <a routerLink="/detail/{{group.id}}" [state]="{ profile: [profile] }">
+                  {{ group.name }}
+                </a>
+                <div class="circle-container">
           <div id="activeBorder" class="active-border">
             <div id="circle" class="circle">
               <span class="prec 270" id="prec">90%</span>
@@ -27,35 +26,39 @@
             </mdb-card-body>
           </mdb-card>
         </div>
+        </div>
+        </div>
+          </div>
       </div>
-      <div class="row justify-content-center ">
-        <a class="button-vert-space" routerLink="/group-all" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
       </div>
+    </div>
+    </mdb-card>
+    <div class="row justify-content-center">
+    <a routerLink="/group-all" mdbBtn color="primary" mdbWavesEffect>View More Matches</a>
     </div>
 </ng-template>
 <!-- End of Group Card -->
 <div class="spacer1"></div>
-<div class="cotainer">
+<div class="container">
   <!-- Start of Trip Card -->
   <ng-template [ngIf]="trips">
   <div class="trips">
     <h3>My Trips</h3>
-    <div class="row">
-      <div *ngFor="let trip of trips" [class.selected]="trip === selectedTrip" (click)="onSelect(trip)" class="col-4">
-        <mdb-card>
-          <mdb-card-img [src]='trip.picture'></mdb-card-img>
-          <mdb-card-body>
+    
+    <div class="row justify-content-center">
+        <mdb-card *ngFor="let trip of trips" [class.selected]="trip === selectedTrip" (click)="onSelect(trip)" class="col-5">
+            <mdb-card-img [src]='trip.picture'></mdb-card-img>
+            <mdb-card-body>
             <a routerLink="/my-trips/{{trip.id}}" [state]="{ profile: [profile] }">
               <h3>{{ trip.name }}</h3>
             </a>
             <mdb-card-text>
               <h4>{{ trip.destination }}</h4>
             </mdb-card-text>
-          </mdb-card-body>
-        </mdb-card>
-      </div>
+            </mdb-card-body>
+          </mdb-card>
+          </div>
       <!-- End of Trip Card -->
-    </div>
     <div class="row justify-content-center">
       <a class="button-vert-space" routerLink="/group/signup" [state]="{ profile: [profile] }" mdbBtn
         color="primary">Create a Group</a>
@@ -65,3 +68,4 @@
 </div>
 </div>
 </ng-template>
+
