@@ -180,9 +180,12 @@ router.get('/:id/trips', (req, res) => {
   findUser(req.params.id)
     .then(user => findUserGroups(user.id))
     .then(data => {
-      const groupArr = data.map(data => data.dataValues.groupId);
-
-      return findGroups(groupArr);
+      if (data.length === 0) {
+        return [];
+      } else {
+        const groupArr = data.map(data => data.dataValues.groupId);
+        return findGroups(groupArr);
+      }
     })
     .then(groups => {
 
