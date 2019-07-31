@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { RouterModule, Routes, ActivatedRoute, NavigationStart } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GroupsService } from '../groups/services/groups.service';
+import { UserService } from '../main/user.service';
 
 @Component({
   selector: 'app-group-form',
@@ -23,12 +24,12 @@ export class GroupFormComponent implements OnInit {
 
   constructor(
     private groupService: GroupsService,
-    public activatedRoute: ActivatedRoute) {
+    public activatedRoute: ActivatedRoute,
+    private userService: UserService) {
    }
 
   ngOnInit(): void {
-    this.profile = window.history.state.profile[0];
-    console.log(window.history);
+    this.profile = this.userService.getUser();
   }
 
   onSubmit() {

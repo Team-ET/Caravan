@@ -26,7 +26,7 @@ export class GroupDetailComponent implements OnInit {
   
   // subsribe to the the id param in the route, set it as groupId, and get group from database using groupId
   ngOnInit() {
-    this.profile = window.history.state.profile[0];
+    this.profile = this.userService.getUser();
     this.route.params.subscribe(params => {
     this.groupId = params.groupId;
     this.getGroupById(this.groupId);
