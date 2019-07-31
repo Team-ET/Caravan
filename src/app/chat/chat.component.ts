@@ -19,7 +19,7 @@ export class ChatComponent implements OnInit {
 
   constructor(readonly route: ActivatedRoute, private chatService: ChatService) {
     // this.user = chatService.user;
-   }
+  }
 
   ngOnInit() {
     // this.route.params.subscribe(params => {

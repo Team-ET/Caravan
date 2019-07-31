@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Group } from '../models';
 import { GroupsService } from '../groups/services/groups.service';
 
+
 @Component({
   selector: 'app-user-group-detail',
   templateUrl: './user-group-detail.component.html',
@@ -10,14 +11,12 @@ import { GroupsService } from '../groups/services/groups.service';
   providers: [GroupsService]
 })
 export class UserGroupDetailComponent implements OnInit {
-  profile: any
+  profile: any;
   groupId: number;
   group: Group; // model
 
   constructor(readonly route: ActivatedRoute, private groupService: GroupsService) {
-    console.log(this.groupId);
     this.profile = window.history.state.profile[0];
-    this.groupId = window.history.state.groupId[0];
     this.route.params.subscribe(params => {
       console.log(params);
     this.groupId = params.groupId;

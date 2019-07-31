@@ -1,10 +1,10 @@
-<div class="container">
 <!-- Start of Group Card -->
   <div class="container">
+    <mdb-card>
     <div style="text-align: center">
-  <h3>Browse More Groups</h3>
+  <h3>Group Matches</h3>
   </div>
-    <div class="row">
+    <div class="row justify-content-center">
       <mdb-card *ngFor="let group of groups" class="col-4">
         <mdb-card-img [src]='group.picture'></mdb-card-img>
         <mdb-card-body>
@@ -26,10 +26,6 @@
         </mdb-card-body>
       </mdb-card>
     </div>
+  </mdb-card>
   </div>
-<!-- End of Group Card -->
-
-<div class="spacer1"></div>
-<div class="cotainer">
-  <!-- Start of Trip Card -->
  

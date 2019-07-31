@@ -64,6 +64,11 @@ const findUser = id_api => User.findOne({
   where: { id_api }
 });
 
+// find user by user id
+const findUserById = id => User.findOne({
+  where: { id }
+});
+
 // find group by id
 const findGroup = id => Group.findOne({
   where: { id }
@@ -79,7 +84,7 @@ const findUserGroups = userId => User_group.findAll({
 
 // get users by group id
 const findPendingUsers = groupIds => User_group.findAll({
-    attributes: ['userId'],
+    attributes: ['userId', 'groupId'],
     where: {
       groupId: {
         [Op.or]: groupIds
@@ -88,18 +93,23 @@ const findPendingUsers = groupIds => User_group.findAll({
     }
   });
 
-const findGroupUsers = groupIds => User_group.findAll({
-  attributes: ['userId'],
-  where: {
-    groupId: {
-      [Op.or]: groupIds
-    },
-    // pending: false
+// update status of pending in user groups from true to false
+const updateGroup = (userId, groupId) => {
+  return User_group.update({
+    pending: false
+  },
+  {
+    returning: true,
+    where: {userId, groupId}
   }
+)};
+
+const findGroupUsers = groupId => User_group.findAll({
+  where: { groupId, pending: false }
 });
 
 const findGroups = groupIds => {
-  return Group.findAll({ // find all 
+  return Group.findAll({ // find all
     where: {
       id: {
         [Op.or]: groupIds
@@ -183,25 +193,16 @@ const findGroupPhoto = (photo) => {
   })
 }
 
-// check if user is a member of a group
-const isGroupMember = (name, groupId) => {
-  console.log('hit');
-  // User.findOne({
-  //   where: { name: name }
-  // })
-  // .then(user => User_group.findAll({groupId: groupId}))
-  // .then(userGroups => console.log(userGroups))
-  // .catch(err => console.error(err));
-}
-
 module.exports = {
   storeUser,
   storeGroup,
   getMessages,
   addUserToGroup,
+  updateGroup,
   findAllGroups,
   findAllUsers,
   findUser,
+  findUserById,
   findGroup,
   findUserGroups,
   findGroupUsers,
@@ -217,5 +218,4 @@ module.exports = {
   storePhoto,
   findPhotos,
   storeMessage,
-  isGroupMember
 };

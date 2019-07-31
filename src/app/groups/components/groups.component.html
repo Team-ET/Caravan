@@ -6,10 +6,10 @@
   <h3>Highest Matched Groups</h3>
   </div>
   <mdb-card>
-    <div class="row" style="padding: 0px">
+    <div class="row">
       <div *ngFor="let group of groups" class="col-4">
         <div class="view overlay">
-          <img [src]="group.picture" class="img-group" alt="group" width="235px" height="200px">
+          <img [src]="group.picture" class="img-group" alt="group" width="265px" height="200px">
           <div class="mask flex-center rgba-red-strong">
               <div class="white-text" style="text-align: center">
                 {{ group.destination }} 
@@ -40,24 +40,20 @@
   <!-- Start of Trip Card -->
   <div class="trips">
     <h3>My Trips</h3>
-    <mdb-card>
-    <div class="row justify-content-sm-center">
-      <div *ngFor="let trip of trips" [class.selected]="trip === selectedTrip" (click)="onSelect(trip)" class="col-4">
-        <div class="view overlay">
-        <img [src]="trip.picture" class="img-trip" alt="trip" width="235px" height="200px">
-        <div class="mask flex-center rgba-red-strong">
-          <div class="white-text">
-        <a routerLink="/my-trips/{{trip.id}}" [state]="{ groupId: [groupId], profile: [profile] }">
-          {{ trip.name }}
-        </a>
-        <br/>
-        {{ trip.destination }}
+    
+    <div class="row justify-content-center">
+        <mdb-card *ngFor="let trip of trips" [class.selected]="trip === selectedTrip" (click)="onSelect(trip)" class="col-5">
+            <mdb-card-img [src]='trip.picture'></mdb-card-img>
+            <mdb-card-body>
+            <a routerLink="/my-trips/{{trip.id}}" [state]="{ profile: [profile] }">
+              <h3>{{ trip.name }}</h3>
+            </a>
+            <mdb-card-text>
+              <h4>{{ trip.destination }}</h4>
+            </mdb-card-text>
+            </mdb-card-body>
+          </mdb-card>
           </div>
-        </div>
-        </div>
-      </div>
-      </div>
-      </mdb-card>
       <!-- End of Trip Card -->
     <div class="row justify-content-center">
       <a routerLink="/group/signup" [state]="{ profile: [profile] }" mdbBtn color="primary">Create a Group</a>

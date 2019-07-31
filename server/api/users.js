@@ -67,11 +67,14 @@ router.get('/', (req, res) => {
     })
 })
 
-// GET user's groups
+// GET user's groups - TODO DELETE
 router.get('/:groups', (req, res) => {
   findUser(req.body.email)
     .then(user => findUserGroups(user.id))
     .then(data => {
+      if (data.length === 0) {
+        return [];
+      }
       const groupArr = data.map(data => data.dataValues.groupId);
       return findGroups(groupArr);
     })
@@ -84,7 +87,7 @@ router.get('/:groups', (req, res) => {
     })
 });
 
-  // get watson data stored in database by sub
+  //GET watson data stored in database by sub
 router.get('/values', (req, res) => {
   getUserValues()
     .then((value) => {

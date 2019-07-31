@@ -20,10 +20,23 @@ export class RequestsComponent implements OnInit {
   loadRequests(sub: string): void {
     this.groupService.getRequests(sub)
       .subscribe(requests => {
-        console.log('getting requests, requests');
+        console.log('getting requests', requests);
         this.requests = requests;
         // this.trips.push(mockGroup);
       });
+  }
+
+  // update a user who has requested membership in a group's pending status to false (making them a group member)
+  addGroupMember(sub: string, groupId: number): void {
+    this.groupService.updateGroupRequest(sub, groupId)
+      .subscribe(result => {
+        console.log('updating membership', result);
+        // this.trips.push(mockGroup);
+      });
+  }
+
+  onOpen(event: any) {
+    console.log(event);
   }
 
 }
