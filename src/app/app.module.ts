@@ -27,18 +27,18 @@ import { UserGroupDetailComponent } from './user-group-detail/user-group-detail.
 import { GroupAllComponent } from './group-all/group-all.component';
 import { RequestsComponent } from './requests/requests.component';
 
-@NgModule({//test
+@NgModule({
   imports: [
     CardsFreeModule.forRoot(),
     GroupsModule,
-    MDBBootstrapModule.forRoot(),//test
+    MDBBootstrapModule.forRoot(),
     AuthModule,
     MainModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES),//tset
+    RouterModule.forRoot(ROUTES),
     GroupUsersModule,
     ModalModule,
     AccountModule,

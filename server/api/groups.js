@@ -3,18 +3,19 @@ const router = express.Router();
 const app = express();
 const _ = require('lodash');
 const {
-  storeUser,
   addUserToGroup,
   storeGroup,
   getMessages,
   findAllGroups,
   findUser,
+  findUserById,
   findUsers,
   findGroup,
   findUserGroups,
   findGroupUsers,
   findPendingUsers,
   findGroups,
+  updateGroup,
   clientErrorHandler } = require('../helpers.js');
 
 app.use(clientErrorHandler) // handles error for Angular client
@@ -123,16 +124,54 @@ router.get('/:sub/requests', (req, res) => {
       return findPendingUsers(groups);
     })
     .then(data => {
-      const userArr = data.map(data => data.dataValues.userId);
-      const userids = _.uniq(userArr);
-      return findUsers(userids);
+      const requests = data.map(data => {
+        return [data.dataValues.userId, data.dataValues.groupId];
+      }).flat();
+      return Promise.all(requests.map((id, i) => {
+        if (i % 2 === 0) {
+          return findUserById(id);
+        } else {
+          return findGroup(id);
+        }
+      }))
     })
-    .then((users) => {
-      res.send(users);
+    .then((results) => {
+      const requests = [];
+      for(let i = 0; i < results.length; i+=2) {
+        requests.push({ 
+          id: results[i].dataValues.id,
+          sub: results[i].dataValues.id_api,
+          name: results[i].dataValues.name,
+          picture: results[i].dataValues.picture,
+          group: results[i + 1].dataValues.name,
+          groupId: results[i + 1].dataValues.id
+        });
+      }
+      console.log('REQUESTS', requests);
+      res.send(requests);
     })
     .catch(err => {
       console.error(err);
       res.sendStatus(500);
+    })
+});
+
+// UPDATE user's group join request from pending to not pending
+router.put('/add-user', (req, res) => {
+  console.log(req.body);
+  const { sub, groupId } = req.body;
+  findUser(sub)
+    .then(user => {
+      console.log(user);
+      updateGroup(user.dataValues.id, groupId)
+    })
+    .then(result => {
+      console.log(result);
+      res.sendStatus(200);
+    })
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(409);
     })
 });
 
@@ -141,9 +180,12 @@ router.get('/:id/trips', (req, res) => {
   findUser(req.params.id)
     .then(user => findUserGroups(user.id))
     .then(data => {
-      const groupArr = data.map(data => data.dataValues.groupId);
-
-      return findGroups(groupArr);
+      if (data.length === 0) {
+        return [];
+      } else {
+        const groupArr = data.map(data => data.dataValues.groupId);
+        return findGroups(groupArr);
+      }
     })
     .then(groups => {
 

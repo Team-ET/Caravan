@@ -4,7 +4,6 @@ const app = express();
 const {
   storeUser,
   addUserToGroup,
-  updateGroup,
   findAllUsers,
   findUser,
   findUserGroups,
@@ -55,18 +54,6 @@ router.get('/:values', (req, res) => {
       res.sendStatus(500);
     })
 })
-
-// UPDATE user's group join request from pending to not pending
-router.put('/:sub/:id', (req, res) => {
-  console.log(req.params);
-  const { sub, id } = req.params;
-  updateGroup(sub, id)
-    .then(result => res.send(result))
-    .catch(err => {
-      console.error(err);
-      res.sendStatus(500);
-    })
-});
 
 // GET all users
 router.get('/', (req, res) => {

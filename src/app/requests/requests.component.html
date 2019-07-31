@@ -2,11 +2,45 @@
   <h3>Group Requests</h3>
   <div class="row">
     <mdb-card *ngFor="let request of requests" class="col-4">
+      <h2>{{ request.group }}</h2>
       <mdb-card-img [src]='request.picture'></mdb-card-img>
       <mdb-card-body>
         <h3>{{ request.name }}</h3>
       </mdb-card-body>
-      <a routerLink="#" mdbBtn color="primary" mdbWavesEffect>Accept</a>
+      <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
+      (click)="frame.show()" (click)="addGroupMember(request.sub, request.groupId)" mdbWavesEffect>Accept</button>
+      <!-- <a (click)="addGroupMember(request.sub, request.groupId)" mdbBtn color="primary" mdbWavesEffect>Accept</a> -->
     </mdb-card>
   </div>
 </div>
+
+<!-- Pop-up Modal -->
+<!-- <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" (open)="onOpen($event)">
+  <div class="modal-dialog modal-notify modal-success" role="document"> -->
+    <!--Content-->
+    <!-- <div class="modal-content"> -->
+      <!--Header-->
+      <!-- <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div> -->
+
+      <!--Body-->
+      <!-- <div class="modal-body">
+        <div class="text-center">
+          <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+          <p>{{ request.name }} is now a member of {{ request.group }}!</p>
+        </div>
+      </div> -->
+
+      <!--Footer-->
+      <!-- <div class="modal-footer justify-content-center">
+        <a routerLink="/main" type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()"
+          data-dismiss="modal">Okay</a>
+      </div>
+    </div> -->
+    <!--/.Content-->
+  <!-- </div>
+</div> -->
