@@ -1,4 +1,5 @@
 const PersonalityInsightsV3 = require('ibm-watson/personality-insights/v3'); // watson personality-insights
+const { findUser, storeValues } = require('./helpers');
 
 const personalityInsights = new PersonalityInsightsV3({
   iam_apikey: `${process.env.PERSONALITY_INSIGHTS_IAM_APIKEY}`,
@@ -7,21 +8,26 @@ const personalityInsights = new PersonalityInsightsV3({
 });
 
 // send body of text to Watson API and get back an object of values and percentages
-function getInsights(text, res) {
-  personalityInsights.profile({
-    content: 'The video game industry is constantly evolving I just needed to add a couple words to make the 100 count just like technology, and I have always been an avid gamer, which is what drew me to the software field.  Being able to work with multiple new technologies on a constant basis keeps the workflow from becoming stagnant.  I have always loved building computers and being able to design and create the software makes the whole experience more complete and rewarding. I feel a great sense of accomplishment in using new tech to solve old problems, and make ideas become even more viable in today’s ever-changing tech world.',
+function getInsights(text, id, res) {
+  Promise.all([personalityInsights.profile({
+    content: text,
     content_type: 'text/plain',
     consumption_preferences: false
-  })
-    .then(result => {
+  }), 
+  findUser(id)])
+    .then(results => {
+      console.log(results);
       const values = {
-        tradition: Math.trunc(result.values[0].percentile * 100),
-        achievement: Math.trunc(result.values[1].percentile * 100),
-        pleasure: Math.trunc(result.values[2].percentile * 100),
-        stimulation: Math.trunc(result.values[3].percentile * 100),
-        helpfulness: Math.trunc(result.values[4].percentile * 100),
+        tradition: Math.trunc(results[0].values[0].percentile * 100),
+        achievement: Math.trunc(results[0].values[1].percentile * 100),
+        enjoyment: Math.trunc(results[0].values[2].percentile * 100),
+        stimulation: Math.trunc(results[0].values[3].percentile * 100),
+        helpfulness: Math.trunc(results[0].values[4].percentile * 100),
       }
-      res.send(JSON.stringify(values, null, 2));
+      const { tradition, achievement, enjoyment, stimulation, helpfulness} = values;
+      userId = results[1].dataValues.id;
+      storeValues(tradition, achievement, enjoyment, stimulation, helpfulness, userId);
+      res.send(values);
     })
     .catch(err => {
       console.log('error:', err);
@@ -40,7 +46,6 @@ const groupAvg = (array) => {
     }
   })
 }
-
 
 module.exports = {
   getInsights,
