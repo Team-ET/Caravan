@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize(process.env.DATABASE_NAME, process.env.USERNAME, process.env.PASSWORD, {
-  host: process.env.HOST,
+const sequelize = new Sequelize('CaravanAppDB', 'TeamET', 'Halleb0t748!', {
+  host: 'caravandbserver.database.windows.net',
   dialect: 'mssql',
   dialectOptions: {
     options: {

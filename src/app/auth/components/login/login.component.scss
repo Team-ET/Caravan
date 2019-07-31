@@ -5,24 +5,13 @@
 .login-form .header {
   border-top-left-radius: .3rem;
   border-top-right-radius: .3rem;
+
 }
 
-.login-form input[type=text]:focus:not([readonly]) {
-  border-bottom: 1px solid #fd9267;
-  -webkit-box-shadow: 0 1px 0 0 #fd9267;
-  box-shadow: 0 1px 0 0 #fd9267;
+.header {
+  background: linear-gradient(90deg, #FF6F3C 0%, #994324 100%);
 }
 
-.login-form input[type=text]:focus:not([readonly])+label {
-  color: #4f4f4f;
-}
 
-.login-form input[type=password]:focus:not([readonly]) {
-  border-bottom: 1px solid #fd9267;
-  -webkit-box-shadow: 0 1px 0 0 #fd9267;
-  box-shadow: 0 1px 0 0 #fd9267;
-}
 
-.login-form input[type=password]:focus:not([readonly])+label {
-  color: #4f4f4f;
-}
+

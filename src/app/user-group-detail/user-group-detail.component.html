@@ -2,20 +2,36 @@
   <mdb-card>
     <ng-template [ngIf]="group">
       <div class="container">
-        <h2>{{group.name}} Details</h2>
-        <app-group-users [groupId]='groupId'></app-group-users>
+          <div class="row justify-content-center">
+        <h3>{{group.name}}</h3>
+        </div>
+<mdb-card>
+  <h2>Members</h2>
+  <app-group-users [groupId]='groupId'></app-group-users>
+</mdb-card>
+<mdb-card>
+  <h2>Details</h2>
         <p>Dates: {{group.date_start}} - {{group.date_end}}<br/>
         Budget: $$$<br/>
         Overall Compatibility: 90%<br/>
         </p>
+</mdb-card>
       </div>
       <!--Group Chat-->
       <div class="container">
         <app-chat [profile]='profile' [groupId]='groupId'></app-chat>
       </div>
-      <div>
-        <app-calendar></app-calendar>
+      <div class="spacer"></div>
+    <div class=row-8>
+      <div class=col>
+    <div>
+        <!-- <app-calendar></app-calendar> -->
+        <div class="row justify-content-center">
+            <a routerLink="/calendar" mdbBtn color="primary" mdbWavesEffect>Calendar</a>
+            </div>
+      </div>
+      </div>
       </div>
     </ng-template>
 </mdb-card>
-</div>
+
