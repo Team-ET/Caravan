@@ -1,13 +1,12 @@
 <ng-template [ngIf]="profile">
-    <div class="container">
+    <div class="container" justify-content-center>
+        <ng-template [ngIf]="values">
         <h4 class="card-title">{{profile.name}}</h4><hr>
-        <h6>Tradition: {{values.tradition}}%</h6>
-        <h6>Stimulation: {{values.stimulation}}%</h6>
-        <h6>Helping Others: {{values.helpfulness}}%</h6>
-        <h6>Achievement: {{values.achievement}}%</h6>
-        <h6>Joy of Life: {{values.enjoyment}}%</h6>
-    </div>
-    <div>
-        <button (click)="getTwitterPersonality(profile.sub)">Make Twitter Call</button>
+        <h6>Tradition: </h6>
+        <h6>Stimulation: </h6>
+        <h6>Helping Others: </h6>
+        <h6>Achievement: </h6>
+        <h6>Joy of Life: </h6>
+        </ng-template>
     </div>
 </ng-template>
