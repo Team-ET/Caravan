@@ -87,7 +87,7 @@ router.get('/:groups', (req, res) => {
     })
 });
 
-  //GET watson data stored in database by sub
+//GET watson data stored in database by sub
 router.get('/values', (req, res) => {
   getUserValues()
     .then((value) => {

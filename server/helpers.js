@@ -7,10 +7,17 @@ const storeUser = (id_api, name, picture) => User.findOrCreate({
   where: { id_api },
   defaults: { id_api, name, picture }
 });
-//function for storing group in db
+
+//storing group in db
 const storeGroup = (name, destination, date_start, date_end, picture) => Group.findOrCreate({
   where: { name },
   defaults: { name, destination, date_start, date_end, picture }
+});
+
+//storing user values after getting personality profile from Watson
+const storeValues = (tradition, achievement, enjoyment, stimulation, helpfulness, userId) => Values.findOrCreate({
+  where: { userId },
+  defaults: { tradition, achievement, enjoyment, stimulation, helpfulness }
 });
 
 //storing user id and group id in User_group table; adding user to a group
@@ -196,6 +203,7 @@ const findGroupPhoto = (photo) => {
 module.exports = {
   storeUser,
   storeGroup,
+  storeValues,
   getMessages,
   addUserToGroup,
   updateGroup,
