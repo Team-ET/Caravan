@@ -28,8 +28,10 @@ export class GroupDetailComponent implements OnInit {
   ngOnInit() {
     this.profile = this.userService.getUser();
     this.route.params.subscribe(params => {
+      console.log(params);
     this.groupId = params.groupId;
     this.getGroupById(this.groupId);
+    console.log(this.groupId);
     });
   }
 

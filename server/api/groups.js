@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
   findAllGroups()
     .then((group) => {
       // res.send(group)
-      const groups = [group[0], group[1], group[2]];
+      const groups = [group[0], group[1], group[2], group[3], group[4], group[5]];
       res.send(groups);
     })
     .catch(err => {
@@ -100,9 +100,9 @@ router.get('/:id/users', (req, res, next) => {
   const groupId = req.params.id;
   findGroupUsers(groupId)
     .then(data => {
-      if (data.length === 0) {
-        return [];
-      }
+      // if (data.length === 0) {
+      //   return [];
+      // }
       const userArr = data.map(data => data.dataValues.userId);
       return findUsers(userArr);
     })
@@ -120,6 +120,9 @@ router.get('/:sub/requests', (req, res) => {
   findUser(req.params.sub)
     .then(user => findUserGroups(user.id))
     .then(data => {
+      if (data.length === 0) {
+        return [];
+      }
       const groups = data.map(data => data.dataValues.groupId);
       return findPendingUsers(groups);
     })

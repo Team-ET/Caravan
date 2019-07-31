@@ -2,14 +2,11 @@
   <h3>Group Requests</h3>
   <div class="row">
     <mdb-card *ngFor="let request of requests" class="col-4">
-      <h2>{{ request.group }}</h2>
-      <mdb-card-img [src]='request.picture'></mdb-card-img>
-      <mdb-card-body>
+      <img [src]='request.picture'>
+      <div>
         <h3>{{ request.name }}</h3>
-      </mdb-card-body>
-      <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
-      (click)="frame.show()" (click)="addGroupMember(request.sub, request.groupId)" mdbWavesEffect>Accept</button>
-      <!-- <a (click)="addGroupMember(request.sub, request.groupId)" mdbBtn color="primary" mdbWavesEffect>Accept</a> -->
+      </div>
+      <a routerLink="#" mdbBtn color="primary" mdbWavesEffect>Accept</a>
     </mdb-card>
   </div>
 </div>

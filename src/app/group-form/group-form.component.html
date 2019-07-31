@@ -1,32 +1,66 @@
+<!-- Section: form gradient -->
+<div class="container">
+<section class="form-gradient mb-5" >
 
-<h1>Create Group Form</h1>
+  <!--Form with header-->
+  <mdb-card >
 <form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
-  
-  <label>
-    Name:
-    <input type="text" formControlName="name">
-  </label>
- 
-  <label>
-    Destination:
-    <input type="text" id="searchBar" (click)="getPlaces()">
-  </label>
+    <!--Header-->
+    <div class="header">
 
-  <label>
-    Start Date:
-    <input type="text" formControlName="date_start">
-  </label>
+      <div class="row d-flex justify-content-center">
+        <h3 class="white-text mb-0 py-5 font-weight-bold">Create Trip!</h3>
+      </div>
 
-  <label>
-    End Date:
-    <input type="text" formControlName="date_end">
-  </label>
+    </div>
+    <!--Header-->
 
-  <button type="submit" [disabled]="!groupForm.valid" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
+    <mdb-card-body class="mx-4">
+      <div class="md-form">
+        <i class="fas fa-shuttle-van prefix grey-text"></i>
+        <input type="text" id="form104" class="form-control" formControlName="name" mdbInput>
+        <label for="form104">Trip Name</label>
+      </div>
+
+      <div class="md-form">
+        <i class="fas fa-map-marker-alt prefix grey-text"></i>
+        <input type="text" id="searchBar" (click)="getPlaces()" class="form-control" mdbInput>
+        <label for="form105">Destination</label>
+      </div>
+
+      <div class="md-form">
+        <i class="fas fa-calendar-alt prefix grey-text"></i>
+        <input type="date" id="form106" class="form-control" formControlName="date_start" mdbInput>
+        <label for="form106">Start Date</label>
+      </div>
+
+      <div class="md-form">
+          <i class="fas fa-calendar-alt prefix grey-text"></i>
+          <input type="date" id="form106" class="form-control" formControlName="date_end" mdbInput>
+          <label for="form106">End Date</label>
+        </div>
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center mb-3 mt-4">
+
+        <!--Grid column-->
+        <button type="submit" [disabled]="!groupForm.valid" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
   (click)="frame.show()" mdbWavesEffect>Submit</button>
-  <!-- <button type="submit" [disabled]="!groupForm.valid">Submit</button> -->
+        <!--Grid column-->
 
+      </div>
+      <!--Grid row-->
+      
+    </mdb-card-body>
 </form>
+  </mdb-card>
+  <!--/Form with header-->
+
+</section>
+
+<!-- Section: form gradient -->
+<!-- Section: form dark -->
+<section class="form-dark mb-5">
+
 
 <!-- Pop-up Modal -->
 <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
