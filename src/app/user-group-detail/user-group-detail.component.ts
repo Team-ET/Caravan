@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Group } from '../models';
 import { GroupsService } from '../groups/services/groups.service';
+import { UserService } from '../main/user.service';
 
 
 @Component({
@@ -15,8 +16,8 @@ export class UserGroupDetailComponent implements OnInit {
   groupId: number;
   group: Group; // model
 
-  constructor(readonly route: ActivatedRoute, private groupService: GroupsService) {
-    this.profile = window.history.state.profile[0];
+  constructor(readonly route: ActivatedRoute, private groupService: GroupsService, private userService: UserService) {
+    this.profile = this.userService.getUser();
     this.route.params.subscribe(params => {
     this.groupId = params.groupId;
     this.getGroupById(this.groupId);

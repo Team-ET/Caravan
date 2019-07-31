@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { User } from '../models';
@@ -16,11 +16,15 @@ import { AuthService } from '../auth/services/auth.service';
 //   })
 // };
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+ })
 export class UserService {
+  currentUser = new BehaviorSubject<any>(null);
   profile: any;
   user: User;
   usersUrl = '/api/users';  // URL to groups api
+  twitterUrl = '/api/twitter'; // URL to twitter api
   private handleError: HandleError;
 
   constructor(
@@ -28,6 +32,13 @@ export class UserService {
     private httpErrorHandler: HttpErrorHandler,
     private auth: AuthService) {
     this.handleError = httpErrorHandler.createHandleError('UserService');
+  }
+
+  setUser(user: any) {
+    this.currentUser.next(user);
+  }
+  getUser() {
+    return this.currentUser.value;
   }
 
   // POST user info on login to main page and store in database
@@ -45,6 +56,22 @@ export class UserService {
   storeProfile(user) {
     console.log('USER', user);
     this.createUser(user);
+  }
+
+  // Send request to twitter api to analyze user's tweets and get personality profile from Watson
+  makeTwitterCall(sub: string): any {
+    return this.http.get<any>(`${this.twitterUrl}/${sub}`)
+      .pipe(
+        catchError(this.handleError('makeTwitterCall', null))
+      );
+  }
+
+  // GET user personality profile stored in db
+  getUserValues(sub: string): any {
+    return this.http.get<any>(`${this.usersUrl}/values/${sub}`)
+      .pipe(
+        catchError(this.handleError('get user values', null))
+      );
   }
 
   // POST user and groupid to server; add a user to a group

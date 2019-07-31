@@ -137,15 +137,17 @@ router.get('/:sub/requests', (req, res) => {
     })
     .then((results) => {
       const requests = [];
-      for(let i = 0; i < results.length; i+=2) {
-        requests.push({ 
-          id: results[i].dataValues.id,
-          sub: results[i].dataValues.id_api,
-          name: results[i].dataValues.name,
-          picture: results[i].dataValues.picture,
-          group: results[i + 1].dataValues.name,
-          groupId: results[i + 1].dataValues.id
-        });
+      if (results) {
+        for(let i = 0; i < results.length; i+=2) {
+          requests.push({ 
+            id: results[i].dataValues.id,
+            sub: results[i].dataValues.id_api,
+            name: results[i].dataValues.name,
+            picture: results[i].dataValues.picture,
+            group: results[i + 1].dataValues.name,
+            groupId: results[i + 1].dataValues.id
+          });
+        }
       }
       console.log('REQUESTS', requests);
       res.send(requests);

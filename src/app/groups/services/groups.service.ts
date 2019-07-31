@@ -9,16 +9,8 @@ import { Group, User } from '../../models';
 import { HttpErrorHandler, HandleError } from '../../http-error-handler.service';
 import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.component';
 
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     'Content-Type':  'application/json',
-//     'Authorization': 'my-auth-token'
-//   })
-// };
-
 @Injectable()
 export class GroupsService {
-  // message: string;
   groupsUrl = '/api/groups';  // URL to groups api
   private handleError: HandleError;
 
