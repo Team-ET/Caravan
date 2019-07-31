@@ -6,11 +6,11 @@
   <h3>Highest Matched Groups</h3>
   </div>
   <mdb-card>
-    <div class="row" style="padding: 0px">
-      <div *ngFor="let group of groups" class="col-4">
+    <div class="row">
+      <div *ngFor="let group of groups" class="col-4 nopadding">
         <div class="view overlay">
           <img [src]="group.picture" class="img-group" alt="group" width="235px" height="200px">
-          <div class="mask flex-center rgba-red-strong">
+          <div class="mask flex-center rgba-red-strong" max-width="235px" height="200px">
               <div class="white-text" style="text-align: center">
                 {{ group.destination }} 
               <br/>
@@ -46,7 +46,7 @@
         <div class="view overlay">
         <img [src]="trip.picture" class="img-trip" alt="trip" width="235px" height="200px">
         <div class="mask flex-center rgba-red-strong">
-          <div class="white-text">
+          <div class="white-text" style="text-align: center">
         <a routerLink="/my-trips/{{trip.id}}" [state]="{ groupId: [groupId], profile: [profile] }">
           {{ trip.name }}
         </a>
