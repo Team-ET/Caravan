@@ -47,7 +47,34 @@ const groupAvg = (array) => {
   })
 }
 
+function userMatch(group, user) {
+  // need to account for 0, need to account for no matches at all
+  
+  let counter = 0;
+  if (user.tradition - 10 >= group.tradition) {
+    counter++;
+  } if (user.achievement - 10 >= group.achievement) {
+    counter++;
+  }
+  if (user.pleasure - 10 >= group.pleasure) {
+    counter++;
+  }
+  if (user.stimulation - 10 >= group.stimulation) {
+    counter++;
+  }
+  if (user.helpfulness - 10 >= group.stimulation) {
+    counter++;
+  } 
+
+  if (counter >= 3) {
+    return console.log('Matched!');
+  } else {
+    return console.log('Not Matched!');
+  }
+}
+
 module.exports = {
   getInsights,
-  groupAvg
+  groupAvg,
+  userMatch
 };

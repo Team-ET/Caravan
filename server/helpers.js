@@ -135,9 +135,9 @@ const findUsers = userIds => {
   })
 };
 
-const getUserValues = userId =>
-  Values.findOne({ where: { userId }})
-  .then(user => user.id);
+const getUserValues = userId => {
+  return Values.findOne({ where: { userId }})
+}
 
 // handle angular client errors
 function clientErrorHandler(err, req, res, next) {
@@ -148,31 +148,6 @@ function clientErrorHandler(err, req, res, next) {
   }
 }
 
-function userMatch(group, user) {
-  // need to account for 0, need to account for no matches at all
-  
-  let counter = 0;
-  if (user.tradition - 10 >= group.tradition) {
-    counter++;
-  } if (user.achievement - 10 >= group.achievement) {
-    counter++;
-  }
-  if (user.pleasure - 10 >= group.pleasure) {
-    counter++;
-  }
-  if (user.stimulation - 10 >= group.stimulation) {
-    counter++;
-  }
-  if (user.helpfulness - 10 >= group.stimulation) {
-    counter++;
-  } 
-
-  if (counter >= 3) {
-    return console.log('Matched!');
-  } else {
-    return console.log('Not Matched!');
-  }
-}
 //lets make some helper functions for find these photos BOIIIIIIIIII******************************************************************************
 //user this function for testing, once it works, then test with findUserPhoto
 const findAllPhotos = (photo) => {
@@ -219,7 +194,6 @@ module.exports = {
   findUsers,
   getUserValues,
   clientErrorHandler,
-  userMatch,
   findAllPhotos,
   findUserPhoto,
   findGroupPhoto,

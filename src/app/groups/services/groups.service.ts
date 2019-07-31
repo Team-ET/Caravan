@@ -12,7 +12,6 @@ import { SuccessAlertComponent } from 'src/app/success-alert/success-alert.compo
 @Injectable()
 export class GroupsService {
   groupsUrl = '/api/groups';  // URL to groups api
-  twitterUrl = '/api/twitter'; // URL to twitter api
   private handleError: HandleError;
 
   constructor(
@@ -79,26 +78,6 @@ export class GroupsService {
         .catch(err => {
           console.error(err);
         });
-  }
-
-  // // POST info from create group form to server
-  // async makeTwitterCall(sub: string): Promise<void> {
-  //   await this.http.post<void>(this.twitterUrl, sub, {responseType: 'text' as 'json'}) // specifying response type to avoid error
-  //     .toPromise()
-  //       .then(result => {
-  //         console.log('Twitter call made', result);
-  //       })
-  //       .catch(err => {
-  //         console.error(err);
-  //       });
-  // }
-
-  // Send request to twitter api to analyze user's tweets and get personality profile from Watson
-  makeTwitterCall(sub: string): any {
-    return this.http.get<any>(`${this.twitterUrl}/${sub}`)
-      .pipe(
-        catchError(this.handleError('makeTwitterCall', null))
-      );
   }
 
 }
