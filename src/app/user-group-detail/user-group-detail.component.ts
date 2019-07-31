@@ -18,6 +18,7 @@ export class UserGroupDetailComponent implements OnInit {
   constructor(readonly route: ActivatedRoute, private groupService: GroupsService) {
     this.profile = window.history.state.profile[0];
     this.route.params.subscribe(params => {
+      console.log(params);
     this.groupId = params.groupId;
     this.getGroupById(this.groupId);
     });

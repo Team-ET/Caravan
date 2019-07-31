@@ -1,9 +1,9 @@
 <!-- Section: form gradient -->
-<section class="form-gradient mb-5">
+<section class="form-gradient mb-5" >
 
   <!--Form with header-->
-  <mdb-card>
-
+  <mdb-card >
+<form [formGroup]="groupForm" (ngSubmit)="onSubmit()">
     <!--Header-->
     <div class="header">
 
@@ -30,7 +30,7 @@
 
       <div class="md-form">
         <i class="fas fa-calendar-alt prefix grey-text"></i>
-        <input type="date" id="form106" class="form-control" formControlName="date_begin" mdbInput>
+        <input type="date" id="form106" class="form-control" formControlName="date_start" mdbInput>
         <label for="form106">Start Date</label>
       </div>
 
@@ -49,12 +49,14 @@
 
       </div>
       <!--Grid row-->
+      
     </mdb-card-body>
-
+</form>
   </mdb-card>
   <!--/Form with header-->
 
 </section>
+
 <!-- Section: form gradient -->
 <!-- Section: form dark -->
 <section class="form-dark mb-5">
