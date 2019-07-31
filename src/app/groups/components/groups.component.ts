@@ -39,11 +39,4 @@ export class GroupsComponent implements OnInit {
       });
   }
 
-  getPersonality(sub: string): any {
-    this.groupsService.makeTwitterCall(sub)
-    .subscribe((data) => {
-      console.log('success', data);
-    });
-  }
-
 }

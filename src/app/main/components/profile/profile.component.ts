@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../../auth/services/auth.service';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,20 +9,17 @@ import { AuthService } from '../../../auth/services/auth.service';
 })
 export class ProfileComponent implements OnInit {
   @Input() profile: any;
+  values: object;
 
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService, public userService: UserService) { }
 
   ngOnInit() {
-    // if (this.auth.isAuthenticated()) {
-    //   this.auth.renewTokens();
-    //   this.loadProfile();
-    // }
-    // this.loadProfile();
-    // this.auth.getProfile((err, profile) => {
-    //   console.log('STORING PROFILE', profile);
-    //   this.storeProfile(profile);
-    // });
-    console.log('PROFILE', this.profile);
+    const { sub } = this.profile;
+    if (sub[0] === 't') {
+      this.getTwitterPersonality(sub);
+    } else {
+      this.getStoredPersonality(sub);
+    }
   }
 
   loadProfile() {
@@ -32,12 +30,22 @@ export class ProfileComponent implements OnInit {
       this.profile = profile;
     });
     }
-    // console.log('PROFILE', this.auth.userProfile);
   }
 
-  // storeProfile(user) {
-  //   console.log('USER', user);
-  //   this.profileService.createUser(user);
-  // }
+  getTwitterPersonality(sub: string): any {
+    this.userService.makeTwitterCall(sub)
+    .subscribe((values) => {
+      this.values = values;
+      console.log('success', values, this.values);
+    });
+  }
+
+  getStoredPersonality(sub: string): any {
+    this.userService.getUserValues(sub)
+    .subscribe((values) => {
+      this.values = values;
+      console.log('success', values, this.values);
+    });
+  }
 
 }
