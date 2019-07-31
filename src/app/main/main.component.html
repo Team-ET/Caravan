@@ -5,16 +5,14 @@
         <mdb-card>
             <app-nav></app-nav>
             <div class=row>
-                <div class=col-3>
+                <div class=col-3 style="height: 400px">
                     <app-profile-picture [profile]='profile'></app-profile-picture>
                     <app-profile [profile]='profile'></app-profile>
                     <app-search></app-search>
+                    <app-requests [profile]='profile'></app-requests>
                 </div>
                 <div class=col-9>
                     <span class="pull left"><app-groups [profile]='profile'></app-groups></span>
-                </div>
-                <div>
-                    <app-requests [profile]='profile'></app-requests>
                 </div>
                 <div>
                     <!-- <app-widget></app-widget> -->

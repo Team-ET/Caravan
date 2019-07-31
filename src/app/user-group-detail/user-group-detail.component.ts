@@ -19,6 +19,7 @@ export class UserGroupDetailComponent implements OnInit {
   constructor(readonly route: ActivatedRoute, private groupService: GroupsService, private userService: UserService) {
     this.profile = this.userService.getUser();
     this.route.params.subscribe(params => {
+      console.log(params);
     this.groupId = params.groupId;
     this.getGroupById(this.groupId);
     });
