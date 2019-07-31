@@ -9,6 +9,7 @@ import { GroupFormComponent } from '../app/group-form/group-form.component';
 import { AccountComponent } from './account/account.component';
 import { UserGroupDetailComponent } from './user-group-detail/user-group-detail.component';
 import { GroupAllComponent } from 'src/app/group-all/group-all.component'
+import { DemoComponent } from './calendar/calendar.component'
 
 export const ROUTES: Routes = [
   { path: '', component: LoginComponent},
@@ -21,5 +22,6 @@ export const ROUTES: Routes = [
   { path: 'group/signup', component: GroupFormComponent },
   { path: 'account', component: AccountComponent },
   { path: 'group-all', component: GroupAllComponent},
+  { path: 'calendar', component: DemoComponent}
   // { path: "**", component: NotFoundComponent },
 ];
