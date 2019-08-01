@@ -5,13 +5,13 @@
         <mdb-card>
             <app-nav></app-nav>
             <div class=row>
-                <div class=col-3 style="height: 400px">
+                <div class=col-3 >
                     <app-profile-picture [profile]='profile'></app-profile-picture>
                     <app-profile [profile]='profile'></app-profile>
-                    <!-- <app-search></app-search> -->
                     <app-requests [profile]='profile'></app-requests>
+                    <!-- <app-search></app-search> -->
                 </div>
-                <div class=col-9>
+                <div class=col-8>
                     <span class="pull left"><app-groups [profile]='profile'></app-groups></span>
                 </div>
                 <div>
