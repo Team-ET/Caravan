@@ -1,5 +1,7 @@
+<app-header></app-header>
 <div class="container">
 <mdb-card>
+  <app-nav></app-nav>
 <ng-template [ngIf]="group">
   <h2>{{group.name}}</h2>
   <app-group-users [groupId]='groupId'></app-group-users>

@@ -1,15 +1,14 @@
 <ng-template [ngIf]="profile">
     <div class="container" justify-content-center>
-        <h4 class="card-title">{{profile.name}}</h4><hr>
-        <ng-template [ngIf]="values">
-            <h6>Tradition: {{values.tradition}}%</h6>
-            <h6>Stimulation: {{values.stimulation}}%</h6>
-            <h6>Helping Others: {{values.helpfulness}}%</h6>
-            <h6>Achievement: {{values.achievement}}%</h6>
-            <h6>Joy of Life: {{values.enjoyment}}%</h6>
-        </ng-template>
+        <h4 class="card-title">{{profile.name}}</h4>
+            <h6>Tradition: 12%</h6>
+            <h6>Stimulation: 46%</h6>
+            <h6>Helping Others: 74%</h6>
+            <h6>Achievement: 68%</h6>
+            <h6>Joy of Life: 42%</h6>
     </div>
-    <!-- <div>
-        <button (click)="getTwitterPersonality(profile.sub)">Make Twitter Call</button>
-    </div> -->
+     <div>
+        <!-- <button (click)="getTwitterPersonality(profile.sub)">Make Twitter Call</button> -->
+        <app-requests [profile]='profile'></app-requests>
+    </div> 
 </ng-template>

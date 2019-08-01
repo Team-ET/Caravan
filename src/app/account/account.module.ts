@@ -15,6 +15,7 @@ import { VerificationComponent } from './components/verification/verification.co
 import { ReviewComponent } from './components/review/review.component';
 import { BarRatingModule } from "ngx-bar-rating";
 import { AccountComponent } from './account.component';
+import { MainModule } from '../main/main.module'
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { AccountComponent } from './account.component';
     WavesModule,
     RouterModule,
     IconsModule,
+    MainModule,
   ],
   providers: [AuthService],
   exports: [AccountComponent]

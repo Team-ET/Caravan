@@ -1,14 +1,23 @@
+<app-header></app-header>
 <div class="container">
+
   <mdb-card>
+    
+    <app-nav></app-nav>
 <div class="row">
-<div class="col-3">
-<p>Reviews</p>
+<div class="col-3 justify-content-center">
+<div class="list-group">
+  <a class="list-group-item list-group-item-action active">
+    My Account
+  </a>
+  <a class="list-group-item list-group-item-action">Reviews</a>
+  <a href="#!" class="list-group-item list-group-item-action">Photos</a>
+  <a href="#!" class="list-group-item list-group-item-action">Reviews</a>
+  <a href="#!" class="list-group-item list-group-item-action">References</a>
+</div>
 </div>
 <div class="col-9">
 <app-review></app-review>
-<div class="spacer1"></div>
-<app-reference></app-reference>
-<app-verification></app-verification>
 </div>
 </div>
 </mdb-card>
