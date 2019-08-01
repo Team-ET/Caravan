@@ -1,19 +1,23 @@
-<mdb-card *ngFor="let user of users" class="col-3">
-  <mdb-card-img [src]='user.picture' alt=""></mdb-card-img>
-  <mdb-card-body>
-  <mdb-card-title>
-  <h3>{{ user.name }}</h3>
-  </mdb-card-title>
+<ng-template [ngIf]="users">
+  <div *ngFor="let user of users" class="col-3">
+    <mdb-card>
+      <mdb-card-img [src]='user.picture' alt=""></mdb-card-img>
+      <mdb-card-body>
+        <mdb-card-title>
+          <h4>{{ user.name }}</h4>
+        </mdb-card-title>
 
-<!-- Percentage Circle -->
-<div class="circle-container">
-  <div id="activeBorder" class="active-border">
-    <div id="circle" class="circle">
-      <span class="prec 270" id="prec">90%</span>
-    </div>
+        <!-- Percentage Circle -->
+        <!-- <div class="circle-container">
+        <div id="activeBorder" class="active-border">
+          <div id="circle" class="circle">
+            <span class="prec 270" id="prec">90%</span>
+          </div>
+        </div>
+      </div> -->
+        <!-- Percentage Circle -->
+
+      </mdb-card-body>
+    </mdb-card>
   </div>
-</div>
-<!-- Percentage Circle -->
-
-  </mdb-card-body>
-</mdb-card>
+</ng-template>

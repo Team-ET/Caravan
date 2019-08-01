@@ -1,12 +1,11 @@
 <div class="container">
 <mdb-card>
 <ng-template [ngIf]="group">
-  <h2>{{group.name}} Details</h2>
+  <h2>{{group.name}}</h2>
   <app-group-users [groupId]='groupId'></app-group-users>
-  <p>Dates: {{group.date_start}} - {{group.date_end}}<br/>
+    Dates: {{group.date_start}} - {{group.date_end}}<br/>
     Budget: $$$<br/>
     Overall Compatibility: 90%<br/>
-  </p>
   <div *ngIf="group.id !== 5">
     <!--Request Button-->
     <div>

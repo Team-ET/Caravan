@@ -1,3 +1,14 @@
+.col-4 {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.col-5 {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin: 5px;
+}
+
 
 .spacer1 {
     height: 10px;
@@ -37,4 +48,16 @@
   linear-gradient(20deg, transparent 50%, #A2ECFB 50%),
   linear-gradient(180deg, #A2ECFB 50%, transparent 50%);
 
+  }
+
+  .button-vert-space{
+    margin:20px 0;
+  }
+
+  h3 {
+    text-align: center
+  }
+  
+  h2 {
+    text-align: center
   }
