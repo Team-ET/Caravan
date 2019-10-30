@@ -54,7 +54,7 @@
     "ngx-bar-rating": "^1.1.0",
     "nodemon": "^1.19.1",
     "oauth": "^0.9.15",
-    "sequelize": "^5.9.0",
+    "sequelize": "^5.15.1",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0",
     "tedious": "^6.2.0",
